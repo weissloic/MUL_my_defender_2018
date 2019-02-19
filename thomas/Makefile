@@ -18,7 +18,7 @@ SRC = game.c \
 
 OBJ = $(SRC:.c = .o)
 
-NAME = my_runner
+NAME = my_defender
 
 all: $(NAME)
 

@@ -11,15 +11,16 @@ void game(player_t *player, info_t *info, scene_t *scene)
 {
     sfVideoMode mode = {800, 600, 32};
     info->window = sfRenderWindow_create(mode, "jeu", sfResize | sfClose, NULL);
-    sfRenderWindow_clear(info->window, sfBlack);
+    info->view = 0;
 
     while (sfRenderWindow_isOpen(info->window)) {
-        for (int i = 0; scene[0].button[i].rect != NULL; i++)
-            sfRenderWindow_drawRectangleShape(info->window, scene[0].button[i].rect, NULL);
+        for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
+            sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[i].rect, NULL);
         sfRenderWindow_display(info->window);
         while (sfRenderWindow_pollEvent(info->window, &info->event)) {
             analyse_events(info, scene);
         }
+    sfRenderWindow_clear(info->window, sfBlack);
     }
 }
 
@@ -49,6 +50,8 @@ void exit_window(info_t *info)
 
 void play(info_t *info)
 {
+    info->view++;
+    printf("%d\n", info->view);
 }
 
 scene_t *init_scenes()
