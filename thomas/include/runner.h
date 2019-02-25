@@ -35,6 +35,7 @@ typedef struct player {
 typedef struct game_info {
     sfRenderWindow *window;
     sfEvent event;
+    sfTexture *menu_bg;
     int view;
 }info_t;
 
@@ -46,6 +47,7 @@ typedef struct button_s {
 typedef struct  scene_s {
     struct  game_object_s *objs;
     struct  button_s *button;
+    sfSprite *background;
 }scene_t;
 
 void game(player_t *player, info_t *info, scene_t *scene);
