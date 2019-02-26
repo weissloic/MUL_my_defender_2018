@@ -63,4 +63,8 @@ int button_is_clicked(button_t button, sfVector2i click_position);
 void setup_textures(info_t *info);
 void set_textures(info_t *info, scene_t *scene);
 
+void play(info_t *info);
+scene_t *init_scenes(info_t *info);
+void exit_window(info_t *info);
+
 #endif
