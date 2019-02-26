@@ -12,15 +12,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     sfVideoMode mode = {800, 600, 32};
     info->window = sfRenderWindow_create(mode, "jeu", sfResize | sfClose, NULL);
     info->view = 0;
-    
-    info->menu_bg = sfTexture_createFromFile("ressources/back.png", NULL);
-    info->game_bg = sfTexture_createFromFile("ressources/Grass1.png", NULL);
-    info->game_button = sfTexture_createFromFile("ressources/play.png", NULL);
-
-    sfSprite_setTexture(scene[0].background, info->menu_bg, sfFalse);
-    sfSprite_setTexture(scene[1].background, info->game_bg, sfFalse);
-    sfSprite_setTexture(scene[1].setting_button, info->game_button, sfFalse);
-    
+    set_textures(info, scene);
 
     while (sfRenderWindow_isOpen(info->window)) {
         while (sfRenderWindow_pollEvent(info->window, &info->event)) {
@@ -61,6 +53,20 @@ void play(info_t *info)
     printf("%d\n", info->view);
 }
 
+void setup_textures(info_t *info)
+{
+    info->menu_bg = sfTexture_createFromFile("ressources/back.png", NULL);
+    info->game_bg = sfTexture_createFromFile("ressources/Grass1.png", NULL);
+    info->game_button = sfTexture_createFromFile("ressources/play.png", NULL);
+}
+
+void set_textures(info_t *info, scene_t *scene)
+{
+    sfSprite_setTexture(scene[0].background, info->menu_bg, sfFalse);
+    sfSprite_setTexture(scene[1].background, info->game_bg, sfFalse);
+    sfSprite_setTexture(scene[1].setting_button, info->game_button, sfFalse);
+}
+
 scene_t *init_scenes(info_t *info)
 {
 
@@ -70,7 +76,6 @@ scene_t *init_scenes(info_t *info)
     scene_t *scene = malloc(sizeof(scene_t) * 3);
 
     scene[0].button = malloc(sizeof(button_t) * 2);
-    
     for (int i = 0; i != 3; i++) {
         scene[i].background = sfSprite_create();
         scene[i].setting_button = sfSprite_create();
@@ -102,6 +107,7 @@ int main(int ac, char **av)
     scene_t *scene = init_scenes(info);
     button_t *button = malloc(sizeof(button_t));
 
+    setup_textures(info);
     game(player, info, scene, button);
     return (0);
 }

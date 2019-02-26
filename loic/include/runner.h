@@ -60,5 +60,7 @@ void init_button(button_t *button, sfVector2f position, sfVector2f size);
 sfVector2f manage_mouse_click(info_t *info);
 void analyse_events(info_t *info, scene_t *scene, button_t *button);
 int button_is_clicked(button_t button, sfVector2i click_position);
+void setup_textures(info_t *info);
+void set_textures(info_t *info, scene_t *scene);
 
 #endif
