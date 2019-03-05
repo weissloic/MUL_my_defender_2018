@@ -12,7 +12,10 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     sfVideoMode mode = {800, 600, 32};
     info->window = sfRenderWindow_create(mode, "jeu", sfResize | sfClose, NULL);
     info->view = 0;
+    info->new_pos.x = 0;
+    info->new_pos.y = 35;
     set_textures(info, scene);
+
 
     while (sfRenderWindow_isOpen(info->window)) {
         while (sfRenderWindow_pollEvent(info->window, &info->event)) {
@@ -33,11 +36,24 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
 
 void move_monster_time(info_t *info, scene_t *scene)
 {
-    sfVector2f new_pos = {2, 0};
     info->seconds = sfClock_getElapsedTime(info->clock).SEC;
 
     if (info->seconds > 0.01) {
-        sfSprite_move(scene[1].monster, new_pos);
+        
+
+        if (info->new_pos.x == 150 && info->new_pos.y == 40) {
+            info->new_pos.y = 40;
+            info->new_pos.x += 10;
+        }
+        else if (info->new_pos.x == 150) {
+            info->new_pos.x = 150;
+            info->new_pos.y += 2;
+        }
+        else
+            info->new_pos.x += 2;
+        printf("x is %f\n", info->new_pos.x);
+        printf("y is = %f\n", info->new_pos.y);
+        sfSprite_setPosition(scene[1].monster, info->new_pos);
         sfClock_restart(info->clock);
     }
 }
