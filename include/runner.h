@@ -39,7 +39,11 @@ typedef struct game_info {
     sfTexture *menu_bg;
     //GAME
     sfTexture *game_bg;
-    sfTexture *game_button;
+    sfTexture *zombie;
+    sfTexture *button_normal;
+    sfTexture *button_hover;
+    sfClock *clock;
+    float seconds;
     int view;
 }info_t;
 
@@ -52,18 +56,19 @@ typedef struct  scene_s {
     struct  game_object_s *objs;
     struct  button_s *button;
     sfSprite *background;
-    sfSprite *setting_button;
+    sfSprite *monster;
 }scene_t;
 
 void game(player_t *player, info_t *info, scene_t *scene, button_t *button);
-void init_button(button_t *button, sfVector2f position, sfVector2f size);
+void init_button(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
 sfVector2f manage_mouse_click(info_t *info);
 void analyse_events(info_t *info, scene_t *scene, button_t *button);
 int button_is_clicked(button_t button, sfVector2i click_position);
 void setup_textures(info_t *info);
 void set_textures(info_t *info, scene_t *scene);
-
+void move_monster_time(info_t *, scene_t *);
 void play(info_t *info);
+void check_mouse_hovering(button_t button, sfVector2i mouse_pos, info_t *info);
 scene_t *init_scenes(info_t *info);
 void exit_window(info_t *info);
 

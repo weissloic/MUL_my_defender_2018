@@ -18,9 +18,11 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
         while (sfRenderWindow_pollEvent(info->window, &info->event)) {
             analyse_events(info, scene, button);
             }
+        if (info->view == 1)
+            move_monster_time(info, scene);
         sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
         sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
-        sfRenderWindow_drawSprite(info->window, scene[info->view].setting_button, NULL);
+        sfRenderWindow_drawSprite(info->window, scene[info->view].monster, NULL);
 
         for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
             sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[i].rect, NULL);
@@ -28,6 +30,18 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
         sfRenderWindow_clear(info->window, sfBlack);
     }
 }
+
+void move_monster_time(info_t *info, scene_t *scene)
+{
+    sfVector2f new_pos = {2, 0};
+    info->seconds = sfClock_getElapsedTime(info->clock).SEC;
+
+    if (info->seconds > 0.01) {
+        sfSprite_move(scene[1].monster, new_pos);
+        sfClock_restart(info->clock);
+    }
+}
+
 
 int button_is_clicked(button_t button, sfVector2i click_position)
 {
