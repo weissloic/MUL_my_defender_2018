@@ -26,9 +26,11 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
         sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
         sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
         sfRenderWindow_drawSprite(info->window, scene[info->view].monster, NULL);
-
-        for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
+        sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[1].rect_two, NULL);
+        for (int i = 0; scene[info->view].button[i].rect != NULL; i++) {
             sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[i].rect, NULL);
+            //
+        }
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
     }

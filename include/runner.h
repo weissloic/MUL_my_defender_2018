@@ -42,13 +42,16 @@ typedef struct game_info {
     sfTexture *zombie;
     sfTexture *button_normal;
     sfTexture *button_hover;
+    sfTexture *button_test;
     sfClock *clock;
     float seconds;
     int view;
+    sfVector2f new_pos;
 }info_t;
 
 typedef struct button_s {
     sfRectangleShape *rect;
+    sfRectangleShape *rect_two;
     void (*callback)(info_t *info);
 }button_t;
 
