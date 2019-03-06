@@ -10,6 +10,7 @@
 void analyse_events(info_t *info, scene_t *scene, button_t *button)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(info->window);
+    sfVector2f mouse_pos_float = {mouse_pos.x, mouse_pos.y};
 
     if (info->view != 3) {
         for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
@@ -18,6 +19,8 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
     if (info->event.type == sfEvtClosed)
         sfRenderWindow_close(info->window);
     if (info->event.type == sfEvtMouseButtonPressed && info->view != 3) {
+        if (info->view == 1)
+            sfSprite_setPosition(info->test_image, mouse_pos_float);
         for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
             if (button_is_clicked(scene[info->view].button[i], mouse_pos)) {
                 scene[info->view].button[i].callback(info);

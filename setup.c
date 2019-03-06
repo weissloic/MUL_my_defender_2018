@@ -15,6 +15,9 @@ void setup_textures(info_t *info)
     info->button_normal = sfTexture_createFromFile("ressources/start_normal.png", NULL);
     info->button_test = sfTexture_createFromFile("exit.png", NULL);
     info->button_hover = sfTexture_createFromFile("ressources/start_hover.png", NULL);
+    info->test = sfTexture_createFromFile("ressources/trap.png", NULL);
+    info->test_image = sfSprite_create();
+    sfSprite_setTexture(info->test_image, info->test, sfFalse);
     info->clock = sfClock_create();
 }
 

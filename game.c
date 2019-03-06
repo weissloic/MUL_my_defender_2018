@@ -35,6 +35,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
                 sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[i].rect, NULL);
         }
+        sfRenderWindow_drawSprite(info->window, info->test_image, NULL);
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
     }
@@ -66,7 +67,7 @@ void move_monster_time(info_t *info, scene_t *scene)
     info->seconds = sfClock_getElapsedTime(info->clock).SEC;
 
     if (info->seconds > 0.01) {
-        
+
 
         if (info->new_pos.x == 150 && info->new_pos.y == 40) {
             info->new_pos.y = 40;

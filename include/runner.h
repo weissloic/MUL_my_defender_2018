@@ -44,6 +44,8 @@ typedef struct game_info {
     sfTexture *button_normal;
     sfTexture *button_hover;
     sfTexture *button_test;
+    sfTexture *test;
+    sfSprite *test_image;
     sfClock *clock;
     float seconds;
     int view;
@@ -77,5 +79,7 @@ void check_mouse_hovering(button_t button, sfVector2i mouse_pos, info_t *info);
 scene_t *init_scenes(info_t *info);
 void exit_window(info_t *info);
 char *my_itoa(int nb);
+void my_loading_screen(info_t *, scene_t *);
+void init_buttontwo(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
 
 #endif
