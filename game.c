@@ -20,20 +20,36 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     while (sfRenderWindow_isOpen(info->window)) {
         while (sfRenderWindow_pollEvent(info->window, &info->event)) {
             analyse_events(info, scene, button);
-            }
+        }
+        //if (info->view == 3)
+            //sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
         if (info->view == 1)
             move_monster_time(info, scene);
+        //my_loading_screen(info, scene);
         sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
-        sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
+        //sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
         sfRenderWindow_drawSprite(info->window, scene[info->view].monster, NULL);
-        sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[1].rect_two, NULL);
-        for (int i = 0; scene[info->view].button[i].rect != NULL; i++) {
+
+        for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
             sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[i].rect, NULL);
-            //
-        }
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
     }
+}
+
+void my_loading_screen(info_t *info, scene_t *scene)
+{
+    info->seconds = sfClock_getElapsedTime(info->clock).SEC;
+    static int i = 0;
+
+    if (info->seconds > 5) {
+        i++;
+        printf("%d\n", i);
+    }
+    if (i == 50)
+        printf("test");
+
+    //sfClock_restart(info->clock);
 }
 
 void move_monster_time(info_t *info, scene_t *scene)

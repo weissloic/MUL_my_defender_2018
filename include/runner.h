@@ -39,6 +39,7 @@ typedef struct game_info {
     sfTexture *menu_bg;
     //GAME
     sfTexture *game_bg;
+    sfTexture *loadingscreen_bg;
     sfTexture *zombie;
     sfTexture *button_normal;
     sfTexture *button_hover;
@@ -59,6 +60,7 @@ typedef struct  scene_s {
     struct  game_object_s *objs;
     struct  button_s *button;
     sfSprite *background;
+    sfSprite *loadingscreen;
     sfSprite *monster;
 }scene_t;
 

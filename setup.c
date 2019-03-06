@@ -11,9 +11,10 @@ void setup_textures(info_t *info)
 {
     info->menu_bg = sfTexture_createFromFile("ressources/back.png", NULL);
     info->game_bg = sfTexture_createFromFile("ressources/Grass1.png", NULL);
+    info->loadingscreen_bg = sfTexture_createFromFile("loadingscreen/sprite_000.png", NULL);
     info->zombie = sfTexture_createFromFile("ressources/zombie_above.png", NULL);
     info->button_normal = sfTexture_createFromFile("ressources/start_normal.png", NULL);
-    info->button_test = sfTexture_createFromFile("ressources/start_normal.png", NULL);
+    info->button_test = sfTexture_createFromFile("exit.png", NULL);
     info->button_hover = sfTexture_createFromFile("ressources/start_hover.png", NULL);
     info->clock = sfClock_create();
 }
@@ -22,6 +23,7 @@ void set_textures(info_t *info, scene_t *scene)
 {
     sfSprite_setTexture(scene[0].background, info->menu_bg, sfFalse);
     sfSprite_setTexture(scene[1].background, info->game_bg, sfFalse);
+    sfSprite_setTexture(scene[3].background, info->loadingscreen_bg, sfFalse);
     sfSprite_setTexture(scene[1].monster, info->zombie, sfFalse);
 }
 
@@ -30,14 +32,14 @@ scene_t *init_scenes(info_t *info)
     sfVector2f pos = {100, 100};
     sfVector2f size = {200, 100};
     sfVector2f pos2 = {300, 100};
-    scene_t *scene = malloc(sizeof(scene_t) * 3);
+    scene_t *scene = malloc(sizeof(scene_t) * 5);
 
-    scene[0].button = malloc(sizeof(button_t) * 2);
-    for (int i = 0; i != 3; i++) {
+    scene[0].button = malloc(sizeof(button_t) * 3);
+    for (int i = 0; i != 5; i++) {
         scene[i].background = sfSprite_create();
         scene[i].monster = sfSprite_create();
     }
-    scene[1].button = malloc(sizeof(button_t) * 3);
+    scene[1].button = malloc(sizeof(button_t) * 4);
     init_button(&scene[0].button[0], pos, size, info);
     scene[0].button[0].callback = &play;
     init_buttontwo(&scene[0].button[1], pos2, size, info);
