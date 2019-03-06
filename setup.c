@@ -11,7 +11,6 @@ void setup_textures(info_t *info)
 {
     info->menu_bg = sfTexture_createFromFile("ressources/back.png", NULL);
     info->game_bg = sfTexture_createFromFile("ressources/Grass1.png", NULL);
-    info->loadingscreen_bg = sfTexture_createFromFile("loadingscreen/sprite_000.png", NULL);
     info->zombie = sfTexture_createFromFile("ressources/zombie_above.png", NULL);
     info->button_normal = sfTexture_createFromFile("ressources/start_normal.png", NULL);
     info->button_test = sfTexture_createFromFile("exit.png", NULL);
@@ -23,7 +22,6 @@ void set_textures(info_t *info, scene_t *scene)
 {
     sfSprite_setTexture(scene[0].background, info->menu_bg, sfFalse);
     sfSprite_setTexture(scene[1].background, info->game_bg, sfFalse);
-    sfSprite_setTexture(scene[3].background, info->loadingscreen_bg, sfFalse);
     sfSprite_setTexture(scene[1].monster, info->zombie, sfFalse);
 }
 

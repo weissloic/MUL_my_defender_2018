@@ -16,6 +16,7 @@ MY = my.h
 SRC = game.c \
 	  events.c \
 	  setup.c \
+	  my_itoa.c \
 
 OBJ = $(SRC:.c = .o)
 

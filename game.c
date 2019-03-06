@@ -11,45 +11,54 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
 {
     sfVideoMode mode = {800, 600, 32};
     info->window = sfRenderWindow_create(mode, "jeu", sfResize | sfClose, NULL);
-    info->view = 0;
+    info->view = 3;
     info->new_pos.x = 0;
     info->new_pos.y = 35;
+    info->seconds = sfClock_getElapsedTime(info->clock).SEC;
+
     set_textures(info, scene);
 
+    my_loading_screen(info, scene);
 
     while (sfRenderWindow_isOpen(info->window)) {
         while (sfRenderWindow_pollEvent(info->window, &info->event)) {
             analyse_events(info, scene, button);
         }
-        //if (info->view == 3)
-            //sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
+
+
         if (info->view == 1)
             move_monster_time(info, scene);
-        //my_loading_screen(info, scene);
         sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
-        //sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
         sfRenderWindow_drawSprite(info->window, scene[info->view].monster, NULL);
 
-        for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
-            sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[i].rect, NULL);
+        if (info->view != 3) {
+            for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
+                sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[i].rect, NULL);
+        }
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
     }
 }
 
+
 void my_loading_screen(info_t *info, scene_t *scene)
 {
-    info->seconds = sfClock_getElapsedTime(info->clock).SEC;
-    static int i = 0;
-
-    if (info->seconds > 5) {
-        i++;
-        printf("%d\n", i);
+    for (int i = 1; i != 180; i++) {
+        for (int y = 0; y != 10; y++) {
+            char *test = my_itoa(i);
+            char str[] = "loadingscreen/sprite";
+            char png[] = ".png";
+            my_strcat(str, test);
+            my_strcat(str, png);
+            info->loadingscreen_bg = sfTexture_createFromFile(str, NULL);
+            sfSprite_setTexture(scene[3].background, info->loadingscreen_bg, sfFalse);
+            sfRenderWindow_drawSprite(info->window, scene[3].background, NULL);
+            sfRenderWindow_display(info->window);
+            if (i != 179)
+                sfTexture_destroy(info->loadingscreen_bg);
+        }
     }
-    if (i == 50)
-        printf("test");
-
-    //sfClock_restart(info->clock);
+    info->view = 0;
 }
 
 void move_monster_time(info_t *info, scene_t *scene)

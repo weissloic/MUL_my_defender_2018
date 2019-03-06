@@ -11,11 +11,13 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(info->window);
 
-    for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
-    	check_mouse_hovering(scene[info->view].button[i], mouse_pos, info);
+    if (info->view != 3) {
+        for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
+    	   check_mouse_hovering(scene[info->view].button[i], mouse_pos, info);
+    }
     if (info->event.type == sfEvtClosed)
         sfRenderWindow_close(info->window);
-    if (info->event.type == sfEvtMouseButtonPressed) {
+    if (info->event.type == sfEvtMouseButtonPressed && info->view != 3) {
         for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
             if (button_is_clicked(scene[info->view].button[i], mouse_pos)) {
                 scene[info->view].button[i].callback(info);
