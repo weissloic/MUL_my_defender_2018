@@ -86,5 +86,16 @@ void exit_window(info_t *info);
 char *my_itoa(int nb);
 void my_loading_screen(info_t *, scene_t *);
 void init_buttontwo(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
+int button_is_clicked(button_t button, sfVector2i click_position);
+int button_is_clickedtwo(button_t button, sfVector2i click_position);
+int button_is_clickedthree(button_t button, sfVector2i click_position);
+void init_button(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
+void init_buttontwo(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
+void init_buttonthree(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
+void check_mouse_hovering(button_t button, sfVector2i mouse_pos, info_t *info);
+void check_mouse_hoveringtwo(button_t button, sfVector2i mouse_pos, info_t *info);
+void check_mouse_hoveringthree(button_t button, sfVector2i mouse_pos, info_t *info);
+void check_mouse_pausemenu(button_t button, sfVector2i mouse_pos, info_t *info);
+void init_buttonpause(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
 
 #endif
