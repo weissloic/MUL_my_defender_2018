@@ -12,6 +12,7 @@ void print_score(info_t *info)
     char *score = my_itoa(info->score_int);
 
     sfText_setString(info->score_text, score);
+    sfRenderWindow_drawText(info->window, info->score_text, NULL);
 }
 
 void setup_score(info_t *info)
