@@ -32,15 +32,16 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
         }
         sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
         sfRenderWindow_drawSprite(info->window, scene[info->view].monster, NULL);
-        sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
+        
 
-        if (info->view != 3) {
-            for (int i = 0; scene[info->view].button[i].rect != NULL; i++) {
-                sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[i].rect, NULL);
-                sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[1].rect_two, NULL);
-                sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[2].rect_three, NULL);
-            }
+        if (info->view == 0) {
+            //for (int i = 0; scene[info->view].button[i].rect != NULL; i++) {
+                sfRenderWindow_drawRectangleShape(info->window, scene[0].button[0].rect, NULL);
+                sfRenderWindow_drawRectangleShape(info->window, scene[0].button[1].rect_two, NULL);
+                sfRenderWindow_drawRectangleShape(info->window, scene[0].button[2].rect_three, NULL);
+            //}
         }
+        sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
     }
@@ -131,6 +132,19 @@ int button_is_clickedthree(button_t button, sfVector2i click_position)
         return (0);
 }
 
+int button_is_clickedpause(button_t button, sfVector2i click_position)
+{
+    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_pause);
+
+    if (click_position.x >= button_pos.x &&
+        click_position.x <= button_pos.x + 200 &&
+        click_position.y >= button_pos.y &&
+        click_position.y <= button_pos.y + 100)
+        return (1);
+    else
+        return (0);
+}
+
 
 void exit_window(info_t *info)
 {
@@ -139,7 +153,7 @@ void exit_window(info_t *info)
 
 void put_in_pause(info_t *info)
 {
-    info->view = 0;
+    info->view = 2;
 }
 
 void play(info_t *info)

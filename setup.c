@@ -55,6 +55,7 @@ scene_t *init_scenes(info_t *info)
     init_buttonthree(&scene[0].button[2], pos3, size, info);
     scene[0].button[2].callback = &exit_window;
     init_buttonpause(&scene[1].button[0], pos3, size, info);
+    scene[1].button[0].callback = &put_in_pause;
     return(scene);
 }
 

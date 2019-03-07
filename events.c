@@ -26,16 +26,22 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
         if (info->view == 1)
             sfSprite_setPosition(info->test_image, mouse_pos_float);
 
-        for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
-            if (button_is_clicked(scene[info->view].button[i], mouse_pos)) {
-                scene[info->view].button[i].callback(info);
-        }
+        //for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
+        if (info->view == 0) {
+            if (button_is_clicked(scene[0].button[0], mouse_pos)) 
+                scene[0].button[0].callback(info);
+        //}
         //for (int i = 0; scene[info->view].button[i].rect_two != NULL; i++)
         if (button_is_clickedtwo(scene[0].button[1], mouse_pos)) {
             scene[0].button[1].callback(info);
         }
         if (button_is_clickedthree(scene[0].button[2], mouse_pos)) {
             scene[0].button[2].callback(info);
+        }
+
+    }
+        if (button_is_clickedpause(scene[1].button[0], mouse_pos)) {
+            scene[1].button[0].callback(info);
         }
     }
 }
