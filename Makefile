@@ -17,6 +17,7 @@ SRC = game.c \
 	  events.c \
 	  setup.c \
 	  my_itoa.c \
+	  score.c \
 
 OBJ = $(SRC:.c = .o)
 

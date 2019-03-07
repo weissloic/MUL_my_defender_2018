@@ -49,7 +49,12 @@ typedef struct game_info {
     sfClock *clock;
     sfIntRect zombie_rect;
     sfIntRect start_rect;
-
+    //SCORE
+    int score_int;
+    sfClock *score;
+    sfText *score_text;
+    sfVector2f score_pos;
+    sfFont *font;
     float seconds;
     int view;
     sfVector2f new_pos;
@@ -98,5 +103,7 @@ void check_mouse_hoveringtwo(button_t button, sfVector2i mouse_pos, info_t *info
 void check_mouse_hoveringthree(button_t button, sfVector2i mouse_pos, info_t *info);
 void check_mouse_pausemenu(button_t button, sfVector2i mouse_pos, info_t *info);
 void init_buttonpause(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
+void analyse_time(info_t *info);
+void setup_score(info_t *info);
 
 #endif

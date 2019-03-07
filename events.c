@@ -28,7 +28,7 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
 
         //for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
         if (info->view == 0) {
-            if (button_is_clicked(scene[0].button[0], mouse_pos)) 
+            if (button_is_clicked(scene[0].button[0], mouse_pos))
                 scene[0].button[0].callback(info);
         //}
         //for (int i = 0; scene[info->view].button[i].rect_two != NULL; i++)

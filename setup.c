@@ -18,6 +18,8 @@ void setup_textures(info_t *info)
     info->test = sfTexture_createFromFile("ressources/trap.png", NULL);
     info->test_image = sfSprite_create();
     info->clock = sfClock_create();
+    info->score = sfClock_create();
+    setup_score(info);
 }
 
 void set_textures(info_t *info, scene_t *scene)

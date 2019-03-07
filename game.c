@@ -27,12 +27,13 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
 
 
         if (info->view == 1) {
+            analyse_time(info);
             move_monster_time(info, scene);
-            
+
         }
         sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
         sfRenderWindow_drawSprite(info->window, scene[info->view].monster, NULL);
-        
+
 
         if (info->view == 0) {
             //for (int i = 0; scene[info->view].button[i].rect != NULL; i++) {
@@ -42,6 +43,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             //}
         }
         sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
+        print_score(info);
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
     }
@@ -68,6 +70,17 @@ void my_loading_screen(info_t *info, scene_t *scene)
     info->view = 0;
 }
 
+
+void analyse_time(info_t *info)
+{
+    float time = sfClock_getElapsedTime(info->score).SEC;
+
+    if (time > 1) {
+        info->score_int++;
+        sfClock_restart(info->score);
+    }
+}
+
 void move_monster_time(info_t *info, scene_t *scene)
 {
     info->seconds = sfClock_getElapsedTime(info->clock).SEC;
@@ -85,8 +98,8 @@ void move_monster_time(info_t *info, scene_t *scene)
         }
         else
             info->new_pos.x += 2;
-        printf("x is %f\n", info->new_pos.x);
-        printf("y is = %f\n", info->new_pos.y);
+   //     printf("x is %f\n", info->new_pos.x);
+    //    printf("y is = %f\n", info->new_pos.y);
         sfSprite_setPosition(scene[1].monster, info->new_pos);
         sfClock_restart(info->clock);
     }
