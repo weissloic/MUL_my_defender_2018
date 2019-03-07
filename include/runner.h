@@ -47,6 +47,9 @@ typedef struct game_info {
     sfTexture *test;
     sfSprite *test_image;
     sfClock *clock;
+    sfIntRect zombie_rect;
+    sfIntRect start_rect;
+
     float seconds;
     int view;
     sfVector2f new_pos;
@@ -55,6 +58,8 @@ typedef struct game_info {
 typedef struct button_s {
     sfRectangleShape *rect;
     sfRectangleShape *rect_two;
+    sfRectangleShape *rect_three;
+    sfRectangleShape *rect_pause;
     void (*callback)(info_t *info);
 }button_t;
 

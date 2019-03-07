@@ -11,14 +11,14 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
 {
     sfVideoMode mode = {800, 600, 32};
     info->window = sfRenderWindow_create(mode, "jeu", sfResize | sfClose, NULL);
-    info->view = 3;
+    info->view = 0;
     info->new_pos.x = 0;
     info->new_pos.y = 35;
     info->seconds = sfClock_getElapsedTime(info->clock).SEC;
 
     set_textures(info, scene);
 
-    my_loading_screen(info, scene);
+    //my_loading_screen(info, scene);
 
     while (sfRenderWindow_isOpen(info->window)) {
         while (sfRenderWindow_pollEvent(info->window, &info->event)) {
@@ -26,16 +26,21 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
         }
 
 
-        if (info->view == 1)
+        if (info->view == 1) {
             move_monster_time(info, scene);
+            
+        }
         sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
         sfRenderWindow_drawSprite(info->window, scene[info->view].monster, NULL);
+        sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
 
         if (info->view != 3) {
-            for (int i = 0; scene[info->view].button[i].rect != NULL; i++)
+            for (int i = 0; scene[info->view].button[i].rect != NULL; i++) {
                 sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[i].rect, NULL);
+                sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[1].rect_two, NULL);
+                sfRenderWindow_drawRectangleShape(info->window, scene[info->view].button[2].rect_three, NULL);
+            }
         }
-        sfRenderWindow_drawSprite(info->window, info->test_image, NULL);
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
     }
@@ -100,9 +105,41 @@ int button_is_clicked(button_t button, sfVector2i click_position)
         return (0);
 }
 
+int button_is_clickedtwo(button_t button, sfVector2i click_position)
+{
+    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_two);
+
+    if (click_position.x >= button_pos.x &&
+        click_position.x <= button_pos.x + 200 &&
+        click_position.y >= button_pos.y &&
+        click_position.y <= button_pos.y + 100)
+        return (1);
+    else
+        return (0);
+}
+
+int button_is_clickedthree(button_t button, sfVector2i click_position)
+{
+    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_three);
+
+    if (click_position.x >= button_pos.x &&
+        click_position.x <= button_pos.x + 200 &&
+        click_position.y >= button_pos.y &&
+        click_position.y <= button_pos.y + 100)
+        return (1);
+    else
+        return (0);
+}
+
+
 void exit_window(info_t *info)
 {
     sfRenderWindow_close(info->window);
+}
+
+void put_in_pause(info_t *info)
+{
+    info->view = 0;
 }
 
 void play(info_t *info)
