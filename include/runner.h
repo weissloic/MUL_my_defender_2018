@@ -105,5 +105,7 @@ void check_mouse_pausemenu(button_t button, sfVector2i mouse_pos, info_t *info);
 void init_buttonpause(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
 void analyse_time(info_t *info);
 void setup_score(info_t *info);
+void print_score(info_t *info);
+int button_is_clickedpause(button_t button, sfVector2i click_position);
 
 #endif
