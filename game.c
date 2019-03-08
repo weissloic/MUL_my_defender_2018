@@ -33,6 +33,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
         }
         sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
         sfRenderWindow_drawSprite(info->window, scene[info->view].monster, NULL);
+        sfRenderWindow_drawRectangleShape(info->window, scene[1].button[1].rect, NULL);
 
 
         if (info->view == 0) {
@@ -132,6 +133,19 @@ int button_is_clickedtwo(button_t button, sfVector2i click_position)
         return (0);
 }
 
+int button_is_clickedtower(button_t button, sfVector2i click_position)
+{
+    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect);
+
+    if (click_position.x >= button_pos.x &&
+        click_position.x <= button_pos.x + 200 &&
+        click_position.y >= button_pos.y &&
+        click_position.y <= button_pos.y + 100)
+        return (1);
+    else
+        return (0);
+}
+
 int button_is_clickedthree(button_t button, sfVector2i click_position)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_three);
@@ -149,8 +163,7 @@ int button_is_clickedpause(button_t button, sfVector2i click_position)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_pause);
 
-    if (click_position.x >= button_pos.x &&
-        click_position.x <= button_pos.x + 200 &&
+    if (click_position.x >= button_pos.x && 200 &&
         click_position.y >= button_pos.y &&
         click_position.y <= button_pos.y + 100)
         return (1);
@@ -173,6 +186,15 @@ void play(info_t *info)
 {
     info->view++;
     printf("%d\n", info->view);
+}
+
+void move_towerbutton(info_t *info, button_t *button)
+{
+    info->menu_turret = 1;
+    info->temp_pos_for_menu.x = 250;
+    info->temp_pos_for_menu.y = 250;
+    sfSprite_setPosition()
+    printf("%d\n", info->menu_turret);
 }
 
 int main(int ac, char **av)

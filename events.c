@@ -38,11 +38,11 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
         if (button_is_clickedthree(scene[0].button[2], mouse_pos)) {
             scene[0].button[2].callback(info);
         }
-
     }
-        if (button_is_clickedpause(scene[1].button[0], mouse_pos)) {
-            scene[1].button[0].callback(info);
-        }
+    if (button_is_clickedtower(scene[1].button[1], mouse_pos))
+        scene[1].button[1].callback(info, button[1]);
+    if (button_is_clickedpause(scene[1].button[0], mouse_pos))
+        scene[1].button[0].callback(info);
     }
 }
 

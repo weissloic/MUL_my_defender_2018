@@ -58,6 +58,8 @@ scene_t *init_scenes(info_t *info)
     scene[0].button[2].callback = &exit_window;
     init_buttonpause(&scene[1].button[0], pos3, size, info);
     scene[1].button[0].callback = &put_in_pause;
+    init_buttontower(&scene[1].button[1], pos, size, info);
+    scene[1].button[1].callback = &move_towerbutton;
     return(scene);
 }
 
@@ -91,4 +93,12 @@ void init_buttonpause(button_t *button, sfVector2f position, sfVector2f size, in
     sfRectangleShape_setPosition(button->rect_pause, position);
     sfRectangleShape_setSize(button->rect_pause, size);
     sfRectangleShape_setTexture(button->rect_pause, info->button_test, 0);
+}
+
+void init_buttontower(button_t *button, sfVector2f position, sfVector2f size, info_t *info)
+{
+    button->rect = sfRectangleShape_create();
+    sfRectangleShape_setPosition(button->rect, position);
+    sfRectangleShape_setSize(button->rect, size);
+    sfRectangleShape_setFillColor(button->rect, sfRed);
 }

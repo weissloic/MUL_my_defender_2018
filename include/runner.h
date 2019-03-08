@@ -49,6 +49,8 @@ typedef struct game_info {
     sfClock *clock;
     sfIntRect zombie_rect;
     sfIntRect start_rect;
+    int menu_turret;
+    sfVector2f temp_pos_for_menu;
     //SCORE
     int score_int;
     sfClock *score;
@@ -107,5 +109,7 @@ void analyse_time(info_t *info);
 void setup_score(info_t *info);
 void print_score(info_t *info);
 int button_is_clickedpause(button_t button, sfVector2i click_position);
+void init_buttontower(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
+void move_towerbutton(info_t *info);
 
 #endif
