@@ -44,6 +44,8 @@ typedef struct game_info {
     sfTexture *button_normal;
     sfTexture *button_hover;
     sfTexture *button_test;
+    sfTexture *second_button_normal;
+    sfTexture *second_button_hover;
     sfTexture *test;
     sfSprite *test_image;
     sfClock *clock;

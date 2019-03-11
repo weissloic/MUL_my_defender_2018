@@ -12,10 +12,10 @@ void setup_textures(info_t *info)
     info->menu_bg = sfTexture_createFromFile("ressources/back.png", NULL);
     info->game_bg = sfTexture_createFromFile("ressources/Grass1.png", NULL);
     info->zombie = sfTexture_createFromFile("ressources/zombie.png", NULL);
-    info->button_normal = sfTexture_createFromFile("ressources/start.png", NULL);
-    info->button_test = sfTexture_createFromFile("exit.png", NULL);
-    //info->button_hover = sfTexture_createFromFile("ressources/start_hover.png", NULL);
-    info->test = sfTexture_createFromFile("ressources/trap.png", NULL);
+    info->button_normal = sfTexture_createFromFile("ressources/button2.png", NULL);
+    info->button_hover = sfTexture_createFromFile("ressources/button3.png", NULL);
+    info->second_button_normal = sfTexture_createFromFile("ressources/button1.png", NULL);
+    info->second_button_hover = sfTexture_createFromFile("ressources/button4.png", NULL);
     info->test_image = sfSprite_create();
     info->clock = sfClock_create();
     info->score = sfClock_create();
@@ -39,10 +39,11 @@ void set_textures(info_t *info, scene_t *scene)
 
 scene_t *init_scenes(info_t *info)
 {
-    sfVector2f pos = {100, 100};
+    sfVector2f pos = {300, 100};
     sfVector2f size = {200, 100};
-    sfVector2f pos2 = {300, 100};
-    sfVector2f pos3 = {500, 100};
+    sfVector2f size2 = {90, 90};
+    sfVector2f pos2 = {300, 200};
+    sfVector2f pos3 = {300, 300};
     info->pos_menu.x = 500;
     info->pos_menu.y = 300;
     info->menu_turret = 0;
@@ -58,7 +59,7 @@ scene_t *init_scenes(info_t *info)
     scene[0].button[0].callback = &play;
     init_buttontwo(&scene[0].button[1], pos2, size, info);
     scene[0].button[1].callback = &exit_window;
-    init_buttonthree(&scene[0].button[2], pos3, size, info);
+    init_buttonthree(&scene[0].button[2], pos3, size2, info);
     scene[0].button[2].callback = &exit_window;
     init_buttonpause(&scene[1].button[0], info->pos_menu, size, info);
     scene[1].button[0].callback = &coupe_decale;
