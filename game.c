@@ -31,9 +31,19 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             move_monster_time(info, scene);
             sfRenderWindow_drawSprite(info->window, scene[1].background, NULL);
             sfRenderWindow_drawSprite(info->window, scene[1].monster, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
             
-
+            if (info->menu_turret == 1) {
+                scene[1].button[0].callback = &exit_turret_menu;
+                info->pos_menu.x = 70;
+                info->pos_menu.y = 70;
+            }
+            else {
+                scene[1].button[0].callback = &coupe_decale;
+                info->pos_menu.x = 300;
+                info->pos_menu.y = 200; 
+            }
+            sfRectangleShape_setPosition(scene[1].button[0].rect_pause, info->pos_menu);
+            sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
         }
 
         //

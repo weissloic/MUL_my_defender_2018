@@ -34,7 +34,6 @@ void init_buttonthree(button_t *button, sfVector2f position, sfVector2f size, in
 void init_buttonpause(button_t *button, sfVector2f position, sfVector2f size, info_t *info)
 {
     button->rect_pause = sfRectangleShape_create();
-    sfRectangleShape_setPosition(button->rect_pause, position);
     sfRectangleShape_setSize(button->rect_pause, size);
     sfRectangleShape_setTexture(button->rect_pause, info->button_test, 0);
 }
@@ -51,6 +50,11 @@ void coupe_decale(info_t *info)
 {
     info->menu_turret = 1;
     printf("%d\n", info->menu_turret);
+}
+
+void exit_turret_menu(info_t *info)
+{
+    info->menu_turret = 0;
 }
 
 

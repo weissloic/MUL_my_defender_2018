@@ -115,6 +115,6 @@ int button_is_clickedpause(button_t button, sfVector2i click_position);
 void init_buttontower(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
 void move_towerbutton(info_t *info);
 void coupe_decale(info_t *info);
-
+void exit_turret_menu(info_t *info);
 
 #endif
