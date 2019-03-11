@@ -23,23 +23,24 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
         sfRenderWindow_close(info->window);
 
     if (info->event.type == sfEvtMouseButtonPressed && info->view != 3) {
-        if (info->view == 1) {
+        if (info->view == 1)
             sfSprite_setPosition(info->test_image, mouse_pos_float);
-            if (button_is_clickedpause(scene[1].button[0], mouse_pos))
-                scene[1].button[0].callback(info);
-        }
-     
+
         if (info->view == 0) {
             if (button_is_clicked(scene[0].button[0], mouse_pos))
                 scene[0].button[0].callback(info);
+
         if (button_is_clickedtwo(scene[0].button[1], mouse_pos)) {
             scene[0].button[1].callback(info);
         }
         if (button_is_clickedthree(scene[0].button[2], mouse_pos)) {
             scene[0].button[2].callback(info);
         }
-    }
 
+    }
+        if (button_is_clickedpause(scene[1].button[0], mouse_pos)) {
+            scene[1].button[0].callback(info);
+        }
     }
 }
 
@@ -57,7 +58,6 @@ void check_mouse_hovering(button_t button, sfVector2i mouse_pos, info_t *info)
         info->start_rect.width = 200;
         info->start_rect.height = 70;
         sfRectangleShape_setTextureRect(button.rect, info->start_rect);
-        //sfRectangleShape_setTexture(button.rect, info->button_normal, 0);
     }
 	else {
         info->start_rect.left = 0;
@@ -66,7 +66,6 @@ void check_mouse_hovering(button_t button, sfVector2i mouse_pos, info_t *info)
         info->start_rect.height = 70;
         sfRectangleShape_setTextureRect(button.rect, info->start_rect);
         sfRectangleShape_setTexture(button.rect, info->button_normal, 0);
-    	//sfRectangleShape_setTexture(button.rect, info->button_normal, 0);
     }
 }
 
@@ -150,4 +149,3 @@ void check_mouse_pausemenu(button_t button, sfVector2i mouse_pos, info_t *info)
         //sfRectangleShape_setTexture(button.rect, info->button_normal, 0);
     }
 }
-        //}

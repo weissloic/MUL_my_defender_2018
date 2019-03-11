@@ -36,12 +36,20 @@ void set_textures(info_t *info, scene_t *scene)
     sfSprite_setTexture(info->test_image, info->test, sfFalse);
 }
 
+void coupe_decale(button_t *button, info_t *info)
+{
+    info->menu_turret++;
+}
+
 scene_t *init_scenes(info_t *info)
 {
     sfVector2f pos = {100, 100};
     sfVector2f size = {200, 100};
     sfVector2f pos2 = {300, 100};
     sfVector2f pos3 = {500, 100};
+    info->pos_menu.x = 500;
+    info->pos_menu.y = 300;
+    info->menu_turret = 0;
     scene_t *scene = malloc(sizeof(scene_t) * 5);
 
     scene[0].button = malloc(sizeof(button_t) * 3);
@@ -56,12 +64,13 @@ scene_t *init_scenes(info_t *info)
     scene[0].button[1].callback = &exit_window;
     init_buttonthree(&scene[0].button[2], pos3, size, info);
     scene[0].button[2].callback = &exit_window;
-    init_buttonpause(&scene[1].button[0], pos3, size, info);
-    scene[1].button[0].callback = &put_in_pause;
-    init_buttontower(&scene[1].button[1], pos, size, info);
-    scene[1].button[1].callback = &move_towerbutton;
+    init_buttonpause(&scene[1].button[0], info->pos_menu, size, info);
+    scene[1].button[0].callback = &coupe_decale;
+    //init_buttontower(&scene[1].button[1], pos, size, info);
+    //scene[1].button[1].callback = &move_towerbutton;
     return(scene);
 }
+
 
 void init_button(button_t *button, sfVector2f position, sfVector2f size, info_t *info)
 {

@@ -29,21 +29,28 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
         if (info->view == 1) {
             analyse_time(info);
             move_monster_time(info, scene);
+            sfRenderWindow_drawSprite(info->window, scene[1].background, NULL);
+            sfRenderWindow_drawSprite(info->window, scene[1].monster, NULL);
+            sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
+            
 
         }
-        sfRenderWindow_drawSprite(info->window, scene[info->view].background, NULL);
-        sfRenderWindow_drawSprite(info->window, scene[info->view].monster, NULL);
-        sfRenderWindow_drawRectangleShape(info->window, scene[1].button[1].rect, NULL);
+
+        //
+        //sfRenderWindow_drawRectangleShape(info->window, scene[1].button[1].rect, NULL);
 
 
         if (info->view == 0) {
             //for (int i = 0; scene[info->view].button[i].rect != NULL; i++) {
+                sfRenderWindow_drawSprite(info->window, scene[0].background, NULL);
+                //sfRenderWindow_drawSprite(info->window, scene[0].monster, NULL);
                 sfRenderWindow_drawRectangleShape(info->window, scene[0].button[0].rect, NULL);
                 sfRenderWindow_drawRectangleShape(info->window, scene[0].button[1].rect_two, NULL);
                 sfRenderWindow_drawRectangleShape(info->window, scene[0].button[2].rect_three, NULL);
             //}
         }
-        sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
+
+        
         print_score(info);
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
@@ -179,7 +186,7 @@ void exit_window(info_t *info)
 
 void put_in_pause(info_t *info)
 {
-    info->view = 2;
+    info->view = 0;
 }
 
 void play(info_t *info)
@@ -188,14 +195,14 @@ void play(info_t *info)
     printf("%d\n", info->view);
 }
 
-void move_towerbutton(info_t *info, button_t *button)
+/*void move_towerbutton(info_t *info, button_t *button)
 {
     info->menu_turret = 1;
     info->temp_pos_for_menu.x = 250;
     info->temp_pos_for_menu.y = 250;
-    sfSprite_setPosition()
+    //sfSprite_setPosition()
     printf("%d\n", info->menu_turret);
-}
+}*/
 
 int main(int ac, char **av)
 {
