@@ -38,6 +38,7 @@ void set_textures(info_t *info, scene_t *scene)
     sfSprite_setTexture(scene[1].background, info->game_bg, sfFalse);
     sfSprite_setTextureRect(scene[1].monster, info->zombie_rect);
     sfSprite_setTexture(scene[1].monster, info->zombie, sfFalse);
+    sfSprite_setTexture(scene[2].background, info->game_bg, sfFalse);
     sfSprite_setTexture(info->test_image, info->test, sfFalse);
 }
 
@@ -72,7 +73,7 @@ scene_t *init_scenes(info_t *info)
     init_buttonupgrade(&scene[1].button[0], info->pos_menu, size2, info);
     scene[1].button[0].callback = &coupe_decale;
     init_buttonshop(&scene[1].button[1], pos_shop, size2, info);
-    scene[1].button[1].callback = &exit_window;
+    scene[1].button[1].callback = &goto_shopmenu;
     //init_buttontower(&scene[1].button[1], pos, size, info);
     //scene[1].button[1].callback = &move_towerbutton;
     return(scene);

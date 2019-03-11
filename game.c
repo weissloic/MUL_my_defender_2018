@@ -51,6 +51,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRectangleShape_setPosition(scene[1].button[0].rect_pause, info->pos_menu);
             sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[1].button[1].rect_shop, NULL);
+            print_score(info);
         }
         if (info->view == 0) {
             sfRenderWindow_drawSprite(info->window, scene[0].background, NULL);
@@ -58,7 +59,9 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRenderWindow_drawRectangleShape(info->window, scene[0].button[1].rect_two, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[0].button[2].rect_three, NULL);
         }
-        print_score(info);
+        if (info->view == 2) {
+            sfRenderWindow_drawSprite(info->window, scene[2].background, NULL);
+        }
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
     }
@@ -124,6 +127,11 @@ void exit_window(info_t *info)
 void put_in_pause(info_t *info)
 {
     info->view = 0;
+}
+
+void goto_shopmenu(info_t *info)
+{
+    info->view = 2;
 }
 
 void play(info_t *info)

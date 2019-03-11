@@ -12,7 +12,7 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(info->window);
     sfVector2f mouse_pos_float = {mouse_pos.x, mouse_pos.y};
 
-    if (info->view != 3 && info->view != 1) {
+    if (info->view == 0) {
     	   check_mouse_hovering(scene[info->view].button[0], mouse_pos, info);
            check_mouse_hoveringtwo(scene[info->view].button[1], mouse_pos, info);
            check_mouse_hoveringthree(scene[info->view].button[2], mouse_pos, info);
@@ -25,7 +25,6 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
 
     if (info->event.type == sfEvtMouseButtonPressed && info->view != 3) {
         if (info->view == 1) {
-            sfSprite_setPosition(info->test_image, mouse_pos_float);
             if (button_is_clickedpause(scene[1].button[0], mouse_pos))
                 scene[1].button[0].callback(info);
             if (button_is_clickedshop(scene[1].button[1], mouse_pos))

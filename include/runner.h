@@ -125,5 +125,6 @@ void coupe_decale(info_t *info);
 void exit_turret_menu(info_t *info);
 char *my_strcat(char *, char *);
 void init_buttonshop(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
+void goto_shopmenu(info_t *info);
 
 #endif
