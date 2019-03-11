@@ -46,6 +46,14 @@ void init_buttontower(button_t *button, sfVector2f position, sfVector2f size, in
     sfRectangleShape_setFillColor(button->rect, sfRed);
 }
 
+void init_buttonshop(button_t *button, sfVector2f position, sfVector2f size, info_t *info)
+{
+    button->rect_shop = sfRectangleShape_create();
+    sfRectangleShape_setPosition(button->rect_shop, position);
+    sfRectangleShape_setSize(button->rect_shop, size);
+    sfRectangleShape_setTexture(button->rect_shop, info->button_test, 0);
+}
+
 void coupe_decale(info_t *info)
 {
     info->menu_turret = 1;

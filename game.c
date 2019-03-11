@@ -14,6 +14,10 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->view = 0;
     info->new_pos.x = 0;
     info->new_pos.y = 35;
+    info->pos_turretone.x = 400;
+    info->pos_turretone.y = 300;
+    info->pos_turrettwo.x = 400;
+    info->pos_turrettwo.y = 200;
     info->seconds = sfClock_getElapsedTime(info->clock).SEC;
 
     set_textures(info, scene);
@@ -24,18 +28,20 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
         while (sfRenderWindow_pollEvent(info->window, &info->event)) {
             analyse_events(info, scene, button);
         }
-
-
         if (info->view == 1) {
             analyse_time(info);
             move_monster_time(info, scene);
             sfRenderWindow_drawSprite(info->window, scene[1].background, NULL);
             sfRenderWindow_drawSprite(info->window, scene[1].monster, NULL);
-            
+
             if (info->menu_turret == 1) {
                 scene[1].button[0].callback = &exit_turret_menu;
                 info->pos_menu.x = 70;
                 info->pos_menu.y = 70;
+                sfSprite_setPosition(scene[1].turretone, info->pos_turretone);
+                sfSprite_setPosition(scene[1].turrettwo, info->pos_turrettwo);
+                sfRenderWindow_drawSprite(info->window, scene[1].turretone, NULL);
+                sfRenderWindow_drawSprite(info->window, scene[1].turrettwo, NULL);
             }
             else {
                 scene[1].button[0].callback = &coupe_decale;
@@ -44,23 +50,14 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             }
             sfRectangleShape_setPosition(scene[1].button[0].rect_pause, info->pos_menu);
             sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
+            sfRenderWindow_drawRectangleShape(info->window, scene[1].button[1].rect_shop, NULL);
         }
-
-        //
-        //sfRenderWindow_drawRectangleShape(info->window, scene[1].button[1].rect, NULL);
-
-
         if (info->view == 0) {
-            //for (int i = 0; scene[info->view].button[i].rect != NULL; i++) {
-                sfRenderWindow_drawSprite(info->window, scene[0].background, NULL);
-                //sfRenderWindow_drawSprite(info->window, scene[0].monster, NULL);
-                sfRenderWindow_drawRectangleShape(info->window, scene[0].button[0].rect, NULL);
-                sfRenderWindow_drawRectangleShape(info->window, scene[0].button[1].rect_two, NULL);
-                sfRenderWindow_drawRectangleShape(info->window, scene[0].button[2].rect_three, NULL);
-            //}
+            sfRenderWindow_drawSprite(info->window, scene[0].background, NULL);
+            sfRenderWindow_drawRectangleShape(info->window, scene[0].button[0].rect, NULL);
+            sfRenderWindow_drawRectangleShape(info->window, scene[0].button[1].rect_two, NULL);
+            sfRenderWindow_drawRectangleShape(info->window, scene[0].button[2].rect_three, NULL);
         }
-
-        
         print_score(info);
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
@@ -104,8 +101,6 @@ void move_monster_time(info_t *info, scene_t *scene)
     info->seconds = sfClock_getElapsedTime(info->clock).SEC;
 
     if (info->seconds > 0.01) {
-
-
         if (info->new_pos.x == 150 && info->new_pos.y == 40) {
             info->new_pos.y = 40;
             info->new_pos.x += 10;
@@ -116,8 +111,6 @@ void move_monster_time(info_t *info, scene_t *scene)
         }
         else
             info->new_pos.x += 2;
-   //     printf("x is %f\n", info->new_pos.x);
-    //    printf("y is = %f\n", info->new_pos.y);
         sfSprite_setPosition(scene[1].monster, info->new_pos);
         sfClock_restart(info->clock);
     }

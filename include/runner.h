@@ -41,6 +41,8 @@ typedef struct game_info {
     sfTexture *game_bg;
     sfTexture *loadingscreen_bg;
     sfTexture *zombie;
+    sfTexture *simple_turret;
+    sfTexture *double_turret;
     sfTexture *button_normal;
     sfTexture *button_hover;
     sfTexture *button_test;
@@ -63,6 +65,8 @@ typedef struct game_info {
     float seconds;
     int view;
     sfVector2f new_pos;
+    sfVector2f pos_turretone;
+    sfVector2f pos_turrettwo;
 }info_t;
 
 typedef struct button_s {
@@ -70,6 +74,7 @@ typedef struct button_s {
     sfRectangleShape *rect_two;
     sfRectangleShape *rect_three;
     sfRectangleShape *rect_pause;
+    sfRectangleShape *rect_shop;
     void (*callback)(info_t *info);
 }button_t;
 
@@ -79,6 +84,8 @@ typedef struct  scene_s {
     sfSprite *background;
     sfSprite *loadingscreen;
     sfSprite *monster;
+    sfSprite *turretone;
+    sfSprite *turrettwo;
 }scene_t;
 
 void game(player_t *player, info_t *info, scene_t *scene, button_t *button);
