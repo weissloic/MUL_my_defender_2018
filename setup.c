@@ -20,6 +20,7 @@ void setup_textures(info_t *info)
     info->clock = sfClock_create();
     info->score = sfClock_create();
     setup_score(info);
+    info->menu_turret = 0;
 }
 
 void set_textures(info_t *info, scene_t *scene)
@@ -36,9 +37,10 @@ void set_textures(info_t *info, scene_t *scene)
     sfSprite_setTexture(info->test_image, info->test, sfFalse);
 }
 
-void coupe_decale(button_t *button, info_t *info)
+void coupe_decale(info_t *info)
 {
-    info->menu_turret++;
+    info->menu_turret = 1;
+    printf("%d\n", info->menu_turret);
 }
 
 scene_t *init_scenes(info_t *info)

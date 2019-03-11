@@ -109,9 +109,10 @@ void init_buttonpause(button_t *button, sfVector2f position, sfVector2f size, in
 void analyse_time(info_t *info);
 void setup_score(info_t *info);
 void print_score(info_t *info);
-void coupe_decale(button_t *button, info_t *info);
 int button_is_clickedpause(button_t button, sfVector2i click_position);
 void init_buttontower(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
 void move_towerbutton(info_t *info);
+void coupe_decale(info_t *info);
+
 
 #endif
