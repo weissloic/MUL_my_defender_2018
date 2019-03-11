@@ -17,7 +17,8 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
            check_mouse_hoveringtwo(scene[info->view].button[1], mouse_pos, info);
            check_mouse_hoveringthree(scene[info->view].button[2], mouse_pos, info);
    }
-   check_mouse_pausemenu(scene[1].button[0], mouse_pos, info);
+   check_mouse_upgrademenu(scene[1].button[0], mouse_pos, info);
+   check_mouse_shopmenu(scene[1].button[1], mouse_pos, info);
 
     if (info->event.type == sfEvtClosed)
         sfRenderWindow_close(info->window);
@@ -27,6 +28,8 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
             sfSprite_setPosition(info->test_image, mouse_pos_float);
             if (button_is_clickedpause(scene[1].button[0], mouse_pos))
                 scene[1].button[0].callback(info);
+            if (button_is_clickedshop(scene[1].button[1], mouse_pos))
+                scene[1].button[1].callback(info);
         }
      
         if (info->view == 0) {
@@ -61,7 +64,6 @@ void check_mouse_hovering(button_t button, sfVector2i mouse_pos, info_t *info)
         info->start_rect.height = 55;
         sfRectangleShape_setTextureRect(button.rect, info->start_rect);
         sfRectangleShape_setTexture(button.rect, info->button_normal, 0);
-    	//sfRectangleShape_setTexture(button.rect, info->button_normal, 0);
     }
 }
 
@@ -82,7 +84,6 @@ void check_mouse_hoveringtwo(button_t button, sfVector2i mouse_pos, info_t *info
         info->start_rect.width = 121;
         info->start_rect.height = 55;
         sfRectangleShape_setTextureRect(button.rect_two, info->start_rect);
-        //sfRectangleShape_setTexture(button.rect_two, info->test, 0);
         sfRectangleShape_setTexture(button.rect_two, info->button_normal, 0);
     }
 }
@@ -108,7 +109,7 @@ void check_mouse_hoveringthree(button_t button, sfVector2i mouse_pos, info_t *in
     }
 }
 
-void check_mouse_pausemenu(button_t button, sfVector2i mouse_pos, info_t *info)
+void check_mouse_upgrademenu(button_t button, sfVector2i mouse_pos, info_t *info)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_pause);
 
@@ -117,21 +118,45 @@ void check_mouse_pausemenu(button_t button, sfVector2i mouse_pos, info_t *info)
         mouse_pos.y >= button_pos.y &&
         mouse_pos.y <= button_pos.y + 100) {
 
-        info->start_rect.left = 0;
-        info->start_rect.top = 72;
-        info->start_rect.width = 200;
-        info->start_rect.height = 70;
+        info->start_rect.left = 520;
+        info->start_rect.top = 165;
+        info->start_rect.width = 60;
+        info->start_rect.height = 60;
         sfRectangleShape_setTextureRect(button.rect_pause, info->start_rect);
-        //sfRectangleShape_setTexture(button.rect, info->button_normal, 0);
+        sfRectangleShape_setTexture(button.rect_pause, info->second_button_hover, 0);
     }
     else {
-        info->start_rect.left = 0;
-        info->start_rect.top = 0;
-        info->start_rect.width = 200;
-        info->start_rect.height = 70;
+        info->start_rect.left = 520;
+        info->start_rect.top = 165;
+        info->start_rect.width = 60;
+        info->start_rect.height = 60;
         sfRectangleShape_setTextureRect(button.rect_pause, info->start_rect);
-        sfRectangleShape_setTexture(button.rect_pause, info->test, 0);
-        //sfRectangleShape_setTexture(button.rect, info->button_normal, 0);
+        sfRectangleShape_setTexture(button.rect_pause, info->second_button_normal, 0);
     }
 }
-        //}
+    
+void check_mouse_shopmenu(button_t button, sfVector2i mouse_pos, info_t *info)
+{
+    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_shop);
+
+    if (mouse_pos.x >= button_pos.x &&
+        mouse_pos.x <= button_pos.x + 200 &&
+        mouse_pos.y >= button_pos.y &&
+        mouse_pos.y <= button_pos.y + 100) {
+
+        info->start_rect.left = 75;
+        info->start_rect.top = 250;
+        info->start_rect.width = 60;
+        info->start_rect.height = 60;
+        sfRectangleShape_setTextureRect(button.rect_shop, info->start_rect);
+        sfRectangleShape_setTexture(button.rect_shop, info->second_button_hover, 0);
+    }
+    else {
+        info->start_rect.left = 75;
+        info->start_rect.top = 250;
+        info->start_rect.width = 60;
+        info->start_rect.height = 60;
+        sfRectangleShape_setTextureRect(button.rect_shop, info->start_rect);
+        sfRectangleShape_setTexture(button.rect_shop, info->second_button_normal, 0);
+    }
+}

@@ -113,8 +113,8 @@ void init_buttonthree(button_t *button, sfVector2f position, sfVector2f size, in
 void check_mouse_hovering(button_t button, sfVector2i mouse_pos, info_t *info);
 void check_mouse_hoveringtwo(button_t button, sfVector2i mouse_pos, info_t *info);
 void check_mouse_hoveringthree(button_t button, sfVector2i mouse_pos, info_t *info);
-void check_mouse_pausemenu(button_t button, sfVector2i mouse_pos, info_t *info);
-void init_buttonpause(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
+void check_mouse_upgrademenu(button_t button, sfVector2i mouse_pos, info_t *info);
+void init_buttonupgrade(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
 void analyse_time(info_t *info);
 void setup_score(info_t *info);
 void print_score(info_t *info);
@@ -123,5 +123,7 @@ void init_buttontower(button_t *button, sfVector2f position, sfVector2f size, in
 void move_towerbutton(info_t *info);
 void coupe_decale(info_t *info);
 void exit_turret_menu(info_t *info);
+char *my_strcat(char *, char *);
+void init_buttonshop(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
 
 #endif

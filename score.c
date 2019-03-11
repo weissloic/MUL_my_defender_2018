@@ -10,7 +10,7 @@
 void print_score(info_t *info)
 {
     char *score = my_itoa(info->score_int);
-    char dollar[] = {"$"};
+    char dollar[5] = {"$"};
     my_strcat(dollar, score);
 
     sfText_setString(info->score_text, dollar);

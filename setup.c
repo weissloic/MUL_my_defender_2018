@@ -69,10 +69,10 @@ scene_t *init_scenes(info_t *info)
     scene[0].button[1].callback = &exit_window;
     init_buttonthree(&scene[0].button[2], pos3, size2, info);
     scene[0].button[2].callback = &exit_window;
-    init_buttonpause(&scene[1].button[0], info->pos_menu, size, info);
+    init_buttonupgrade(&scene[1].button[0], info->pos_menu, size2, info);
     scene[1].button[0].callback = &coupe_decale;
     init_buttonshop(&scene[1].button[1], pos_shop, size2, info);
-    scene[1].button[0].callback = &exit_window;
+    scene[1].button[1].callback = &exit_window;
     //init_buttontower(&scene[1].button[1], pos, size, info);
     //scene[1].button[1].callback = &move_towerbutton;
     return(scene);
