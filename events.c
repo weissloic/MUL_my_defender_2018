@@ -29,19 +29,35 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
                 scene[1].button[0].callback(info);
             if (button_is_clickedshop(scene[1].button[1], mouse_pos))
                 scene[1].button[1].callback(info);
+            if (put_in_pausegame(scene[1].button[2], mouse_pos))
+                scene[1].button[2].callback(info);
         }
-     
-        if (info->view == 0) {
+        else if (info->view == 0) {
             if (button_is_clicked(scene[0].button[0], mouse_pos))
                 scene[0].button[0].callback(info);
-        if (button_is_clickedtwo(scene[0].button[1], mouse_pos)) {
-            scene[0].button[1].callback(info);
+            if (button_is_clickedtwo(scene[0].button[1], mouse_pos))
+                scene[0].button[1].callback(info);
+            if (button_is_clickedthree(scene[0].button[2], mouse_pos))
+                scene[0].button[2].callback(info);
         }
-        if (button_is_clickedthree(scene[0].button[2], mouse_pos)) {
-            scene[0].button[2].callback(info);
+        else if (info->view == 2) {
+            if (button_buy_turretone(scene[2].button[0], mouse_pos))
+                scene[2].button[0].callback(info);
+            if (button_buy_turrettwo(scene[2].button[1], mouse_pos))
+                scene[2].button[1].callback(info);
+            if (button_buy_turretthree(scene[2].button[2], mouse_pos))
+                scene[2].button[2].callback(info);
+            if (button_buy_turretfour(scene[2].button[3], mouse_pos))
+                scene[2].button[3].callback(info);
         }
-    }
-
+        else if (info->view == 4) {
+            if (button_is_clickedresume(scene[4].button[0], mouse_pos))
+                scene[4].button[0].callback(info);
+            if (button_is_clickedbackmenu(scene[4].button[1], mouse_pos))
+                scene[4].button[1].callback(info);
+            if (button_is_clickedsound(scene[4].button[2], mouse_pos))
+                scene[4].button[2].callback(info);
+        }
     }
 }
 
@@ -53,7 +69,6 @@ void check_mouse_hovering(button_t button, sfVector2i mouse_pos, info_t *info)
         mouse_pos.x <= button_pos.x + 200 &&
         mouse_pos.y >= button_pos.y &&
         mouse_pos.y <= button_pos.y + 100) {
-
         sfRectangleShape_setTexture(button.rect, info->button_hover, 0);
     }
 	else {
@@ -74,7 +89,6 @@ void check_mouse_hoveringtwo(button_t button, sfVector2i mouse_pos, info_t *info
         mouse_pos.x <= button_pos.x + 200 &&
         mouse_pos.y >= button_pos.y &&
         mouse_pos.y <= button_pos.y + 100) {
-
         sfRectangleShape_setTexture(button.rect_two, info->button_hover, 0);
     }
     else {

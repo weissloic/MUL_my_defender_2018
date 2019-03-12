@@ -39,6 +39,7 @@ void set_textures(info_t *info, scene_t *scene)
     sfSprite_setTextureRect(scene[1].monster, info->zombie_rect);
     sfSprite_setTexture(scene[1].monster, info->zombie, sfFalse);
     sfSprite_setTexture(scene[2].background, info->game_bg, sfFalse);
+    sfSprite_setTexture(scene[4].background, info->game_bg, sfFalse);
     sfSprite_setTexture(info->test_image, info->test, sfFalse);
 }
 
@@ -52,6 +53,10 @@ scene_t *init_scenes(info_t *info)
     info->pos_menu.x = 500;
     info->pos_menu.y = 300;
     sfVector2f pos_shop = {400, 0};
+    sfVector2f pos_buyturrettwo = {500, 0};
+    sfVector2f pos_buyturretthree = {600, 0};
+    sfVector2f pos_buyturretfour = {300, 0};
+    sfVector2f pos_pause = {600, 200};
     info->menu_turret = 0;
     scene_t *scene = malloc(sizeof(scene_t) * 5);
 
@@ -64,16 +69,50 @@ scene_t *init_scenes(info_t *info)
 
     }
     scene[1].button = malloc(sizeof(button_t) * 4);
+
+    scene[2].button = malloc(sizeof(button_t) * 4);
+    scene[4].button = malloc(sizeof(button_t) * 4);
+
     init_button(&scene[0].button[0], pos, size, info);
     scene[0].button[0].callback = &play;
+
     init_buttontwo(&scene[0].button[1], pos2, size, info);
     scene[0].button[1].callback = &exit_window;
+
     init_buttonthree(&scene[0].button[2], pos3, size2, info);
     scene[0].button[2].callback = &exit_window;
+
     init_buttonupgrade(&scene[1].button[0], info->pos_menu, size2, info);
     scene[1].button[0].callback = &coupe_decale;
+
     init_buttonshop(&scene[1].button[1], pos_shop, size2, info);
     scene[1].button[1].callback = &goto_shopmenu;
+
+    init_buttonptinpause(&scene[1].button[2], pos_pause, size2, info);
+    scene[1].button[2].callback = &goto_pausemenu;
+
+    init_buttonturretone(&scene[2].button[0], pos_shop, size2, info);
+    scene[2].button[0].callback = &exit_window;
+
+    init_buttonturrettwo(&scene[2].button[1], pos_buyturrettwo, size2, info);
+    scene[2].button[1].callback = &exit_window;
+
+    init_buttonturretthree(&scene[2].button[2], pos_buyturretthree, size2, info);
+    scene[2].button[2].callback = &exit_window;
+
+    init_buttonturretfour(&scene[2].button[3], pos_buyturretfour, size2, info);
+    scene[2].button[3].callback = &exit_window;
+
+    init_buttonpauseresume(&scene[4].button[0], pos_buyturretfour, size2, info);
+    scene[4].button[0].callback = &exit_window;
+
+    init_buttonpausebackmenu(&scene[4].button[1], pos_buyturretthree, size2, info);
+    scene[4].button[1].callback = &exit_window;
+
+    init_buttonupsound(&scene[4].button[2], pos_buyturrettwo, size2, info);
+    scene[4].button[2].callback = &exit_window;
+
+
     //init_buttontower(&scene[1].button[1], pos, size, info);
     //scene[1].button[1].callback = &move_towerbutton;
     return(scene);

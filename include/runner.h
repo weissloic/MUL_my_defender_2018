@@ -75,6 +75,15 @@ typedef struct button_s {
     sfRectangleShape *rect_three;
     sfRectangleShape *rect_pause;
     sfRectangleShape *rect_shop;
+    sfRectangleShape *rect_turretone;
+    sfRectangleShape *rect_turrettwo;
+    sfRectangleShape *rect_turretthree;
+    sfRectangleShape *rect_turretfour;
+    sfRectangleShape *rect_putinpause;
+    
+    sfRectangleShape *rect_pausupsound;
+    sfRectangleShape *rect_pausresume;
+    sfRectangleShape *rect_pausbackmenu;
     void (*callback)(info_t *info);
 }button_t;
 
@@ -126,5 +135,6 @@ void exit_turret_menu(info_t *info);
 char *my_strcat(char *, char *);
 void init_buttonshop(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
 void goto_shopmenu(info_t *info);
+void goto_pausemenu(info_t *info);
 
 #endif
