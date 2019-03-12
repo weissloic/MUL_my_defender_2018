@@ -20,8 +20,8 @@ void print_score(info_t *info)
 void setup_score(info_t *info)
 {
     info->score_text = sfText_create();
-    info->score_pos.x = 10;
-    info->score_pos.y = 0;
+    info->score_pos.x = 67;
+    info->score_pos.y = 517;
     info->font = sfFont_createFromFile("ressources/font.TTF");
     sfText_setFont(info->score_text, info->font);
     sfText_setPosition(info->score_text, info->score_pos);

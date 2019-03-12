@@ -49,7 +49,15 @@ typedef struct game_info {
     sfTexture *second_button_normal;
     sfTexture *second_button_hover;
     sfTexture *test;
+    sfTexture *menu_shop;
+    sfTexture *pause_texture;
+    sfTexture *dollar_texture;
+    sfTexture *shop_house;
     sfSprite *test_image;
+    sfSprite *dollar;
+    sfSprite *shophouse;
+    sfSprite *shopmenu;
+    sfSprite *pause_sprite;
     sfClock *clock;
     sfIntRect zombie_rect;
     sfIntRect start_rect;
