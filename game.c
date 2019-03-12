@@ -135,11 +135,6 @@ void exit_window(info_t *info)
     sfRenderWindow_close(info->window);
 }
 
-void put_in_pause(info_t *info)
-{
-    info->view = 0;
-}
-
 void goto_shopmenu(info_t *info)
 {
     info->view = 2;
