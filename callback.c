@@ -23,6 +23,11 @@ void goto_pausemenu(info_t *info)
     //info->get_turret = 1;
 }
 
+void goto_game(info_t *info)
+{
+    info->view = 1;
+}
+
 void play(info_t *info)
 {
     info->view++;
