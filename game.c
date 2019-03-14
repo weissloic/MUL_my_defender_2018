@@ -14,10 +14,30 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->view = 0;
     info->new_pos.x = 0;
     info->new_pos.y = 35;
+    info->counter_turretone = 4;
     info->pos_turretone.x = 400;
     info->pos_turretone.y = 300;
     info->pos_turrettwo.x = 400;
     info->pos_turrettwo.y = 200;
+    info->pos_menu.x = 500;
+    info->pos_menu.y = 300;
+    info->register_pos.x = 900;
+    info->register_pos.y = 900;
+    info->register_postwo.x = 900;
+    info->register_postwo.y = 900;
+    info->register_posthree.x = 900;
+    info->register_posthree.y = 900;
+    info->menu_turret = 0;
+    info->zombie_rect.left = 0;
+    info->zombie_rect.top = 0;
+    info->zombie_rect.width = 60;
+    info->zombie_rect.height = 70;
+    info->shopmenu_pos.x = 0;
+    info->shopmenu_pos.y = 400;
+    info->money_pos.x = 155;
+    info->money_pos.y = 510;
+    info->shophouse_pos.x = 625;
+    info->shophouse_pos.y = 0;
     info->seconds = sfClock_getElapsedTime(info->clock).SEC;
 
     set_textures(info, scene);
@@ -50,6 +70,13 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
                 info->pos_menu.x = 300;
                 info->pos_menu.y = 200; 
             }
+            if (info->get_turret == 1) {
+                create_turret(info, scene);
+            }
+            if (info->fill_turret == 1) {
+                create_turrettwo(info, scene);
+            }
+
             sfRectangleShape_setPosition(scene[1].button[0].rect_pause, info->pos_menu);
             sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[1].button[1].rect_shop, NULL);
@@ -75,7 +102,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
         }
         if (info->view == 4) {
             sfRenderWindow_drawSprite(info->window, scene[4].background, NULL);
-                sfRenderWindow_drawRectangleShape(info->window, scene[4].button[0].rect_pausresume, NULL);
+            sfRenderWindow_drawRectangleShape(info->window, scene[4].button[0].rect_pausresume, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[4].button[1].rect_pausbackmenu, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[4].button[2].rect_pausupsound, NULL);
             sfRenderWindow_drawSprite(info->window, info->pause_sprite, NULL);
@@ -83,6 +110,25 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
     }
+}
+
+void create_turret(info_t *info, scene_t *scene)
+{
+    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(info->window);
+    sfVector2f mouse_pos_float = {mouse_pos.x, mouse_pos.y};
+
+    sfSprite_setPosition(scene[1].turretone, mouse_pos_float);
+    sfRenderWindow_drawSprite(info->window, scene[1].turretone, NULL);
+}
+
+void create_turrettwo(info_t *info, scene_t *scene)
+{
+    sfSprite_setPosition(scene[1].turretone, info->register_pos);
+    sfRenderWindow_drawSprite(info->window, scene[1].turretone, NULL);
+    sfSprite_setPosition(scene[1].turretone, info->register_postwo);
+    sfRenderWindow_drawSprite(info->window, scene[1].turretone, NULL);
+    sfSprite_setPosition(scene[1].turretone, info->register_posthree);
+    sfRenderWindow_drawSprite(info->window, scene[1].turretone, NULL);
 }
 
 
@@ -136,36 +182,6 @@ void move_monster_time(info_t *info, scene_t *scene)
         sfClock_restart(info->clock);
     }
 }
-
-void exit_window(info_t *info)
-{
-    sfRenderWindow_close(info->window);
-}
-
-void goto_shopmenu(info_t *info)
-{
-    info->view = 2;
-}
-
-void goto_pausemenu(info_t *info)
-{
-    info->view = 4;
-}
-
-void play(info_t *info)
-{
-    info->view++;
-    printf("%d\n", info->view);
-}
-
-/*void move_towerbutton(info_t *info, button_t *button)
-{
-    info->menu_turret = 1;
-    info->temp_pos_for_menu.x = 250;
-    info->temp_pos_for_menu.y = 250;
-    //sfSprite_setPosition()
-    printf("%d\n", info->menu_turret);
-}*/
 
 int main(int ac, char **av)
 {

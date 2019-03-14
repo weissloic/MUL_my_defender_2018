@@ -35,14 +35,6 @@ void setup_textures(info_t *info)
 
 void set_textures(info_t *info, scene_t *scene)
 {
-    info->zombie_rect.left = 0;
-    info->zombie_rect.top = 0;
-    info->zombie_rect.width = 60;
-    info->zombie_rect.height = 70;
-    sfVector2f shopmenu_pos = {0, 400};
-    sfVector2f money_pos = {155, 510};
-    sfVector2f shophouse_pos = {625, 0};
-
     sfSprite_setTexture(scene[0].background, info->menu_bg, sfFalse);
     sfSprite_setTexture(scene[1].turretone, info->simple_turret, sfFalse);
     sfSprite_setTexture(scene[1].turrettwo, info->double_turret, sfFalse);
@@ -56,33 +48,37 @@ void set_textures(info_t *info, scene_t *scene)
     sfSprite_setTexture(info->shophouse, info->shop_house, sfFalse);
     sfSprite_setTexture(info->shopmenu, info->menu_shop, sfFalse);
     sfSprite_setTexture(info->pause_sprite, info->pause_texture, sfFalse);
-    sfSprite_setPosition(info->shopmenu, shopmenu_pos);
-    sfSprite_setPosition(info->dollar, money_pos);
-    sfSprite_setPosition(info->shophouse, shophouse_pos);
+    sfSprite_setPosition(info->shopmenu, info->shopmenu_pos);
+    sfSprite_setPosition(info->dollar, info->money_pos);
+    sfSprite_setPosition(info->shophouse, info->shophouse_pos);
 }
 
-scene_t *init_scenes(info_t *info)
+void init_full_scene(scene_t *scene, info_t *info)
 {
-    info->pos_menu.x = 500;
-    info->pos_menu.y = 300;
-
-    info->menu_turret = 0;
-    scene_t *scene = malloc(sizeof(scene_t) * 5);
-
-    scene[0].button = malloc(sizeof(button_t) * 3);
     for (int i = 0; i != 5; i++) {
         scene[i].background = sfSprite_create();
         scene[i].monster = sfSprite_create();
         scene[i].turretone = sfSprite_create();
         scene[i].turrettwo = sfSprite_create();
-
     }
-    scene[1].button = malloc(sizeof(button_t) * 4);
+}
 
+void malloc_scene(info_t *info, scene_t *scene)
+{
+    scene[0].button = malloc(sizeof(button_t) * 3);
+    scene[1].button = malloc(sizeof(button_t) * 4);
     scene[2].button = malloc(sizeof(button_t) * 4);
     scene[4].button = malloc(sizeof(button_t) * 4);
+}
+
+scene_t *init_scenes(info_t *info)
+{
+
+    scene_t *scene = malloc(sizeof(scene_t) * 5);
 
 
+    malloc_scene(info, scene);
+    init_full_scene(scene, info);
     setup_scene_0_buttons(scene, info);
     setup_scene_1_buttons(scene, info);
     setup_scene_2_buttons(scene, info);

@@ -62,6 +62,8 @@ typedef struct game_info {
     sfIntRect zombie_rect;
     sfIntRect start_rect;
     int menu_turret;
+    int counter_turretone;
+    int get_turret;
     sfVector2f pos_menu;
     sfVector2f temp_pos_for_menu;
     //SCORE
@@ -69,6 +71,15 @@ typedef struct game_info {
     sfClock *score;
     sfText *score_text;
     sfVector2f score_pos;
+    sfVector2f money_pos;
+    sfVector2f shophouse_pos;
+
+    sfVector2f register_pos;
+    sfVector2f register_postwo;
+    sfVector2f shopmenu_pos;
+    sfVector2f register_posthree;
+    int fill_turret;
+
     sfFont *font;
     float seconds;
     int view;
