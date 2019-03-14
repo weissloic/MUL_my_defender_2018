@@ -18,23 +18,23 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
            check_mouse_hoveringthree(scene[info->view].button[2], mouse_pos, info);
            check_mouse_hoveringfour(scene[info->view].button[3], mouse_pos, info);
    }
-   check_mouse_upgrademenu(scene[1].button[0], mouse_pos, info);
-   check_mouse_shopmenu(scene[1].button[1], mouse_pos, info);
-   check_mouse_nukebutton(scene[2].button[3], mouse_pos, info);
-   check_mouse_turretone(scene[2].button[0], mouse_pos, info);
-   check_mouse_turrettwo(scene[2].button[1], mouse_pos, info);
-   check_mouse_wall(scene[2].button[2], mouse_pos, info);
-   check_mouse_pause(scene[1].button[2], mouse_pos, info);
+    check_mouse_upgrademenu(scene[1].button[0], mouse_pos, info);
+    check_mouse_shopmenu(scene[1].button[1], mouse_pos, info);
+    check_mouse_nukebutton(scene[2].button[3], mouse_pos, info);
+    check_mouse_turretone(scene[2].button[0], mouse_pos, info);
+    check_mouse_turrettwo(scene[2].button[1], mouse_pos, info);
+    check_mouse_wall(scene[2].button[2], mouse_pos, info);
+    check_mouse_pause(scene[1].button[2], mouse_pos, info);
+    check_gobacktogame(scene[2].button[4], mouse_pos, info);
     if (info->event.type == sfEvtClosed)
         sfRenderWindow_close(info->window);
 
-    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue &&
-        info->view == 4)
-        info->view == 1;
-    else if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue &&
-        info->view == 1)
+    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue && info->view == 4) {
+        info->view = 1;
+    }
+    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue && info->view == 1) {
         info->view = 4;
-
+    }
 
     if (info->event.type == sfEvtMouseButtonPressed && info->view != 3) {
         if (info->view == 1) {
@@ -98,6 +98,8 @@ void print_shop_menu(info_t *info, scene_t *scene, button_t *button, sfVector2i 
                 scene[2].button[2].callback(info);
             if (button_buy_turretfour(scene[2].button[3], mouse_pos))
                 scene[2].button[3].callback(info);
+            if (button_backtogame(scene[2].button[4], mouse_pos))
+                scene[2].button[4].callback(info);
 }
 
 void positionning_turret(info_t *info, sfVector2i mouse_pos)

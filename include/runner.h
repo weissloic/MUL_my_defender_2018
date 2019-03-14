@@ -122,7 +122,7 @@ typedef struct button_s {
     sfRectangleShape *rect_turretthree;
     sfRectangleShape *rect_turretfour;
     sfRectangleShape *rect_putinpause;
-    
+    sfRectangleShape *rect_gobackgame;
     sfRectangleShape *rect_pausupsound;
     sfRectangleShape *rect_pausresume;
     sfRectangleShape *rect_pausbackmenu;
@@ -218,5 +218,6 @@ void create_turret(info_t *info, scene_t *scene);
 void create_turrettwo(info_t *info, scene_t *scene);
 void create_music(info_t *info);
 void destroy_music(info_t *info);
+void goto_game(info_t *info);
 
 #endif

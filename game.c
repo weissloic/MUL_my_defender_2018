@@ -115,6 +115,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRenderWindow_drawRectangleShape(info->window, scene[2].button[1].rect_turrettwo, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[2].button[2].rect_turretthree, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[2].button[3].rect_turretfour, NULL);
+            sfRenderWindow_drawRectangleShape(info->window, scene[2].button[4].rect_gobackgame, NULL);
             sfRenderWindow_drawSprite(info->window, info->shopmenu, NULL);
             sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
             sfRenderWindow_drawSprite(info->window, info->shophouse, NULL);

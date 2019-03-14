@@ -93,7 +93,7 @@ void malloc_scene(info_t *info, scene_t *scene)
 {
     scene[0].button = malloc(sizeof(button_t) * 4);
     scene[1].button = malloc(sizeof(button_t) * 4);
-    scene[2].button = malloc(sizeof(button_t) * 4);
+    scene[2].button = malloc(sizeof(button_t) * 5);
     scene[4].button = malloc(sizeof(button_t) * 4);
 }
 
@@ -155,6 +155,7 @@ void setup_scene_2_buttons(scene_t *scene, info_t *info)
     sfVector2f pos_buyturretthree = {400, 250};
     sfVector2f pos_shop = {100, 250};
     sfVector2f pos_buyturretfour = {550, 250};
+    sfVector2f pos_gotomenu = {100, 100};
 
     init_buttonturretone(&scene[2].button[0], pos_shop, size2, info);
     scene[2].button[0].callback = &exit_window;
@@ -164,6 +165,8 @@ void setup_scene_2_buttons(scene_t *scene, info_t *info)
     scene[2].button[2].callback = &exit_window;
     init_buttonturretfour(&scene[2].button[3], pos_buyturretfour, size2, info);
     scene[2].button[3].callback = &exit_window;
+    init_button_gobackgame(&scene[2].button[4], pos_gotomenu, size2, info);
+    scene[2].button[3].callback = &goto_game;
 }
 
 void setup_scene_4_buttons(scene_t *scene, info_t *info)
