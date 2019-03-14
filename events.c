@@ -10,7 +10,6 @@
 void analyse_events(info_t *info, scene_t *scene, button_t *button)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(info->window);
-    sfVector2f mouse_pos_float = {mouse_pos.x, mouse_pos.y};
 
     if (info->view == 0) {
     	   check_mouse_hovering(scene[info->view].button[0], mouse_pos, info);

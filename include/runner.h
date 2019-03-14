@@ -219,5 +219,17 @@ void create_turrettwo(info_t *info, scene_t *scene);
 void create_music(info_t *info);
 void destroy_music(info_t *info);
 void goto_game(info_t *info);
+void parallax_main_menu(info_t *info, scene_t *scene);
+void check_gobacktogame(button_t button, sfVector2i mouse_pos, info_t *info);
+void init_buttonwall(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
+void check_mouse_wall(button_t button, sfVector2i mouse_pos, info_t *info);
+void setup_price_wall(info_t *info);
+void check_mouse_hoveringfour(button_t button, sfVector2i mouse_pos, info_t *info);
+int button_is_clickedfour(button_t button, sfVector2i click_position);
+int button_buy_wall(button_t button, sfVector2i click_position);
+void check_mouse_pause(button_t button, sfVector2i mouse_pos, info_t *info);
+int button_backtogame(button_t button, sfVector2i click_position);
+void init_button_gobackgame(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
+void init_buttonfour(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
 
 #endif
