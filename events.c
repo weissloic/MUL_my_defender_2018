@@ -28,13 +28,14 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
     if (info->event.type == sfEvtClosed)
         sfRenderWindow_close(info->window);
 
-    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue && info->view == 4) {
+    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue && info->view == 4 && info->switch_scene == 1) {
         info->view = 1;
+        printf("%d", info->view);
     }
-    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue && info->view == 1) {
+    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue && info->view == 1 && info->switch_scene != 1) {
         info->view = 4;
+        printf("%d", info->view);
     }
-
     if (info->event.type == sfEvtMouseButtonPressed && info->view != 3) {
         if (info->view == 1) {
             print_game(info, scene, button, mouse_pos);

@@ -63,6 +63,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             analyse_events(info, scene, button);
         }
         if (info->view == 1) {
+            info->switch_scene = 0;
             analyse_time(info);
             move_monster_time(info, scene);
             sfRenderWindow_drawSprite(info->window, scene[1].background, NULL);
@@ -130,6 +131,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             print_score(info);
         }
         if (info->view == 4) {
+            info->switch_scene = 1;
             sfMusic_play(info->main_music);
             sfRenderWindow_drawSprite(info->window, scene[4].background, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[4].button[0].rect_pausresume, NULL);

@@ -74,6 +74,7 @@ typedef struct game_info {
     int menu_turret;
     int counter_turretone;
     int get_turret;
+    int switch_scene;
     sfVector2f pos_menu;
     sfVector2f temp_pos_for_menu;
     sfVector2f castle_position;
