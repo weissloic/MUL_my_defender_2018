@@ -22,6 +22,9 @@ void setup_textures(info_t *info)
     info->pause_texture = sfTexture_createFromFile("ressources/pause.png", NULL);
     info->dollar_texture = sfTexture_createFromFile("ressources/dollar.png", NULL);
     info->shop_house = sfTexture_createFromFile("ressources/shop_house.png", NULL);
+    info->nuke_logo = sfTexture_createFromFile("logonuclear.png", NULL);
+    info->turret_one_logo = sfTexture_createFromFile("ressources/simpleturret.png", NULL);
+    info->turret_two_logo = sfTexture_createFromFile("ressources/doubleturret.png", NULL);
     info->test_image = sfSprite_create();
     info->dollar = sfSprite_create();
     info->shophouse = sfSprite_create();
@@ -31,6 +34,8 @@ void setup_textures(info_t *info)
     info->score = sfClock_create();
     setup_score(info);
     info->menu_turret = 0;
+    setup_prices(info);
+    create_music(info);
 }
 
 void set_textures(info_t *info, scene_t *scene)
@@ -122,9 +127,9 @@ void setup_scene_1_buttons(scene_t *scene, info_t *info)
 void setup_scene_2_buttons(scene_t *scene, info_t *info)
 {
     sfVector2f size2 = {90, 90};
-    sfVector2f pos_buyturrettwo = {150, 300};
-    sfVector2f pos_buyturretthree = {300, 300};
-    sfVector2f pos_shop = {450, 300};
+    sfVector2f pos_buyturrettwo = {300, 300};
+    sfVector2f pos_buyturretthree = {450, 300};
+    sfVector2f pos_shop = {150, 300};
     sfVector2f pos_buyturretfour = {600, 300};
 
     init_buttonturretone(&scene[2].button[0], pos_shop, size2, info);

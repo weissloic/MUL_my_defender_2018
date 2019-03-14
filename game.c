@@ -40,8 +40,11 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->shophouse_pos.y = 0;
     info->seconds = sfClock_getElapsedTime(info->clock).SEC;
 
+
     set_textures(info, scene);
 
+    sfMusic_setLoop(info->main_music, sfTrue);
+    sfMusic_play(info->main_music);
     //my_loading_screen(info, scene);
 
     while (sfRenderWindow_isOpen(info->window)) {
@@ -55,6 +58,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRenderWindow_drawSprite(info->window, scene[1].monster, NULL);
             sfRenderWindow_drawSprite(info->window, info->shopmenu, NULL);
             sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
+
 
             if (info->menu_turret == 1) {
                 scene[1].button[0].callback = &exit_turret_menu;
@@ -90,6 +94,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRenderWindow_drawRectangleShape(info->window, scene[0].button[2].rect_three, NULL);
         }
         if (info->view == 2) {
+            sfMusic_play(info->main_music);
             sfRenderWindow_drawSprite(info->window, scene[2].background, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[2].button[0].rect_turretone, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[2].button[1].rect_turrettwo, NULL);
@@ -98,9 +103,14 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRenderWindow_drawSprite(info->window, info->shopmenu, NULL);
             sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
             sfRenderWindow_drawSprite(info->window, info->shophouse, NULL);
+            sfRenderWindow_drawText(info->window, info->turret_one, NULL);
+            sfRenderWindow_drawText(info->window, info->turret_two, NULL);
+            sfRenderWindow_drawText(info->window, info->turret_three, NULL);
+            sfRenderWindow_drawText(info->window, info->nuke_price, NULL);
             print_score(info);
         }
         if (info->view == 4) {
+            sfMusic_play(info->main_music);
             sfRenderWindow_drawSprite(info->window, scene[4].background, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[4].button[0].rect_pausresume, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[4].button[1].rect_pausbackmenu, NULL);
@@ -110,6 +120,8 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
     }
+
+    destroy_music(info);
 }
 
 void create_turret(info_t *info, scene_t *scene)

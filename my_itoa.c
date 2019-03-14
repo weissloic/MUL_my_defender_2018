@@ -5,6 +5,8 @@
 ** my_itoa
 */
 
+#include <stdlib.h>
+
 char *my_itoa(int nb)
 {
     int temp = nb;

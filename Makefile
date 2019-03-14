@@ -23,7 +23,8 @@ SRC = game.c \
 	  pause.c \
 	  menu.c \
 	  shop.c \
-	  game_in.c
+	  game_in.c \
+	  music.c \
 
 
 OBJ = $(SRC:.c = .o)

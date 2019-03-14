@@ -38,6 +38,7 @@ typedef struct game_info {
     //MENU
     sfTexture *menu_bg;
     //GAME
+    sfMusic *main_music;
     sfTexture *game_bg;
     sfTexture *loadingscreen_bg;
     sfTexture *zombie;
@@ -73,7 +74,14 @@ typedef struct game_info {
     sfVector2f score_pos;
     sfVector2f money_pos;
     sfVector2f shophouse_pos;
-
+    //SHOP
+    sfTexture *nuke_logo;
+    sfTexture *turret_one_logo;
+    sfTexture *turret_two_logo;
+    sfText *turret_one;
+    sfText *turret_two;
+    sfText *turret_three;
+    sfText *nuke_price;
     sfVector2f register_pos;
     sfVector2f register_postwo;
     sfVector2f shopmenu_pos;
@@ -176,5 +184,23 @@ void init_buttonptinpause(button_t *button, sfVector2f position, sfVector2f size
 void init_buttonpauseresume(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
 void init_buttonpausebackmenu(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
 void init_buttonupsound(button_t *button, sfVector2f position, sfVector2f size, info_t *info);
+void check_mouse_turrettwo(button_t button, sfVector2i mouse_pos, info_t *info);
+void check_mouse_turretone(button_t button, sfVector2i mouse_pos, info_t *info);
+void check_mouse_nukebutton(button_t button, sfVector2i mouse_pos, info_t *info);
+void setup_price_nuke(info_t *info);
+void setup_price_turretthree(info_t *info);
+void setup_price_nuke(info_t *info);
+void setup_price_turrettwo(info_t *info);
+void setup_price_turretone(info_t *info);
+void setup_prices(info_t *info);
+void print_game(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos);
+void print_menu(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos);
+void print_pause_menu(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos);
+void print_shop_menu(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos);
+void positionning_turret(info_t *info, sfVector2i mouse_pos);
+void create_turret(info_t *info, scene_t *scene);
+void create_turrettwo(info_t *info, scene_t *scene);
+void create_music(info_t *info);
+void destroy_music(info_t *info);
 
 #endif

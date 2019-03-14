@@ -19,19 +19,23 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
    }
    check_mouse_upgrademenu(scene[1].button[0], mouse_pos, info);
    check_mouse_shopmenu(scene[1].button[1], mouse_pos, info);
-
+   check_mouse_nukebutton(scene[2].button[3], mouse_pos, info);
+   check_mouse_turretone(scene[2].button[0], mouse_pos, info);
+   check_mouse_turrettwo(scene[2].button[1], mouse_pos, info);
     if (info->event.type == sfEvtClosed)
         sfRenderWindow_close(info->window);
 
     if (info->event.type == sfEvtMouseButtonPressed && info->view != 3) {
         if (info->view == 1) {
             print_game(info, scene, button, mouse_pos);
+            //check_mouse_nukebutton(button, mouse_pos, info);
         }
         else if (info->view == 0) {
             print_menu(info, scene, button, mouse_pos);
         }
         else if (info->view == 2) {
             print_shop_menu(info, scene, button, mouse_pos);
+            
         }
         else if (info->view == 4) {
             print_pause_menu(info, scene, button, mouse_pos);
@@ -130,5 +134,78 @@ void check_mouse_shopmenu(button_t button, sfVector2i mouse_pos, info_t *info)
         info->start_rect.height = 60;
         sfRectangleShape_setTextureRect(button.rect_shop, info->start_rect);
         sfRectangleShape_setTexture(button.rect_shop, info->second_button_normal, 0);
+    }
+}
+
+void check_mouse_nukebutton(button_t button, sfVector2i mouse_pos, info_t *info)
+{
+    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretfour);
+
+    if (mouse_pos.x >= button_pos.x &&
+        mouse_pos.x <= button_pos.x + 200 &&
+        mouse_pos.y >= button_pos.y &&
+        mouse_pos.y <= button_pos.y + 100) {
+        info->start_rect.left = 75;
+        info->start_rect.top = 250;
+        info->start_rect.width = 60;
+        info->start_rect.height = 60;
+        //sfRectangleShape_setTextureRect(button.rect_turretfour, info->start_rect);
+        sfRectangleShape_setTexture(button.rect_turretfour, info->nuke_logo, 0);
+    }
+    else {
+        info->start_rect.left = 75;
+        info->start_rect.top = 250;
+        info->start_rect.width = 60;
+        info->start_rect.height = 60;
+        //sfRectangleShape_setTextureRect(button.rect_turretfour, info->start_rect);
+        sfRectangleShape_setTexture(button.rect_turretfour, info->nuke_logo, 0);
+    }
+}
+
+void check_mouse_turretone(button_t button, sfVector2i mouse_pos, info_t *info)
+{
+    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretone);
+
+    if (mouse_pos.x >= button_pos.x &&
+        mouse_pos.x <= button_pos.x + 200 &&
+        mouse_pos.y >= button_pos.y &&
+        mouse_pos.y <= button_pos.y + 100) {
+        info->start_rect.left = 75;
+        info->start_rect.top = 250;
+        info->start_rect.width = 60;
+        info->start_rect.height = 60;
+        //sfRectangleShape_setTextureRect(button.rect_turretfour, info->start_rect);
+        sfRectangleShape_setTexture(button.rect_turretone, info->turret_one_logo, 0);
+    }
+    else {
+        info->start_rect.left = 75;
+        info->start_rect.top = 250;
+        info->start_rect.width = 60;
+        info->start_rect.height = 60;
+        //sfRectangleShape_setTextureRect(button.rect_turretfour, info->start_rect);
+        sfRectangleShape_setTexture(button.rect_turretone, info->turret_one_logo, 0);
+    }
+}
+
+void check_mouse_turrettwo(button_t button, sfVector2i mouse_pos, info_t *info)
+{
+    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turrettwo);
+
+    if (mouse_pos.x >= button_pos.x &&
+        mouse_pos.x <= button_pos.x + 200 &&
+        mouse_pos.y >= button_pos.y &&
+        mouse_pos.y <= button_pos.y + 100) {
+        info->start_rect.left = 75;
+        info->start_rect.top = 250;
+        info->start_rect.width = 60;
+        info->start_rect.height = 60;
+        sfRectangleShape_setTexture(button.rect_turrettwo, info->turret_two_logo, 0);
+    }
+    else {
+        info->start_rect.left = 75;
+        info->start_rect.top = 250;
+        info->start_rect.width = 60;
+        info->start_rect.height = 60;
+        sfRectangleShape_setTexture(button.rect_turrettwo, info->turret_two_logo, 0);
     }
 }
