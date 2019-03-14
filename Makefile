@@ -25,7 +25,7 @@ SRC = game.c \
 	  shop.c \
 	  game_in.c \
 	  music.c \
-
+	  parallax.c \
 
 OBJ = $(SRC:.c = .o)
 

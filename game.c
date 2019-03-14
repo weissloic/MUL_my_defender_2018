@@ -12,6 +12,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     sfVideoMode mode = {800, 600, 32};
     info->window = sfRenderWindow_create(mode, "jeu", sfResize | sfClose, NULL);
     info->view = 0;
+    info->initial_parallax.x = 800;
     info->new_pos.x = 0;
     info->new_pos.y = 35;
     info->counter_turretone = 4;
@@ -40,7 +41,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->shophouse_pos.y = 0;
     info->seconds = sfClock_getElapsedTime(info->clock).SEC;
 
-
+    sfRenderWindow_setVerticalSyncEnabled(info->window, sfTrue);
     set_textures(info, scene);
 
     sfMusic_setLoop(info->main_music, sfTrue);
@@ -88,10 +89,13 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             print_score(info);
         }
         if (info->view == 0) {
+            parallax_main_menu(info, scene);
             sfRenderWindow_drawSprite(info->window, scene[0].background, NULL);
+            sfRenderWindow_drawSprite(info->window, scene[0].background_mainmenu, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[0].button[0].rect, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[0].button[1].rect_two, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[0].button[2].rect_three, NULL);
+            sfRenderWindow_drawRectangleShape(info->window, scene[0].button[3].rect_four, NULL);
         }
         if (info->view == 2) {
             sfMusic_play(info->main_music);
@@ -120,7 +124,6 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
     }
-
     destroy_music(info);
 }
 

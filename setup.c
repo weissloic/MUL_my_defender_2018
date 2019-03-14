@@ -41,6 +41,7 @@ void setup_textures(info_t *info)
 void set_textures(info_t *info, scene_t *scene)
 {
     sfSprite_setTexture(scene[0].background, info->menu_bg, sfFalse);
+    sfSprite_setTexture(scene[0].background_mainmenu, info->menu_bg, sfFalse);
     sfSprite_setTexture(scene[1].turretone, info->simple_turret, sfFalse);
     sfSprite_setTexture(scene[1].turrettwo, info->double_turret, sfFalse);
     sfSprite_setTexture(scene[1].background, info->game_bg, sfFalse);
@@ -56,6 +57,7 @@ void set_textures(info_t *info, scene_t *scene)
     sfSprite_setPosition(info->shopmenu, info->shopmenu_pos);
     sfSprite_setPosition(info->dollar, info->money_pos);
     sfSprite_setPosition(info->shophouse, info->shophouse_pos);
+    sfSprite_setPosition(scene[0].background_mainmenu, info->initial_parallax);
 }
 
 void init_full_scene(scene_t *scene, info_t *info)
@@ -66,6 +68,7 @@ void init_full_scene(scene_t *scene, info_t *info)
         scene[i].turretone = sfSprite_create();
         scene[i].turrettwo = sfSprite_create();
     }
+    scene[0].background_mainmenu = sfSprite_create();
 }
 
 void malloc_scene(info_t *info, scene_t *scene)
@@ -97,9 +100,10 @@ scene_t *init_scenes(info_t *info)
 void setup_scene_0_buttons(scene_t *scene, info_t *info)
 {
     sfVector2f size = {200, 100};
-    sfVector2f pos2 = {300, 200};
-    sfVector2f pos3 = {300, 300};
-    sfVector2f pos = {300, 100};
+    sfVector2f pos2 = {425, 200};
+    sfVector2f pos3 = {735, -30};
+    sfVector2f pos = {175, 200};
+    sfVector2f pos4 = {250, 300};
     sfVector2f size2 = {90, 90};
 
     init_button(&scene[0].button[0], pos, size, info);
@@ -108,6 +112,8 @@ void setup_scene_0_buttons(scene_t *scene, info_t *info)
     scene[0].button[1].callback = &exit_window;
     init_buttonthree(&scene[0].button[2], pos3, size2, info);
     scene[0].button[2].callback = &exit_window;
+    init_buttonfour(&scene[0].button[3], pos4, size, info);
+    scene[0].button[3].callback = &exit_window;
 }
 
 void setup_scene_1_buttons(scene_t *scene, info_t *info)

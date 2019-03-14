@@ -37,6 +37,7 @@ typedef struct game_info {
     sfEvent event;
     //MENU
     sfTexture *menu_bg;
+    sfVector2f initial_parallax;
     //GAME
     sfMusic *main_music;
     sfTexture *game_bg;
@@ -100,6 +101,7 @@ typedef struct button_s {
     sfRectangleShape *rect;
     sfRectangleShape *rect_two;
     sfRectangleShape *rect_three;
+    sfRectangleShape *rect_four;
     sfRectangleShape *rect_pause;
     sfRectangleShape *rect_shop;
     sfRectangleShape *rect_turretone;
@@ -118,6 +120,7 @@ typedef struct  scene_s {
     struct  game_object_s *objs;
     struct  button_s *button;
     sfSprite *background;
+    sfSprite *background_mainmenu;
     sfSprite *loadingscreen;
     sfSprite *monster;
     sfSprite *turretone;

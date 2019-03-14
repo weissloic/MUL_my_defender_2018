@@ -16,6 +16,7 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
     	   check_mouse_hovering(scene[info->view].button[0], mouse_pos, info);
            check_mouse_hoveringtwo(scene[info->view].button[1], mouse_pos, info);
            check_mouse_hoveringthree(scene[info->view].button[2], mouse_pos, info);
+           check_mouse_hoveringfour(scene[info->view].button[3], mouse_pos, info);
    }
    check_mouse_upgrademenu(scene[1].button[0], mouse_pos, info);
    check_mouse_shopmenu(scene[1].button[1], mouse_pos, info);
@@ -63,6 +64,8 @@ void print_menu(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse
                 scene[0].button[1].callback(info);
             if (button_is_clickedthree(scene[0].button[2], mouse_pos))
                 scene[0].button[2].callback(info);
+            if (button_is_clickedfour(scene[0].button[3], mouse_pos))
+                scene[0].button[3].callback(info);
 }
 
 void print_pause_menu(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos)
