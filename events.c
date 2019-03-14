@@ -23,6 +23,8 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
    check_mouse_nukebutton(scene[2].button[3], mouse_pos, info);
    check_mouse_turretone(scene[2].button[0], mouse_pos, info);
    check_mouse_turrettwo(scene[2].button[1], mouse_pos, info);
+   check_mouse_wall(scene[2].button[2], mouse_pos, info);
+   check_mouse_pause(scene[1].button[2], mouse_pos, info);
     if (info->event.type == sfEvtClosed)
         sfRenderWindow_close(info->window);
 
@@ -84,7 +86,7 @@ void print_shop_menu(info_t *info, scene_t *scene, button_t *button, sfVector2i 
                 scene[2].button[0].callback(info);
             if (button_buy_turrettwo(scene[2].button[1], mouse_pos))
                 scene[2].button[1].callback(info);
-            if (button_buy_turretthree(scene[2].button[2], mouse_pos))
+            if (button_buy_wall(scene[2].button[2], mouse_pos))
                 scene[2].button[2].callback(info);
             if (button_buy_turretfour(scene[2].button[3], mouse_pos))
                 scene[2].button[3].callback(info);
@@ -210,5 +212,28 @@ void check_mouse_turrettwo(button_t button, sfVector2i mouse_pos, info_t *info)
         info->start_rect.width = 60;
         info->start_rect.height = 60;
         sfRectangleShape_setTexture(button.rect_turrettwo, info->turret_two_logo, 0);
+    }
+}
+
+void check_mouse_wall(button_t button, sfVector2i mouse_pos, info_t *info)
+{
+    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretthree);
+
+    if (mouse_pos.x >= button_pos.x &&
+        mouse_pos.x <= button_pos.x + 200 &&
+        mouse_pos.y >= button_pos.y &&
+        mouse_pos.y <= button_pos.y + 100) {
+        info->start_rect.left = 75;
+        info->start_rect.top = 250;
+        info->start_rect.width = 60;
+        info->start_rect.height = 60;
+        sfRectangleShape_setTexture(button.rect_turretthree, info->wall_texture, 0);
+    }
+    else {
+        info->start_rect.left = 75;
+        info->start_rect.top = 250;
+        info->start_rect.width = 60;
+        info->start_rect.height = 60;
+        sfRectangleShape_setTexture(button.rect_turretthree, info->wall_texture, 0);
     }
 }

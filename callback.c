@@ -19,8 +19,8 @@ void goto_shopmenu(info_t *info)
 
 void goto_pausemenu(info_t *info)
 {
-    //info->view = 4;
-    info->get_turret = 1;
+    info->view = 4;
+    //info->get_turret = 1;
 }
 
 void play(info_t *info)

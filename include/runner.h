@@ -48,6 +48,7 @@ typedef struct game_info {
     sfTexture *button_normal;
     sfTexture *button_hover;
     sfTexture *button_test;
+    sfTexture *castle_texture;
     sfTexture *second_button_normal;
     sfTexture *second_button_hover;
     sfTexture *test;
@@ -55,10 +56,17 @@ typedef struct game_info {
     sfTexture *pause_texture;
     sfTexture *dollar_texture;
     sfTexture *shop_house;
+    sfTexture *wall_texture;
+    sfTexture *sign_price_texture;
     sfSprite *test_image;
+    sfSprite *castle_sprite;
     sfSprite *dollar;
     sfSprite *shophouse;
     sfSprite *shopmenu;
+    sfSprite *sign_price_sprite_1;
+    sfSprite *sign_price_sprite_2;
+    sfSprite *sign_price_sprite_3;
+    sfSprite *sign_price_sprite_4;
     sfSprite *pause_sprite;
     sfClock *clock;
     sfIntRect zombie_rect;
@@ -68,6 +76,11 @@ typedef struct game_info {
     int get_turret;
     sfVector2f pos_menu;
     sfVector2f temp_pos_for_menu;
+    sfVector2f castle_position;
+    sfVector2f sign_price_pos1;
+    sfVector2f sign_price_pos2;
+    sfVector2f sign_price_pos3;
+    sfVector2f sign_price_pos4;
     //SCORE
     int score_int;
     sfClock *score;

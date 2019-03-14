@@ -160,11 +160,15 @@ void check_mouse_hoveringfour(button_t button, sfVector2i mouse_pos, info_t *inf
         mouse_pos.x <= button_pos.x + 200 &&
         mouse_pos.y >= button_pos.y &&
         mouse_pos.y <= button_pos.y + 100) {
+        info->start_rect.left = 523;
+        info->start_rect.top = 165;
+        info->start_rect.width = 121;
+        info->start_rect.height = 55;
         sfRectangleShape_setTexture(button.rect_four, info->button_hover, 0);
     }
     else {
-        info->start_rect.left = 700;
-        info->start_rect.top = 335;
+        info->start_rect.left = 523;
+        info->start_rect.top = 168;
         info->start_rect.width = 121;
         info->start_rect.height = 55;
         sfRectangleShape_setTextureRect(button.rect_four, info->start_rect);

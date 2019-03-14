@@ -13,6 +13,8 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->window = sfRenderWindow_create(mode, "jeu", sfResize | sfClose, NULL);
     info->view = 0;
     info->initial_parallax.x = 800;
+    info->castle_position.x = 635;
+    info->castle_position.y = 410;
     info->new_pos.x = 0;
     info->new_pos.y = 35;
     info->counter_turretone = 4;
@@ -39,13 +41,21 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->money_pos.y = 510;
     info->shophouse_pos.x = 625;
     info->shophouse_pos.y = 0;
+    info->sign_price_pos1.x = 80;
+    info->sign_price_pos1.y = 370;
+    info->sign_price_pos2.x = 230;
+    info->sign_price_pos2.y = 370;
+    info->sign_price_pos3.x = 380;
+    info->sign_price_pos3.y = 370;
+    info->sign_price_pos4.x = 530;
+    info->sign_price_pos4.y = 370;
     info->seconds = sfClock_getElapsedTime(info->clock).SEC;
 
     sfRenderWindow_setVerticalSyncEnabled(info->window, sfTrue);
     set_textures(info, scene);
 
     sfMusic_setLoop(info->main_music, sfTrue);
-    sfMusic_play(info->main_music);
+    //sfMusic_play(info->main_music);
     //my_loading_screen(info, scene);
 
     while (sfRenderWindow_isOpen(info->window)) {
@@ -59,6 +69,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRenderWindow_drawSprite(info->window, scene[1].monster, NULL);
             sfRenderWindow_drawSprite(info->window, info->shopmenu, NULL);
             sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
+            sfRenderWindow_drawSprite(info->window, info->castle_sprite, NULL);
 
 
             if (info->menu_turret == 1) {
@@ -107,6 +118,10 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRenderWindow_drawSprite(info->window, info->shopmenu, NULL);
             sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
             sfRenderWindow_drawSprite(info->window, info->shophouse, NULL);
+            sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_1, NULL);
+            sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_2, NULL);
+            sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_3, NULL);
+            sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_4, NULL);
             sfRenderWindow_drawText(info->window, info->turret_one, NULL);
             sfRenderWindow_drawText(info->window, info->turret_two, NULL);
             sfRenderWindow_drawText(info->window, info->turret_three, NULL);

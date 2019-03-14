@@ -31,7 +31,7 @@ void init_buttonturrettwo(button_t *button, sfVector2f position, sfVector2f size
     sfRectangleShape_setTexture(button->rect_turrettwo, info->button_normal, 0);
 }
 
-void init_buttonturretthree(button_t *button, sfVector2f position, sfVector2f size, info_t *info)
+void init_buttonwall(button_t *button, sfVector2f position, sfVector2f size, info_t *info)
 {
     button->rect_turretthree = sfRectangleShape_create();
     sfRectangleShape_setPosition(button->rect_turretthree, position);
@@ -83,7 +83,7 @@ int button_buy_turrettwo(button_t button, sfVector2i click_position)
         return (0);
 }
 
-int button_buy_turretthree(button_t button, sfVector2i click_position)
+int button_buy_wall(button_t button, sfVector2i click_position)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretthree);
 
@@ -111,14 +111,14 @@ void setup_prices(info_t *info)
 {
     setup_price_turretone(info);
     setup_price_turrettwo(info);
-    setup_price_turretthree(info);
+    setup_price_wall(info);
     setup_price_nuke(info);
 }
 
 void setup_price_turretone(info_t *info)
 {
     char *price = "20$";
-    sfVector2f price_pos = {175, 400};
+    sfVector2f price_pos = {130, 375};
     info->turret_one = sfText_create();
     info->font = sfFont_createFromFile("ressources/font.TTF");
     sfText_setFont(info->turret_one, info->font);
@@ -129,7 +129,7 @@ void setup_price_turretone(info_t *info)
 void setup_price_turrettwo(info_t *info)
 {
     char *price = "50$";
-    sfVector2f price_pos = {325, 400};
+    sfVector2f price_pos = {280, 375};
     info->turret_two = sfText_create();
     info->font = sfFont_createFromFile("ressources/font.TTF");
     sfText_setFont(info->turret_two, info->font);
@@ -137,10 +137,10 @@ void setup_price_turrettwo(info_t *info)
     sfText_setString(info->turret_two, price);
 }
 
-void setup_price_turretthree(info_t *info)
+void setup_price_wall(info_t *info)
 {
     char *price = "75$";
-    sfVector2f price_pos = {475, 400};
+    sfVector2f price_pos = {430, 375};
     info->turret_three = sfText_create();
     info->font = sfFont_createFromFile("ressources/font.TTF");
     sfText_setFont(info->turret_three, info->font);
@@ -151,7 +151,7 @@ void setup_price_turretthree(info_t *info)
 void setup_price_nuke(info_t *info)
 {
     char *price = "500$";
-    sfVector2f price_pos = {625, 400};
+    sfVector2f price_pos = {575, 375};
     info->nuke_price = sfText_create();
     info->font = sfFont_createFromFile("ressources/font.TTF");
     sfText_setFont(info->nuke_price, info->font);
