@@ -166,7 +166,7 @@ void setup_scene_2_buttons(scene_t *scene, info_t *info)
     init_buttonturretfour(&scene[2].button[3], pos_buyturretfour, size2, info);
     scene[2].button[3].callback = &exit_window;
     init_button_gobackgame(&scene[2].button[4], pos_gotomenu, size2, info);
-    scene[2].button[3].callback = &goto_game;
+    scene[2].button[4].callback = &goto_game;
 }
 
 void setup_scene_4_buttons(scene_t *scene, info_t *info)
