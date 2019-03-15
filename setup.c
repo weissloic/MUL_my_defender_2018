@@ -156,7 +156,7 @@ void setup_scene_2_buttons(scene_t *scene, info_t *info)
     sfVector2f pos_buyturretthree = {400, 250};
     sfVector2f pos_shop = {100, 250};
     sfVector2f pos_buyturretfour = {550, 250};
-    sfVector2f pos_gotomenu = {100, 100};
+    sfVector2f pos_gotogame = {0, 0};
 
     init_buttonturretone(&scene[2].button[0], pos_shop, size2, info);
     scene[2].button[0].callback = &price_turretone;
@@ -166,7 +166,7 @@ void setup_scene_2_buttons(scene_t *scene, info_t *info)
     scene[2].button[2].callback = &price_turretthree;
     init_buttonturretfour(&scene[2].button[3], pos_buyturretfour, size2, info);
     scene[2].button[3].callback = &price_nuclear;
-    init_button_gobackgame(&scene[2].button[4], pos_gotomenu, size2, info);
+    init_button_gobackgame(&scene[2].button[4], pos_gotogame, size2, info);
     scene[2].button[4].callback = &goto_game;
 }
 
@@ -174,8 +174,8 @@ void setup_scene_4_buttons(scene_t *scene, info_t *info)
 {
     sfVector2f size2 = {90, 90};
     sfVector2f pos_buyturrettwo = {360, 240};
-    sfVector2f pos_buyturretthree = {360, 360};
-    sfVector2f pos_buyturretfour = {360, 480};
+    sfVector2f pos_buyturretthree = {360, 325};
+    sfVector2f pos_buyturretfour = {360, 440};
 
     init_buttonpauseresume(&scene[4].button[0], pos_buyturrettwo, size2, info);
     scene[4].button[0].callback = &goto_game;

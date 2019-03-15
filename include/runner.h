@@ -238,6 +238,8 @@ void price_nuclear(info_t *info);
 void price_turretone(info_t *info);
 void price_turrettwo(info_t *info);
 void price_turretthree(info_t *info);
-
+void check_mouse_exitgame(button_t, sfVector2i, info_t *);
+void check_mouse_backmenu(button_t, sfVector2i, info_t *);
+void check_mouse_resume(button_t, sfVector2i, info_t *);
 
 #endif
