@@ -19,7 +19,34 @@ void goto_shopmenu(info_t *info)
 
 void price_turretone(info_t *info)
 {
-    info->score_int -= 5;
+    if (info->score_int > 20)
+        info->score_int -= 20;
+    else
+        printf("t'as pas d'argent\n");
+}
+
+void price_turrettwo(info_t *info)
+{
+    if (info->score_int > 50)
+        info->score_int -= 50;
+    else
+        printf("t'as pas d'argent\n");
+}
+
+void price_turretthree(info_t *info)
+{
+    if (info->score_int > 75)
+        info->score_int -= 75;
+    else
+        printf("t'as pas d'argent\n");
+}
+
+void price_nuclear(info_t *info)
+{
+    if (info->score_int > 500)
+        info->score_int -= 500;
+    else
+        printf("t'as pas d'argent\n");
 }
 
 void goto_pausemenu(info_t *info)
