@@ -25,6 +25,9 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
     check_mouse_wall(scene[2].button[2], mouse_pos, info);
     check_mouse_pause(scene[1].button[2], mouse_pos, info);
     check_gobacktogame(scene[2].button[4], mouse_pos, info);
+    check_mouse_resume(scene[4].button[0], mouse_pos, info);
+    check_mouse_backmenu(scene[4].button[1], mouse_pos, info);
+    check_mouse_exitgame(scene[4].button[2], mouse_pos, info);
     if (info->event.type == sfEvtClosed)
         sfRenderWindow_close(info->window);
 

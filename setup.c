@@ -176,11 +176,11 @@ void setup_scene_4_buttons(scene_t *scene, info_t *info)
     sfVector2f pos_buyturretthree = {360, 360};
     sfVector2f pos_buyturretfour = {360, 480};
 
-    init_buttonpauseresume(&scene[4].button[0], pos_buyturretfour, size2, info);
-    scene[4].button[0].callback = &exit_window;
+    init_buttonpauseresume(&scene[4].button[0], pos_buyturrettwo, size2, info);
+    scene[4].button[0].callback = &goto_game;
     init_buttonpausebackmenu(&scene[4].button[1], pos_buyturretthree, size2, info);
-    scene[4].button[1].callback = &exit_window;
-    init_buttonupsound(&scene[4].button[2], pos_buyturrettwo, size2, info);
+    scene[4].button[1].callback = &goto_menu;
+    init_buttonupsound(&scene[4].button[2], pos_buyturretfour, size2, info);
     scene[4].button[2].callback = &exit_window;
 
 }
