@@ -46,7 +46,7 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
         }
         else if (info->view == 2) {
             print_shop_menu(info, scene, button, mouse_pos);
-        
+
         }
         else if (info->view == 4) {
             print_pause_menu(info, scene, button, mouse_pos);

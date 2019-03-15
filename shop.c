@@ -59,7 +59,8 @@ int button_is_clickedshop(button_t button, sfVector2i click_position)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_shop);
 
-    if (click_position.x >= button_pos.x && 200 &&
+    if (click_position.x >= button_pos.x &&
+        click_position.x <= button_pos.x + 200 &&
         click_position.y >= button_pos.y &&
         click_position.y <= button_pos.y + 100)
         return (1);
@@ -71,9 +72,10 @@ int button_buy_turretone(button_t button, sfVector2i click_position)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretone);
 
-    if (click_position.x >= button_pos.x && 200 &&
+    if (click_position.x >= button_pos.x &&
+        click_position.x <= button_pos.x + 70 &&
         click_position.y >= button_pos.y &&
-        click_position.y <= button_pos.y + 100)
+        click_position.y <= button_pos.y + 80)
         return (1);
     else
         return (0);
@@ -83,9 +85,10 @@ int button_buy_turrettwo(button_t button, sfVector2i click_position)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turrettwo);
 
-    if (click_position.x >= button_pos.x && 200 &&
+    if (click_position.x >= button_pos.x &&
+        click_position.x <= button_pos.x + 70 &&
         click_position.y >= button_pos.y &&
-        click_position.y <= button_pos.y + 100)
+        click_position.y <= button_pos.y + 80)
         return (1);
     else
         return (0);
@@ -95,7 +98,8 @@ int button_backtogame(button_t button, sfVector2i click_position)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_gobackgame);
 
-    if (click_position.x >= button_pos.x && 70 &&
+    if (click_position.x >= button_pos.x &&
+        click_position.x <= button_pos.x + 70 &&
         click_position.y >= button_pos.y &&
         click_position.y <= button_pos.y + 80)
         return (1);
@@ -107,7 +111,8 @@ int button_buy_wall(button_t button, sfVector2i click_position)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretthree);
 
-    if (click_position.x >= button_pos.x && 200 &&
+    if (click_position.x >= button_pos.x &&
+        click_position.x <= button_pos.x + 200 &&
         click_position.y >= button_pos.y &&
         click_position.y <= button_pos.y + 100)
         return (1);
@@ -119,7 +124,8 @@ int button_buy_turretfour(button_t button, sfVector2i click_position)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretfour);
 
-    if (click_position.x >= button_pos.x && 200 &&
+    if (click_position.x >= button_pos.x &&
+        click_position.x <= button_pos.x + 200 &&
         click_position.y >= button_pos.y &&
         click_position.y <= button_pos.y + 100)
         return (1);
@@ -187,12 +193,11 @@ void check_gobacktogame(button_t button, sfVector2i mouse_pos, info_t *info)
         mouse_pos.x <= button_pos.x + 70 &&
         mouse_pos.y >= button_pos.y &&
         mouse_pos.y <= button_pos.y + 80) {
-
         sfRectangleShape_setTexture(button.rect_gobackgame, info->second_button_hover, 0);
     }
     else {
-        info->start_rect.left = 300;
-        info->start_rect.top = 140;
+        info->start_rect.left = 140;
+        info->start_rect.top = 80;
         info->start_rect.width = 70;
         info->start_rect.height = 80;
         sfRectangleShape_setTextureRect(button.rect_gobackgame, info->start_rect);
