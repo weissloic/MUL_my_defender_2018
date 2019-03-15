@@ -234,5 +234,10 @@ void init_button_gobackgame(button_t *, sfVector2f, sfVector2f, info_t *);
 void init_buttonfour(button_t *, sfVector2f, sfVector2f, info_t *);
 void price_turretone(info_t *info);
 void goto_menu(info_t *info);
+void price_nuclear(info_t *info);
+void price_turretone(info_t *info);
+void price_turrettwo(info_t *info);
+void price_turretthree(info_t *info);
+
 
 #endif
