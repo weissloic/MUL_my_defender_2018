@@ -95,9 +95,9 @@ int button_backtogame(button_t button, sfVector2i click_position)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_gobackgame);
 
-    if (click_position.x >= button_pos.x && 200 &&
+    if (click_position.x >= button_pos.x && 70 &&
         click_position.y >= button_pos.y &&
-        click_position.y <= button_pos.y + 100)
+        click_position.y <= button_pos.y + 80)
         return (1);
     else
         return (0);
