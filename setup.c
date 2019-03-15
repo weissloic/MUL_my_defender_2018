@@ -158,7 +158,7 @@ void setup_scene_2_buttons(scene_t *scene, info_t *info)
     sfVector2f pos_gotomenu = {100, 100};
 
     init_buttonturretone(&scene[2].button[0], pos_shop, size2, info);
-    scene[2].button[0].callback = &exit_window;
+    scene[2].button[0].callback = &price_turretone;
     init_buttonturrettwo(&scene[2].button[1], pos_buyturrettwo, size2, info);
     scene[2].button[1].callback = &exit_window;
     init_buttonwall(&scene[2].button[2], pos_buyturretthree, size2, info);

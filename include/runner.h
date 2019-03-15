@@ -232,5 +232,6 @@ void check_mouse_pause(button_t, sfVector2i, info_t *);
 int button_backtogame(button_t, sfVector2i);
 void init_button_gobackgame(button_t *, sfVector2f, sfVector2f, info_t *);
 void init_buttonfour(button_t *, sfVector2f, sfVector2f, info_t *);
+void price_turretone(info_t *info);
 
 #endif

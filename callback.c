@@ -17,6 +17,11 @@ void goto_shopmenu(info_t *info)
     info->view = 2;
 }
 
+void price_turretone(info_t *info)
+{
+    info->score_int -= 5;
+}
+
 void goto_pausemenu(info_t *info)
 {
     info->view = 4;
