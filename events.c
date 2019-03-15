@@ -134,22 +134,22 @@ void check_mouse_shopmenu(button_t button, sfVector2i mouse_pos, info_t *info)
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_shop);
 
     if (mouse_pos.x >= button_pos.x &&
-        mouse_pos.x <= button_pos.x + 200 &&
+        mouse_pos.x <= button_pos.x + 70 &&
         mouse_pos.y >= button_pos.y &&
-        mouse_pos.y <= button_pos.y + 100) {
+        mouse_pos.y <= button_pos.y + 80) {
 
         info->start_rect.left = 75;
         info->start_rect.top = 250;
-        info->start_rect.width = 60;
-        info->start_rect.height = 60;
+        info->start_rect.width = 70;
+        info->start_rect.height = 80;
         sfRectangleShape_setTextureRect(button.rect_shop, info->start_rect);
         sfRectangleShape_setTexture(button.rect_shop, info->second_button_hover, 0);
     }
     else {
         info->start_rect.left = 75;
         info->start_rect.top = 250;
-        info->start_rect.width = 60;
-        info->start_rect.height = 60;
+        info->start_rect.width = 70;
+        info->start_rect.height = 80;
         sfRectangleShape_setTextureRect(button.rect_shop, info->start_rect);
         sfRectangleShape_setTexture(button.rect_shop, info->second_button_normal, 0);
     }

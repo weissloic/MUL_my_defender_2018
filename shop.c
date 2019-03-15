@@ -60,9 +60,9 @@ int button_is_clickedshop(button_t button, sfVector2i click_position)
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_shop);
 
     if (click_position.x >= button_pos.x &&
-        click_position.x <= button_pos.x + 200 &&
+        click_position.x <= button_pos.x + 50 &&
         click_position.y >= button_pos.y &&
-        click_position.y <= button_pos.y + 100)
+        click_position.y <= button_pos.y + 50)
         return (1);
     else
         return (0);

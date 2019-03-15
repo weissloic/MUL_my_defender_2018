@@ -22,7 +22,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->pos_turretone.y = 300;
     info->pos_turrettwo.x = 400;
     info->pos_turrettwo.y = 200;
-    info->pos_menu.x = 500;
+    info->pos_menu.x = 400;
     info->pos_menu.y = 300;
     info->register_pos.x = 900;
     info->register_pos.y = 900;

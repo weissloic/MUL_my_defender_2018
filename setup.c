@@ -136,11 +136,12 @@ void setup_scene_0_buttons(scene_t *scene, info_t *info)
 
 void setup_scene_1_buttons(scene_t *scene, info_t *info)
 {
-    sfVector2f pos_shop = {400, 0};
-    sfVector2f pos_pause = {600, 200};
+    sfVector2f pos_shop = {620, 5};
+    sfVector2f pos_pause = {700, 0};
+    sfVector2f inv_pos = {900, 300};
     sfVector2f size2 = {90, 90};
 
-    init_buttonupgrade(&scene[1].button[0], info->pos_menu, size2, info);
+    init_buttonupgrade(&scene[1].button[0], inv_pos, size2, info);
     scene[1].button[0].callback = &coupe_decale;
     init_buttonshop(&scene[1].button[1], pos_shop, size2, info);
     scene[1].button[1].callback = &goto_shopmenu;
