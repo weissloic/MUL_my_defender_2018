@@ -160,11 +160,11 @@ void setup_scene_2_buttons(scene_t *scene, info_t *info)
     init_buttonturretone(&scene[2].button[0], pos_shop, size2, info);
     scene[2].button[0].callback = &price_turretone;
     init_buttonturrettwo(&scene[2].button[1], pos_buyturrettwo, size2, info);
-    scene[2].button[1].callback = &exit_window;
+    scene[2].button[1].callback = &price_turrettwo;
     init_buttonwall(&scene[2].button[2], pos_buyturretthree, size2, info);
-    scene[2].button[2].callback = &exit_window;
+    scene[2].button[2].callback = &price_turretthree;
     init_buttonturretfour(&scene[2].button[3], pos_buyturretfour, size2, info);
-    scene[2].button[3].callback = &exit_window;
+    scene[2].button[3].callback = &price_nuclear;
     init_button_gobackgame(&scene[2].button[4], pos_gotomenu, size2, info);
     scene[2].button[4].callback = &goto_game;
 }
