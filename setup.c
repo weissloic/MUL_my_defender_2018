@@ -22,7 +22,7 @@ void setup_textures(info_t *info)
     info->pause_texture = sfTexture_createFromFile("ressources/pause.png", NULL);
     info->dollar_texture = sfTexture_createFromFile("ressources/dollar.png", NULL);
     info->shop_house = sfTexture_createFromFile("ressources/shop_house.png", NULL);
-    info->nuke_logo = sfTexture_createFromFile("logonuclear.png", NULL);
+    info->nuke_logo = sfTexture_createFromFile("ressources/logonuclear.png", NULL);
     info->turret_one_logo = sfTexture_createFromFile("ressources/simpleturret.png", NULL);
     info->turret_two_logo = sfTexture_createFromFile("ressources/doubleturret.png", NULL);
     info->castle_texture = sfTexture_createFromFile("ressources/castle.png", NULL);
