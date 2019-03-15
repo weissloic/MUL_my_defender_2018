@@ -85,7 +85,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             else {
                 scene[1].button[0].callback = &coupe_decale;
                 info->pos_menu.x = 300;
-                info->pos_menu.y = 200; 
+                info->pos_menu.y = 200;
             }
             if (info->get_turret == 1) {
                 create_turret(info, scene);
