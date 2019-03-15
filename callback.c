@@ -25,7 +25,11 @@ void price_turretone(info_t *info)
 void goto_pausemenu(info_t *info)
 {
     info->view = 4;
-    //info->get_turret = 1;
+}
+
+void goto_menu(info_t *info)
+{
+    info->view = 0;
 }
 
 void goto_game(info_t *info)

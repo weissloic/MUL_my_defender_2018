@@ -233,5 +233,6 @@ int button_backtogame(button_t, sfVector2i);
 void init_button_gobackgame(button_t *, sfVector2f, sfVector2f, info_t *);
 void init_buttonfour(button_t *, sfVector2f, sfVector2f, info_t *);
 void price_turretone(info_t *info);
+void goto_menu(info_t *info);
 
 #endif
