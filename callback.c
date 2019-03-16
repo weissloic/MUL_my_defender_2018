@@ -19,34 +19,42 @@ void goto_shopmenu(info_t *info)
 
 void price_turretone(info_t *info)
 {
-    if (info->score_int > 20)
+    if (info->score_int > 20) {
         info->score_int -= 20;
+        sfMusic_play(info->yes_money);
+    }
     else
-        printf("t'as pas d'argent\n");
+        sfMusic_play(info->no_money);
 }
 
 void price_turrettwo(info_t *info)
 {
-    if (info->score_int > 50)
+    if (info->score_int > 50) {
         info->score_int -= 50;
+        sfMusic_play(info->yes_money);
+    }
     else
-        printf("t'as pas d'argent\n");
+        sfMusic_play(info->no_money);
 }
 
 void price_turretthree(info_t *info)
 {
-    if (info->score_int > 75)
+    if (info->score_int > 75) {
         info->score_int -= 75;
+        sfMusic_play(info->yes_money);
+    }
     else
-        printf("t'as pas d'argent\n");
+        sfMusic_play(info->no_money);
 }
 
 void price_nuclear(info_t *info)
 {
-    if (info->score_int > 500)
+    if (info->score_int > 500) {
         info->score_int -= 500;
+        sfMusic_play(info->yes_money);
+    }
     else
-        printf("t'as pas d'argent\n");
+        sfMusic_play(info->no_money);
 }
 
 void goto_pausemenu(info_t *info)
@@ -80,3 +88,18 @@ void exit_turret_menu(info_t *info)
 {
     info->menu_turret = 0;
 }
+
+
+void fill_map_t_one(info_t *info)
+{
+    info->fill_turret = 1;
+    info->get_turret = 1;
+    info->select_or_not = 1;
+}
+
+void fill_map_t_two(info_t *info)
+{
+    info->fill_turrettwo = 1;
+    info->get_turrettwo = 1;
+}
+

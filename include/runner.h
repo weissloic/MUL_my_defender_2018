@@ -40,6 +40,8 @@ typedef struct game_info {
     sfVector2f initial_parallax;
     //GAME
     sfMusic *main_music;
+    sfMusic *yes_money;
+    sfMusic *no_money;
     sfTexture *game_bg;
     sfTexture *loadingscreen_bg;
     sfTexture *zombie;
@@ -101,8 +103,15 @@ typedef struct game_info {
     sfVector2f register_postwo;
     sfVector2f shopmenu_pos;
     sfVector2f register_posthree;
-    int fill_turret;
 
+    sfVector2f register_posthreettwo;
+    sfVector2f register_postwottwo;
+    sfVector2f register_posonettwo;
+    
+    int fill_turret;
+    int get_turrettwo;
+    int fill_turrettwo;
+    int select_or_not;
     sfFont *font;
     float seconds;
     int view;
@@ -238,6 +247,8 @@ void price_nuclear(info_t *info);
 void price_turretone(info_t *info);
 void price_turrettwo(info_t *info);
 void price_turretthree(info_t *info);
+void fill_map_t_one(info_t *info);
+void fill_map_t_two(info_t *info);
 
 
 #endif

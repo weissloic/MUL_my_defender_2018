@@ -12,9 +12,9 @@ void check_mouse_upgrademenu(button_t button, sfVector2i mouse_pos, info_t *info
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_pause);
 
     if (mouse_pos.x >= button_pos.x &&
-        mouse_pos.x <= button_pos.x + 200 &&
+        mouse_pos.x <= button_pos.x + 80 &&
         mouse_pos.y >= button_pos.y &&
-        mouse_pos.y <= button_pos.y + 100) {
+        mouse_pos.y <= button_pos.y + 80) {
 
         info->start_rect.left = 520;
         info->start_rect.top = 165;
@@ -37,9 +37,9 @@ int button_is_clickedpause(button_t button, sfVector2i click_position)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_pause);
 
-    if (click_position.x >= button_pos.x && 200 &&
+    if (click_position.x >= button_pos.x + 80 &&
         click_position.y >= button_pos.y &&
-        click_position.y <= button_pos.y + 100)
+        click_position.y <= button_pos.y + 80)
         return (1);
     else
         return (0);

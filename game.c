@@ -30,6 +30,14 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->register_postwo.y = 900;
     info->register_posthree.x = 900;
     info->register_posthree.y = 900;
+
+    info->register_posonettwo.x = 900;
+    info->register_posonettwo.y = 900;
+    info->register_postwottwo.x = 900;
+    info->register_postwottwo.y = 900;
+    info->register_posthreettwo.x = 900;
+    info->register_posthreettwo.y = 900;
+
     info->menu_turret = 0;
     info->zombie_rect.left = 0;
     info->zombie_rect.top = 0;
@@ -72,27 +80,9 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
             sfRenderWindow_drawSprite(info->window, info->castle_sprite, NULL);
 
+            my_inventory(info, scene);
 
-            if (info->menu_turret == 1) {
-                scene[1].button[0].callback = &exit_turret_menu;
-                info->pos_menu.x = 70;
-                info->pos_menu.y = 70;
-                sfSprite_setPosition(scene[1].turretone, info->pos_turretone);
-                sfSprite_setPosition(scene[1].turrettwo, info->pos_turrettwo);
-                sfRenderWindow_drawSprite(info->window, scene[1].turretone, NULL);
-                sfRenderWindow_drawSprite(info->window, scene[1].turrettwo, NULL);
-            }
-            else {
-                scene[1].button[0].callback = &coupe_decale;
-                info->pos_menu.x = 300;
-                info->pos_menu.y = 200;
-            }
-            if (info->get_turret == 1) {
-                create_turret(info, scene);
-            }
-            if (info->fill_turret == 1) {
-                create_turrettwo(info, scene);
-            }
+            pos_inventory(info, scene);
 
             sfRectangleShape_setPosition(scene[1].button[0].rect_pause, info->pos_menu);
             sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
@@ -145,6 +135,24 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     destroy_music(info);
 }
 
+void my_inventory(info_t *info, scene_t *scene)
+{
+            if (info->menu_turret == 1) {
+                scene[1].button[0].callback = &exit_turret_menu;
+                info->pos_menu.x = 70;
+                info->pos_menu.y = 70;
+            sfRenderWindow_drawRectangleShape(info->window, scene[1].button[3].rect_turretone, NULL);
+            sfRenderWindow_drawRectangleShape(info->window, scene[1].button[4].rect_turrettwo, NULL);
+            sfRenderWindow_drawRectangleShape(info->window, scene[1].button[5].rect_turretthree, NULL);
+            sfRenderWindow_drawRectangleShape(info->window, scene[1].button[6].rect_turretfour, NULL);
+            }
+            else {
+                scene[1].button[0].callback = &coupe_decale;
+                info->pos_menu.x = 300;
+                info->pos_menu.y = 200;
+            }
+}
+
 void create_turret(info_t *info, scene_t *scene)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(info->window);
@@ -161,6 +169,25 @@ void create_turrettwo(info_t *info, scene_t *scene)
     sfSprite_setPosition(scene[1].turretone, info->register_postwo);
     sfRenderWindow_drawSprite(info->window, scene[1].turretone, NULL);
     sfSprite_setPosition(scene[1].turretone, info->register_posthree);
+    sfRenderWindow_drawSprite(info->window, scene[1].turretone, NULL);
+}
+
+void func2_create_turret(info_t *info, scene_t *scene)
+{
+    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(info->window);
+    sfVector2f mouse_pos_float = {mouse_pos.x, mouse_pos.y};
+
+    sfSprite_setPosition(scene[1].turrettwo, mouse_pos_float);
+    sfRenderWindow_drawSprite(info->window, scene[1].turrettwo, NULL);
+}
+
+void func2_create_turrettwo(info_t *info, scene_t *scene)
+{
+    sfSprite_setPosition(scene[1].turrettwo, info->register_posonettwo);
+    sfRenderWindow_drawSprite(info->window, scene[1].turretone, NULL);
+    sfSprite_setPosition(scene[1].turrettwo, info->register_postwottwo);
+    sfRenderWindow_drawSprite(info->window, scene[1].turretone, NULL);
+    sfSprite_setPosition(scene[1].turrettwo, info->register_posthreettwo);
     sfRenderWindow_drawSprite(info->window, scene[1].turretone, NULL);
 }
 
@@ -214,6 +241,23 @@ void move_monster_time(info_t *info, scene_t *scene)
         sfSprite_setPosition(scene[1].monster, info->new_pos);
         sfClock_restart(info->clock);
     }
+}
+
+void pos_inventory(info_t *info, scene_t *scene)
+{
+            if (info->get_turret == 1) {
+                create_turret(info, scene);
+            }
+            if (info->fill_turret == 1) {
+                create_turrettwo(info, scene);
+            }
+
+            if (info->get_turrettwo == 1) {
+                func2_create_turret(info, scene);
+            }
+            if (info->fill_turrettwo == 1) {
+                func2_create_turrettwo(info, scene);
+            }
 }
 
 int main(int ac, char **av)

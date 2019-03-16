@@ -140,13 +140,28 @@ void setup_scene_1_buttons(scene_t *scene, info_t *info)
     sfVector2f pos_pause = {700, 0};
     sfVector2f inv_pos = {900, 300};
     sfVector2f size2 = {90, 90};
+    sfVector2f size_turret = {50, 50};
+    sfVector2f pos_buyturretoen = {700, 90};
+    sfVector2f pos_buyturrettwo = {700, 180};
+    sfVector2f pos_buyturretthree = {700, 270};
+    sfVector2f pos_buyturretfour = {700, 360};
 
     init_buttonupgrade(&scene[1].button[0], inv_pos, size2, info);
     scene[1].button[0].callback = &coupe_decale;
     init_buttonshop(&scene[1].button[1], pos_shop, size2, info);
     scene[1].button[1].callback = &goto_shopmenu;
+
     init_buttonptinpause(&scene[1].button[2], pos_pause, size2, info);
     scene[1].button[2].callback = &goto_pausemenu;
+
+    init_buttonturretone(&scene[1].button[3], pos_buyturretoen, size_turret, info);
+    scene[1].button[3].callback = &fill_map_t_one;
+    init_buttonturrettwo(&scene[1].button[4], pos_buyturrettwo, size_turret, info);
+    scene[1].button[4].callback = &price_turrettwo;
+    init_buttonwall(&scene[1].button[5], pos_buyturretthree, size_turret, info);
+    scene[1].button[5].callback = &price_turretthree;
+    init_buttonturretfour(&scene[1].button[6], pos_buyturretfour, size_turret, info);
+    scene[1].button[6].callback = &price_nuclear;
 }
 
 void setup_scene_2_buttons(scene_t *scene, info_t *info)
