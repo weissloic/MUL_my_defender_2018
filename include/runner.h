@@ -250,5 +250,8 @@ void price_turretthree(info_t *info);
 void fill_map_t_one(info_t *info);
 void fill_map_t_two(info_t *info);
 
+void check_mouse_exitgame(button_t, sfVector2i, info_t *);
+void check_mouse_backmenu(button_t, sfVector2i, info_t *);
+void check_mouse_resume(button_t, sfVector2i, info_t *);
 
 #endif
