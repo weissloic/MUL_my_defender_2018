@@ -49,7 +49,7 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
     if (info->event.type == sfEvtMouseButtonPressed && info->view != 3) {
         if (info->view == 1) {
             print_game(info, scene, button, mouse_pos);
-
+            info->tmp = 1;
         }
         else if (info->view == 0) {
             print_menu(info, scene, button, mouse_pos);

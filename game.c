@@ -57,6 +57,9 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->sign_price_pos3.y = 370;
     info->sign_price_pos4.x = 530;
     info->sign_price_pos4.y = 370;
+
+    info->tmp = 0;
+
     info->seconds = sfClock_getElapsedTime(info->clock).SEC;
 
     sfRenderWindow_setVerticalSyncEnabled(info->window, sfTrue);
@@ -79,7 +82,8 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRenderWindow_drawSprite(info->window, info->shopmenu, NULL);
             sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
             sfRenderWindow_drawSprite(info->window, info->castle_sprite, NULL);
-
+            if (info->tmp == 1)
+                sfRenderWindow_drawSprite(info->window, info->explosion, NULL);
             my_inventory(info, scene);
 
             pos_inventory(info, scene);

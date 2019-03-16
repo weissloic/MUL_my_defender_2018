@@ -60,6 +60,8 @@ typedef struct game_info {
     sfTexture *shop_house;
     sfTexture *wall_texture;
     sfTexture *sign_price_texture;
+    sfTexture *nuke_explosion;
+    sfSprite *explosion;
     sfSprite *test_image;
     sfSprite *castle_sprite;
     sfSprite *dollar;
@@ -77,6 +79,7 @@ typedef struct game_info {
     int counter_turretone;
     int get_turret;
     int switch_scene;
+    int tmp;
     sfVector2f pos_menu;
     sfVector2f temp_pos_for_menu;
     sfVector2f castle_position;
@@ -249,7 +252,6 @@ void price_turrettwo(info_t *info);
 void price_turretthree(info_t *info);
 void fill_map_t_one(info_t *info);
 void fill_map_t_two(info_t *info);
-
 void check_mouse_exitgame(button_t, sfVector2i, info_t *);
 void check_mouse_backmenu(button_t, sfVector2i, info_t *);
 void check_mouse_resume(button_t, sfVector2i, info_t *);
