@@ -33,9 +33,9 @@ int button_is_clickedpause(button_t button, sfVector2i click_position)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_pause);
 
-    if (click_position.x >= button_pos.x + 80 &&
+    if (click_position.x >= button_pos.x && 200 &&
         click_position.y >= button_pos.y &&
-        click_position.y <= button_pos.y + 80)
+        click_position.y <= button_pos.y + 100)
         return (1);
     else
         return (0);
