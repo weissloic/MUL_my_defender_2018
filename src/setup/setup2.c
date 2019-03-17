@@ -9,9 +9,12 @@
 
 void setup_texturestwo(info_t *info)
 {
-    info->wall_textureresize = sfTexture_createFromFile("ressources/wallresize.png", NULL);
-    info->sign_price_texture = sfTexture_createFromFile("ressources/sign_price.png", NULL);
-    info->nuke_explosion = sfTexture_createFromFile("ressources/nuclearsprite.png", NULL);
+    info->wall_textureresize = sfTexture_createFromFile(
+    "ressources/wallresize.png", NULL);
+    info->sign_price_texture = sfTexture_createFromFile(
+    "ressources/sign_price.png", NULL);
+    info->nuke_explosion = sfTexture_createFromFile(
+    "ressources/nuclearsprite.png", NULL);
     info->test_image = sfSprite_create();
     info->dollar = sfSprite_create();
     info->shophouse = sfSprite_create();
@@ -35,10 +38,6 @@ void set_texturestwo(info_t *info, scene_t *scene)
 {
     sfSprite_setTexture(scene[4].background, info->game_bg, sfFalse);
     sfSprite_setTexture(info->test_image, info->test, sfFalse);
-    sfSprite_setTexture(info->sign_price_sprite_1, info->sign_price_texture, sfFalse);
-    sfSprite_setTexture(info->sign_price_sprite_2, info->sign_price_texture, sfFalse);
-    sfSprite_setTexture(info->sign_price_sprite_3, info->sign_price_texture, sfFalse);
-    sfSprite_setTexture(info->sign_price_sprite_4, info->sign_price_texture, sfFalse);
     sfSprite_setTexture(info->dollar, info->dollar_texture, sfFalse);
     sfSprite_setTexture(info->shophouse, info->shop_house, sfFalse);
     sfSprite_setTexture(info->shopmenu, info->menu_shop, sfFalse);

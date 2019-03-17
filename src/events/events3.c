@@ -7,23 +7,23 @@
 
 #include "../../include/runner.h"
 
-void print_shop_menu(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos)
+void print_shop_menu(info_t *i, scene_t *sc, button_t *button, sfVector2i pos)
 {
-    if (button_buy_turretone(scene[2].button[0], mouse_pos))
-        scene[2].button[0].callback(info);
-    if (button_buy_turrettwo(scene[2].button[1], mouse_pos))
-        scene[2].button[1].callback(info);
-    if (button_buy_wall(scene[2].button[2], mouse_pos))
-        scene[2].button[2].callback(info);
-    if (button_buy_turretfour(scene[2].button[3], mouse_pos))
-        scene[2].button[3].callback(info);
-    print_shop_menutwo(info, scene, button, mouse_pos);
+    if (button_buy_turretone(sc[2].button[0], pos))
+        sc[2].button[0].callback(i);
+    if (button_buy_turrettwo(sc[2].button[1], pos))
+        sc[2].button[1].callback(i);
+    if (button_buy_wall(sc[2].button[2], pos))
+        sc[2].button[2].callback(i);
+    if (button_buy_turretfour(sc[2].button[3], pos))
+        sc[2].button[3].callback(i);
+    print_shop_menutwo(i, sc, button, pos);
 }
 
-void print_shop_menutwo(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos)
+void print_shop_menutwo(info_t *i, scene_t *sc, button_t *but, sfVector2i pos)
 {
-    if (button_backtogame(scene[2].button[4], mouse_pos))
-        scene[2].button[4].callback(info);
+    if (button_backtogame(sc[2].button[4], pos))
+        sc[2].button[4].callback(i);
 }
 
 void delete_turretone(info_t *info, sfVector2i mouse_pos)

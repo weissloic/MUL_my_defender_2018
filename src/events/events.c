@@ -47,18 +47,18 @@ void but_detect(info_t *info, scene_t *scene, sfVector2i mouse_pos)
     }
 }
 
-void print_full(info_t *info, scene_t *scene, sfVector2i mouse_pos, button_t *button)
+void print_full(info_t *info, scene_t *scene, sfVector2i pos, button_t *button)
 {
         if (info->view == 1) {
-            print_game(info, scene, button, mouse_pos);
+            print_game(info, scene, button, pos);
             info->tmp = 1;
         }
         else if (info->view == 0)
-            print_menu(info, scene, button, mouse_pos);
+            print_menu(info, scene, button, pos);
         if (info->view == 2)
-            print_shop_menu(info, scene, button, mouse_pos);
+            print_shop_menu(info, scene, button, pos);
         else if (info->view == 4)
-            print_pause_menu(info, scene, button, mouse_pos);
+            print_pause_menu(info, scene, button, pos);
 }
 
 void analyse_events(info_t *info, scene_t *scene, button_t *button)

@@ -285,5 +285,7 @@ void positionning_turrettwo(info_t *info, sfVector2i mouse_pos);
 void positionning_turretthree(info_t *info, sfVector2i mouse_pos);
 void print_shop_menutwo(info_t *, scene_t *, button_t *button, sfVector2i);
 void delete_turrettwo(info_t *info, sfVector2i mouse_pos);
+void setup_texturesthree(info_t *info);
+void set_texturesthree(info_t *info, scene_t *scene);
 
 #endif

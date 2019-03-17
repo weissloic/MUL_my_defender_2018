@@ -53,3 +53,38 @@ void setup_scene_1_buttons(scene_t *scene, info_t *info)
     init_buttonturretfour(&scene[1].button[6], pos_buyturretfour, size_turret, info);
     scene[1].button[6].callback = &nuclear_func;
 }
+
+void setup_texturesthree(info_t *info)
+{
+    info->menu_bg = sfTexture_createFromFile("ressources/back.png", NULL);
+    info->game_bg = sfTexture_createFromFile("ressources/Grass1.png", NULL);
+    info->zombie = sfTexture_createFromFile("ressources/zombie.png", NULL);
+    info->button_normal = sfTexture_createFromFile(
+    "ressources/button2.png", NULL);
+    info->button_hover = sfTexture_createFromFile(
+    "ressources/button3.png", NULL);
+    info->second_button_normal = sfTexture_createFromFile(
+    "ressources/button1.png", NULL);
+    info->second_button_hover = sfTexture_createFromFile(
+    "ressources/button4.png", NULL);
+    info->simple_turret = sfTexture_createFromFile(
+    "ressources/simpleturret.png", NULL);
+    info->double_turret = sfTexture_createFromFile(
+    "ressources/doubleturret.png", NULL);
+    info->menu_shop = sfTexture_createFromFile(
+    "ressources/menu_shop.png", NULL);
+    info->pause_texture = sfTexture_createFromFile(
+    "ressources/pause.png", NULL);
+}
+
+void set_texturesthree(info_t *info, scene_t *scene)
+{
+    sfSprite_setTexture(info->sign_price_sprite_1,
+    info->sign_price_texture, sfFalse);
+    sfSprite_setTexture(info->sign_price_sprite_2,
+    info->sign_price_texture, sfFalse);
+    sfSprite_setTexture(info->sign_price_sprite_3,
+    info->sign_price_texture, sfFalse);
+    sfSprite_setTexture(info->sign_price_sprite_4, 
+    info->sign_price_texture, sfFalse);
+}

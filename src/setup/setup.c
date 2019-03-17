@@ -9,25 +9,21 @@
 
 void setup_textures(info_t *info)
 {
-    info->menu_bg = sfTexture_createFromFile("ressources/back.png", NULL);
-    info->game_bg = sfTexture_createFromFile("ressources/Grass1.png", NULL);
-    info->zombie = sfTexture_createFromFile("ressources/zombie.png", NULL);
-    info->button_normal = sfTexture_createFromFile("ressources/button2.png", NULL);
-    info->button_hover = sfTexture_createFromFile("ressources/button3.png", NULL);
-    info->second_button_normal = sfTexture_createFromFile("ressources/button1.png", NULL);
-    info->second_button_hover = sfTexture_createFromFile("ressources/button4.png", NULL);
-    info->simple_turret = sfTexture_createFromFile("ressources/simpleturret.png", NULL);
-    info->double_turret = sfTexture_createFromFile("ressources/doubleturret.png", NULL);
-    info->menu_shop = sfTexture_createFromFile("ressources/menu_shop.png", NULL);
-    info->pause_texture = sfTexture_createFromFile("ressources/pause.png", NULL);
-    info->dollar_texture = sfTexture_createFromFile("ressources/dollar.png", NULL);
-    info->shop_house = sfTexture_createFromFile("ressources/shop_house.png", NULL);
-    info->nuke_logo = sfTexture_createFromFile("ressources/logonuclear.png", NULL);
-    info->turret_one_logo = sfTexture_createFromFile("ressources/simpleturret.png", NULL);
-    info->turret_two_logo = sfTexture_createFromFile("ressources/doubleturret.png", NULL);
-    info->castle_texture = sfTexture_createFromFile("ressources/castle.png", NULL);
+    info->dollar_texture = sfTexture_createFromFile(
+    "ressources/dollar.png", NULL);
+    info->shop_house = sfTexture_createFromFile(
+    "ressources/shop_house.png", NULL);
+    info->nuke_logo = sfTexture_createFromFile(
+    "ressources/logonuclear.png", NULL);
+    info->turret_one_logo = sfTexture_createFromFile(
+    "ressources/simpleturret.png", NULL);
+    info->turret_two_logo = sfTexture_createFromFile(
+    "ressources/doubleturret.png", NULL);
+    info->castle_texture = sfTexture_createFromFile(
+    "ressources/castle.png", NULL);
     info->wall_texture = sfTexture_createFromFile("ressources/wall.png", NULL);
     setup_texturestwo(info);
+    setup_texturesthree(info);
 }
 
 void set_textures(info_t *info, scene_t *scene)

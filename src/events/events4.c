@@ -46,48 +46,46 @@ void positionning_turretthree(info_t *info, sfVector2i mouse_pos)
 }
 
 
-void check_mouse_shopmenu(button_t button, sfVector2i mouse_pos, info_t *info)
+void check_mouse_shopmenu(button_t but, sfVector2i mouse_pos, info_t *i)
 {
-    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_shop);
-    if (mouse_pos.x >= button_pos.x &&
-        mouse_pos.x <= button_pos.x + 70 &&
-        mouse_pos.y >= button_pos.y &&
-        mouse_pos.y <= button_pos.y + 80) {
-        info->start_rect.left = 75;
-        info->start_rect.top = 250;
-        info->start_rect.width = 70;
-        info->start_rect.height = 80;
-        sfRectangleShape_setTextureRect(button.rect_shop, info->start_rect);
-        sfRectangleShape_setTexture(button.rect_shop, info->second_button_hover, 0);
+    sfVector2f button_pos = sfRectangleShape_getPosition(but.rect_shop);
+
+    if (mouse_pos.x >= button_pos.x && mouse_pos.x <= button_pos.x + 70 &&
+        mouse_pos.y >= button_pos.y && mouse_pos.y <= button_pos.y + 80) {
+        i->start_rect.left = 75;
+        i->start_rect.top = 250;
+        i->start_rect.width = 70;
+        i->start_rect.height = 80;
+        sfRectangleShape_setTextureRect(but.rect_shop, i->start_rect);
+        sfRectangleShape_setTexture(but.rect_shop, i->second_button_hover, 0);
     }
     else {
-        info->start_rect.left = 75;
-        info->start_rect.top = 250;
-        info->start_rect.width = 70;
-        info->start_rect.height = 80;
-        sfRectangleShape_setTextureRect(button.rect_shop, info->start_rect);
-        sfRectangleShape_setTexture(button.rect_shop, info->second_button_normal, 0);
+        i->start_rect.left = 75;
+        i->start_rect.top = 250;
+        i->start_rect.width = 70;
+        i->start_rect.height = 80;
+        sfRectangleShape_setTextureRect(but.rect_shop, i->start_rect);
+        sfRectangleShape_setTexture(but.rect_shop, i->second_button_normal, 0);
     }
 }
 
-void check_mouse_nukebutton(button_t button, sfVector2i mouse_pos, info_t *info)
+void check_mouse_nukebutton(button_t but, sfVector2i mouse_pos, info_t *i)
 {
-    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretfour);
-    if (mouse_pos.x >= button_pos.x &&
-        mouse_pos.x <= button_pos.x + 200 &&
-        mouse_pos.y >= button_pos.y &&
-        mouse_pos.y <= button_pos.y + 100) {
-        info->start_rect.left = 75;
-        info->start_rect.top = 250;
-        info->start_rect.width = 60;
-        info->start_rect.height = 60;
-        sfRectangleShape_setTexture(button.rect_turretfour, info->nuke_logo, 0);
+    sfVector2f button_pos = sfRectangleShape_getPosition(but.rect_turretfour);
+
+    if (mouse_pos.x >= button_pos.x && mouse_pos.x <= button_pos.x + 200 &&
+        mouse_pos.y >= button_pos.y && mouse_pos.y <= button_pos.y + 100) {
+        i->start_rect.left = 75;
+        i->start_rect.top = 250;
+        i->start_rect.width = 60;
+        i->start_rect.height = 60;
+        sfRectangleShape_setTexture(but.rect_turretfour, i->nuke_logo, 0);
     }
     else {
-        info->start_rect.left = 75;
-        info->start_rect.top = 250;
-        info->start_rect.width = 60;
-        info->start_rect.height = 60;
-        sfRectangleShape_setTexture(button.rect_turretfour, info->nuke_logo, 0);
+        i->start_rect.left = 75;
+        i->start_rect.top = 250;
+        i->start_rect.width = 60;
+        i->start_rect.height = 60;
+        sfRectangleShape_setTexture(but.rect_turretfour, i->nuke_logo, 0);
     }
 }
