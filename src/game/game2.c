@@ -9,7 +9,7 @@
 
 void init_value(info_t *info)
 {
-    info->view = 3;
+    info->view = 0;
     info->initial_parallax.x = 800;
     info->castle_position.x = 635;
     info->castle_position.y = 410;

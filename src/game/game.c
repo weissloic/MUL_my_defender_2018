@@ -57,7 +57,6 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     set_textures(info, scene);
     sfMusic_setLoop(info->main_music, sfTrue);
     sfMusic_play(info->main_music);
-    my_loading_screen(info, scene);
 
     while (sfRenderWindow_isOpen(info->window)) {
         while (sfRenderWindow_pollEvent(info->window, &info->event)) {
