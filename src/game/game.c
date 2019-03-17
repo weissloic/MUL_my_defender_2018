@@ -9,22 +9,22 @@
 
 void my_view_two(info_t *info, scene_t *scene)
 {
-            sfMusic_play(info->main_music);
-            sfRenderWindow_drawSprite(info->window, scene[2].background, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[2].button[0].rect_turretone, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[2].button[1].rect_turrettwo, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[2].button[2].rect_turretthree, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[2].button[3].rect_turretfour, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[2].button[4].rect_gobackgame, NULL);
-            sfRenderWindow_drawSprite(info->window, info->shopmenu, NULL);
-            sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
-            sfRenderWindow_drawSprite(info->window, info->shophouse, NULL);
-            sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_1, NULL);
-            sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_2, NULL);
-            sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_3, NULL);
-            sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_4, NULL);
-            sfRenderWindow_drawText(info->window, info->turret_one, NULL);
-            sfRenderWindow_drawText(info->window, info->turret_two, NULL);
+    sfMusic_play(info->main_music);
+    sfRenderWindow_drawSprite(info->window, scene[2].background, NULL);
+    sfRenderWindow_drawRectangleShape(info->window, scene[2].button[0].rect_turretone, NULL);
+    sfRenderWindow_drawRectangleShape(info->window, scene[2].button[1].rect_turrettwo, NULL);
+    sfRenderWindow_drawRectangleShape(info->window, scene[2].button[2].rect_turretthree, NULL);
+    sfRenderWindow_drawRectangleShape(info->window, scene[2].button[3].rect_turretfour, NULL);
+    sfRenderWindow_drawRectangleShape(info->window, scene[2].button[4].rect_gobackgame, NULL);
+    sfRenderWindow_drawSprite(info->window, info->shopmenu, NULL);
+    sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
+    sfRenderWindow_drawSprite(info->window, info->shophouse, NULL);
+    sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_1, NULL);
+    sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_2, NULL);
+    sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_3, NULL);
+    sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_4, NULL);
+    sfRenderWindow_drawText(info->window, info->turret_one, NULL);
+    sfRenderWindow_drawText(info->window, info->turret_two, NULL);
             sfRenderWindow_drawText(info->window, info->turret_three, NULL);
             sfRenderWindow_drawText(info->window, info->nuke_price, NULL);
             print_score(info);

@@ -15,7 +15,6 @@ void check_mouse_upgrademenu(button_t button, sfVector2i mouse_pos, info_t *info
         mouse_pos.x <= button_pos.x + 80 &&
         mouse_pos.y >= button_pos.y &&
         mouse_pos.y <= button_pos.y + 80) {
-
         info->start_rect.left = 520;
         info->start_rect.top = 165;
         info->start_rect.width = 60;
@@ -63,7 +62,6 @@ void func3_create_turrettwo(info_t *info, scene_t *scene)
     sfSprite_setPosition(scene[1].turretthree, info->register_posthreetthree);
     sfRenderWindow_drawSprite(info->window, scene[1].turretthree, NULL);
 }
-
 
 void my_loading_screen(info_t *info, scene_t *scene)
 {

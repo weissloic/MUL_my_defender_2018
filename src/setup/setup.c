@@ -36,13 +36,13 @@ void set_textures(info_t *info, scene_t *scene)
     sfSprite_setTexture(scene[0].background_mainmenu, info->menu_bg, sfFalse);
     sfSprite_setTexture(scene[1].turretone, info->simple_turret, sfFalse);
     sfSprite_setTexture(scene[1].turrettwo, info->double_turret, sfFalse);
-    sfSprite_setTexture(scene[1].turretthree, info->wall_textureresize, sfFalse);
+    sfSprite_setTexture(scene[1].turretthree,
+    info->wall_textureresize, sfFalse);
     sfSprite_setTexture(scene[1].background, info->game_bg, sfFalse);
     sfSprite_setTextureRect(scene[1].monster, info->zombie_rect);
     sfSprite_setTexture(scene[1].monster, info->zombie, sfFalse);
     sfSprite_setTexture(scene[2].background, info->game_bg, sfFalse);
     set_texturestwo(info, scene);
-
 }
 
 void init_full_scene(scene_t *scene, info_t *info)
@@ -67,9 +67,7 @@ void malloc_scene(info_t *info, scene_t *scene)
 
 scene_t *init_scenes(info_t *info)
 {
-
     scene_t *scene = malloc(sizeof(scene_t) * 5);
-
 
     malloc_scene(info, scene);
     init_full_scene(scene, info);
@@ -77,8 +75,5 @@ scene_t *init_scenes(info_t *info)
     setup_scene_1_buttons(scene, info);
     setup_scene_2_buttons(scene, info);
     setup_scene_4_buttons(scene, info);
-
-    //init_buttontower(&scene[1].button[1], pos, size, info);
-    //scene[1].button[1].callback = &move_towerbutton;
     return(scene);
 }

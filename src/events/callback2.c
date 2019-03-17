@@ -17,7 +17,6 @@ void exit_turret_menu(info_t *info)
     info->menu_turret = 0;
 }
 
-
 void fill_map_t_one(info_t *info)
 {
     info->fill_turret = 1;

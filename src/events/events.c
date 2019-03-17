@@ -28,9 +28,11 @@ void init_full_button(info_t *info, scene_t *scene, sfVector2i mouse_pos)
 
 void init_pause(info_t *info)
 {
-    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue && info->view == 4 && info->switch_scene == 1)
+    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue 
+    && info->view == 4 && info->switch_scene == 1)
         info->view = 1;
-    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue && info->view == 1 && info->switch_scene != 1)
+    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue 
+    && info->view == 1 && info->switch_scene != 1)
         info->view = 4;
 }
 
@@ -39,7 +41,8 @@ void but_detect(info_t *info, scene_t *scene, sfVector2i mouse_pos)
     if (info->view == 0) {
         check_mouse_hovering(scene[info->view].button[0], mouse_pos, info);
         check_mouse_hoveringtwo(scene[info->view].button[1], mouse_pos, info);
-        check_mouse_hoveringthree(scene[info->view].button[2], mouse_pos, info);
+        check_mouse_hoveringthree(scene[info->view].button[2],
+        mouse_pos, info);
         check_mouse_hoveringfour(scene[info->view].button[3], mouse_pos, info);
     }
 }
@@ -52,7 +55,6 @@ void print_full(info_t *info, scene_t *scene, sfVector2i mouse_pos, button_t *bu
         }
         else if (info->view == 0)
             print_menu(info, scene, button, mouse_pos);
-
         if (info->view == 2)
             print_shop_menu(info, scene, button, mouse_pos);
         else if (info->view == 4)
@@ -68,7 +70,6 @@ void analyse_events(info_t *info, scene_t *scene, button_t *button)
     init_full_button(info, scene, mouse_pos);
     if (info->event.type == sfEvtClosed)
         sfRenderWindow_close(info->window);
-
     init_pause(info);
     if (info->event.type == sfEvtMouseButtonPressed && info->view != 3) {
         print_full(info, scene, mouse_pos, button);
