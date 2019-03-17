@@ -7,7 +7,8 @@
 
 #include "../../include/runner.h"
 
-void check_mouse_upgrademenu(button_t button, sfVector2i mouse_pos, info_t *info)
+void check_mouse_upgrademenu(button_t button, sfVector2i mouse_pos,
+info_t *info)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_pause);
 
@@ -15,12 +16,7 @@ void check_mouse_upgrademenu(button_t button, sfVector2i mouse_pos, info_t *info
         mouse_pos.x <= button_pos.x + 80 &&
         mouse_pos.y >= button_pos.y &&
         mouse_pos.y <= button_pos.y + 80) {
-        info->start_rect.left = 520;
-        info->start_rect.top = 165;
-        info->start_rect.width = 60;
-        info->start_rect.height = 60;
-        sfRectangleShape_setTextureRect(button.rect_pause, info->start_rect);
-        sfRectangleShape_setTexture(button.rect_pause, info->second_button_hover, 0);
+        muse_two(button, mouse_pos, info);
     }
     else {
         info->start_rect.left = 520;
@@ -28,7 +24,8 @@ void check_mouse_upgrademenu(button_t button, sfVector2i mouse_pos, info_t *info
         info->start_rect.width = 60;
         info->start_rect.height = 60;
         sfRectangleShape_setTextureRect(button.rect_pause, info->start_rect);
-        sfRectangleShape_setTexture(button.rect_pause, info->second_button_normal, 0);
+        sfRectangleShape_setTexture(button.rect_pause,
+        info->second_button_normal, 0);
     }
 }
 
@@ -73,7 +70,8 @@ void my_loading_screen(info_t *info, scene_t *scene)
             my_strcat(str, test);
             my_strcat(str, png);
             info->loadingscreen_bg = sfTexture_createFromFile(str, NULL);
-            sfSprite_setTexture(scene[3].background, info->loadingscreen_bg, sfFalse);
+            sfSprite_setTexture(scene[3].background,
+            info->loadingscreen_bg, sfFalse);
             sfRenderWindow_drawSprite(info->window, scene[3].background, NULL);
             sfRenderWindow_display(info->window);
             if (i != 179)

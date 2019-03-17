@@ -9,7 +9,8 @@
 
 int button_buy_wall(button_t button, sfVector2i click_position)
 {
-    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretthree);
+    sfVector2f button_pos;
+    button_pos = sfRectangleShape_getPosition(button.rect_turretthree);
 
     if (click_position.x >= button_pos.x &&
         click_position.x <= button_pos.x + 200 &&
@@ -22,7 +23,8 @@ int button_buy_wall(button_t button, sfVector2i click_position)
 
 int button_buy_turretfour(button_t button, sfVector2i click_position)
 {
-    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretfour);
+    sfVector2f button_pos;
+    button_pos = sfRectangleShape_getPosition(button.rect_turretfour);
 
     if (click_position.x >= button_pos.x &&
         click_position.x <= button_pos.x + 200 &&

@@ -7,15 +7,8 @@
 
 #include "../../include/runner.h"
 
-void my_view_two(info_t *info, scene_t *scene)
+void draw_two(info_t *info, scene_t *scene)
 {
-    sfMusic_play(info->main_music);
-    sfRenderWindow_drawSprite(info->window, scene[2].background, NULL);
-    sfRenderWindow_drawRectangleShape(info->window, scene[2].button[0].rect_turretone, NULL);
-    sfRenderWindow_drawRectangleShape(info->window, scene[2].button[1].rect_turrettwo, NULL);
-    sfRenderWindow_drawRectangleShape(info->window, scene[2].button[2].rect_turretthree, NULL);
-    sfRenderWindow_drawRectangleShape(info->window, scene[2].button[3].rect_turretfour, NULL);
-    sfRenderWindow_drawRectangleShape(info->window, scene[2].button[4].rect_gobackgame, NULL);
     sfRenderWindow_drawSprite(info->window, info->shopmenu, NULL);
     sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
     sfRenderWindow_drawSprite(info->window, info->shophouse, NULL);
@@ -25,20 +18,22 @@ void my_view_two(info_t *info, scene_t *scene)
     sfRenderWindow_drawSprite(info->window, info->sign_price_sprite_4, NULL);
     sfRenderWindow_drawText(info->window, info->turret_one, NULL);
     sfRenderWindow_drawText(info->window, info->turret_two, NULL);
-            sfRenderWindow_drawText(info->window, info->turret_three, NULL);
-            sfRenderWindow_drawText(info->window, info->nuke_price, NULL);
-            print_score(info);
+    sfRenderWindow_drawText(info->window, info->turret_three, NULL);
+    sfRenderWindow_drawText(info->window, info->nuke_price, NULL);
 }
 
 void my_view_four(info_t *info, scene_t *scene)
 {
-            info->switch_scene = 1;
-            sfMusic_play(info->main_music);
-            sfRenderWindow_drawSprite(info->window, scene[4].background, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[4].button[0].rect_pausresume, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[4].button[1].rect_pausbackmenu, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[4].button[2].rect_pausupsound, NULL);
-            sfRenderWindow_drawSprite(info->window, info->pause_sprite, NULL);
+    info->switch_scene = 1;
+    sfMusic_play(info->main_music);
+    sfRenderWindow_drawSprite(info->window, scene[4].background, NULL);
+    sfRenderWindow_drawRectangleShape(info->window,
+    scene[4].button[0].rect_pausresume, NULL);
+    sfRenderWindow_drawRectangleShape(info->window,
+    scene[4].button[1].rect_pausbackmenu, NULL);
+    sfRenderWindow_drawRectangleShape(info->window,
+    scene[4].button[2].rect_pausupsound, NULL);
+    sfRenderWindow_drawSprite(info->window, info->pause_sprite, NULL);
 }
 
 void my_diff_view(info_t *info, scene_t *scene)
@@ -62,7 +57,7 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     set_textures(info, scene);
     sfMusic_setLoop(info->main_music, sfTrue);
     sfMusic_play(info->main_music);
-    //my_loading_screen(info, scene);
+    my_loading_screen(info, scene);
 
     while (sfRenderWindow_isOpen(info->window)) {
         while (sfRenderWindow_pollEvent(info->window, &info->event)) {

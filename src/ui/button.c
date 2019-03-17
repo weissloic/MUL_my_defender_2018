@@ -7,15 +7,18 @@
 
 #include "../../include/runner.h"
 
-void init_buttonupgrade(button_t *button, sfVector2f position, sfVector2f size, info_t *info)
+void init_buttonupgrade(button_t *button, sfVector2f position,
+sfVector2f size, info_t *info)
 {
     button->rect_pause = sfRectangleShape_create();
     sfRectangleShape_setPosition(button->rect_pause, position);
     sfRectangleShape_setSize(button->rect_pause, size);
-    sfRectangleShape_setTexture(button->rect_pause, info->second_button_normal, 0);
+    sfRectangleShape_setTexture(button->rect_pause,
+    info->second_button_normal, 0);
 }
 
-void init_buttontower(button_t *button, sfVector2f position, sfVector2f size, info_t *info)
+void init_buttontower(button_t *button, sfVector2f position,
+sfVector2f size, info_t *info)
 {
     button->rect = sfRectangleShape_create();
     sfRectangleShape_setPosition(button->rect, position);

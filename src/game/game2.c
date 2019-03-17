@@ -9,7 +9,7 @@
 
 void init_value(info_t *info)
 {
-    info->view = 0;
+    info->view = 3;
     info->initial_parallax.x = 800;
     info->castle_position.x = 635;
     info->castle_position.y = 410;
@@ -59,7 +59,6 @@ void init_valuethree(info_t *info)
 {
     init_value(info);
     init_valuetwo(info);
-    
     info->money_pos.x = 155;
     info->money_pos.y = 510;
     info->shophouse_pos.x = 625;
@@ -80,30 +79,37 @@ void my_view_one(info_t *info, scene_t *scene)
 {
     info->switch_scene = 0;
     analyse_time(info);
-            move_monster_time(info, scene);
-            sfRenderWindow_drawSprite(info->window, scene[1].background, NULL);
-            sfRenderWindow_drawSprite(info->window, scene[1].monster, NULL);
-            sfRenderWindow_drawSprite(info->window, info->shopmenu, NULL);
-            sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
-            sfRenderWindow_drawSprite(info->window, info->castle_sprite, NULL);
-            if (info->tmp == 1)
-                sfRenderWindow_drawSprite(info->window, info->explosion, NULL);
-            my_inventory(info, scene);
-            pos_inventory(info, scene);
-            sfRectangleShape_setPosition(scene[1].button[0].rect_pause, info->pos_menu);
-            sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[1].button[1].rect_shop, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[1].button[2].rect_putinpause, NULL);
-            print_score(info);
+    move_monster_time(info, scene);
+    sfRenderWindow_drawSprite(info->window, scene[1].background, NULL);
+    sfRenderWindow_drawSprite(info->window, scene[1].monster, NULL);
+    sfRenderWindow_drawSprite(info->window, info->shopmenu, NULL);
+    sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
+    sfRenderWindow_drawSprite(info->window, info->castle_sprite, NULL);
+    if (info->tmp == 1)
+        sfRenderWindow_drawSprite(info->window, info->explosion, NULL);
+    my_inventory(info, scene);
+    pos_inventory(info, scene);
+    sfRectangleShape_setPosition(scene[1].button[0].rect_pause, info->pos_menu);
+    sfRenderWindow_drawRectangleShape(info->window,
+    scene[1].button[0].rect_pause, NULL);
+    sfRenderWindow_drawRectangleShape(info->window,
+    scene[1].button[1].rect_shop, NULL);
+    sfRenderWindow_drawRectangleShape(info->window,
+    scene[1].button[2].rect_putinpause, NULL);
+    print_score(info);
 }
 
 void my_view_null(info_t *info, scene_t *scene)
 {
-            parallax_main_menu(info, scene);
-            sfRenderWindow_drawSprite(info->window, scene[0].background, NULL);
-            sfRenderWindow_drawSprite(info->window, scene[0].background_mainmenu, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[0].button[0].rect, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[0].button[1].rect_two, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[0].button[2].rect_three, NULL);
-            sfRenderWindow_drawRectangleShape(info->window, scene[0].button[3].rect_four, NULL);
+    parallax_main_menu(info, scene);
+    sfRenderWindow_drawSprite(info->window, scene[0].background, NULL);
+    sfRenderWindow_drawSprite(info->window, scene[0].background_mainmenu, NULL);
+    sfRenderWindow_drawRectangleShape(info->window,
+    scene[0].button[0].rect, NULL);
+    sfRenderWindow_drawRectangleShape(info->window,
+    scene[0].button[1].rect_two, NULL);
+    sfRenderWindow_drawRectangleShape(info->window,
+    scene[0].button[2].rect_three, NULL);
+    sfRenderWindow_drawRectangleShape(info->window,
+    scene[0].button[3].rect_four, NULL);
 }

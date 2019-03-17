@@ -13,10 +13,14 @@ void my_inventory(info_t *info, scene_t *scene)
         scene[1].button[0].callback = &exit_turret_menu;
         info->pos_menu.x = 700;
         info->pos_menu.y = 520;
-        sfRenderWindow_drawRectangleShape(info->window, scene[1].button[3].rect_turretone, NULL);
-        sfRenderWindow_drawRectangleShape(info->window, scene[1].button[4].rect_turrettwo, NULL);
-        sfRenderWindow_drawRectangleShape(info->window, scene[1].button[5].rect_turretthree, NULL);
-        sfRenderWindow_drawRectangleShape(info->window, scene[1].button[6].rect_turretfour, NULL);
+        sfRenderWindow_drawRectangleShape(info->window,
+        scene[1].button[3].rect_turretone, NULL);
+        sfRenderWindow_drawRectangleShape(info->window,
+        scene[1].button[4].rect_turrettwo, NULL);
+        sfRenderWindow_drawRectangleShape(info->window,
+        scene[1].button[5].rect_turretthree, NULL);
+        sfRenderWindow_drawRectangleShape(info->window,
+        scene[1].button[6].rect_turretfour, NULL);
     }
     else {
         scene[1].button[0].callback = &coupe_decale;

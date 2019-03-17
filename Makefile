@@ -36,6 +36,7 @@ SRC = src/game/game.c \
 	  src/game/pause2.c \
 	  src/game/pause3.c \
 	  src/ui/menu.c \
+	  src/ui/menu2.c \
 	  src/ui/shop.c \
 	  src/ui/shop2.c \
 	  src/ui/shop3.c \

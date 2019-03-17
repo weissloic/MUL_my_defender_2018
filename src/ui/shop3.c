@@ -7,12 +7,14 @@
 
 #include "../../include/runner.h"
 
-void init_button_gobackgame(button_t *button, sfVector2f position, sfVector2f size, info_t *info)
+void init_button_gobackgame(button_t *button, sfVector2f position,
+sfVector2f size, info_t *info)
 {
     button->rect_gobackgame = sfRectangleShape_create();
     sfRectangleShape_setPosition(button->rect_gobackgame, position);
     sfRectangleShape_setSize(button->rect_gobackgame, size);
-    sfRectangleShape_setTexture(button->rect_gobackgame, info->button_normal, 0);
+    sfRectangleShape_setTexture(button->rect_gobackgame,
+    info->button_normal, 0);
 }
 
 int button_is_clickedshop(button_t button, sfVector2i click_position)
@@ -56,7 +58,8 @@ int button_buy_turrettwo(button_t button, sfVector2i click_position)
 
 int button_backtogame(button_t button, sfVector2i click_position)
 {
-    sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_gobackgame);
+    sfVector2f button_pos;
+    button_pos = sfRectangleShape_getPosition(button.rect_gobackgame);
 
     if (click_position.x >= button_pos.x &&
         click_position.x <= button_pos.x + 70 &&
