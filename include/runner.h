@@ -269,5 +269,21 @@ void check_mouse_backmenu(button_t, sfVector2i, info_t *);
 void check_mouse_resume(button_t, sfVector2i, info_t *);
 void setup_texturestwo(info_t *);
 void set_texturestwo(info_t *, scene_t *);
+void func2_create_turret(info_t *, scene_t *);
+void func2_create_turrettwo(info_t *, scene_t *);
+void func3_create_turret(info_t *, scene_t *);
+void func3_create_turrettwo(info_t *, scene_t *);
+void my_view_one(info_t *, scene_t *);
+void my_view_null(info_t *, scene_t *);
+void init_valuethree(info_t *info);
+void init_valuetwo(info_t *info);
+void init_value(info_t *info);
+void my_inventory(info_t *info, scene_t *scene);
+void pos_inventory(info_t *info, scene_t *scene);
+void pos_inventorytwo(info_t *info, scene_t *scene);
+void positionning_turrettwo(info_t *info, sfVector2i mouse_pos);
+void positionning_turretthree(info_t *info, sfVector2i mouse_pos);
+void print_shop_menutwo(info_t *, scene_t *, button_t *button, sfVector2i);
+void delete_turrettwo(info_t *info, sfVector2i mouse_pos);
 
 #endif
