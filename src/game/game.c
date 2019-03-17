@@ -38,14 +38,14 @@ void my_view_four(info_t *info, scene_t *scene)
 
 void my_diff_view(info_t *info, scene_t *scene)
 {
-        if (info->view == 1)
-            my_view_one(info, scene);
-        if (info->view == 0)
-            my_view_null(info, scene);
-        if (info->view == 2)
-            my_view_two(info, scene);
-        if (info->view == 4)
-            my_view_four(info, scene);
+    if (info->view == 1)
+        my_view_one(info, scene);
+    if (info->view == 0)
+        my_view_null(info, scene);
+    if (info->view == 2)
+        my_view_two(info, scene);
+    if (info->view == 4)
+        my_view_four(info, scene);
 }
 
 void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
