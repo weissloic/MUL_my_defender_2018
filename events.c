@@ -7,60 +7,94 @@
 
 #include "include/runner.h"
 
-void analyse_events(info_t *info, scene_t *scene, button_t *button)
+void init_full_button(info_t *info, scene_t *scene, sfVector2i mouse_pos)
 {
-    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(info->window);
-
-    if (info->view == 0) {
-        check_mouse_hovering(scene[info->view].button[0], mouse_pos, info);
-        check_mouse_hoveringtwo(scene[info->view].button[1], mouse_pos, info);
-        check_mouse_hoveringthree(scene[info->view].button[2], mouse_pos, info);
-        check_mouse_hoveringfour(scene[info->view].button[3], mouse_pos, info);
-    }
     check_mouse_upgrademenu(scene[1].button[0], mouse_pos, info);
     check_mouse_shopmenu(scene[1].button[1], mouse_pos, info);
     check_mouse_nukebutton(scene[2].button[3], mouse_pos, info);
     check_mouse_turretone(scene[2].button[0], mouse_pos, info);
     check_mouse_turrettwo(scene[2].button[1], mouse_pos, info);
     check_mouse_wall(scene[2].button[2], mouse_pos, info);
-
     check_mouse_nukebutton(scene[1].button[6], mouse_pos, info);
     check_mouse_turretone(scene[1].button[3], mouse_pos, info);
     check_mouse_turrettwo(scene[1].button[4], mouse_pos, info);
     check_mouse_wall(scene[1].button[5], mouse_pos, info);
-
     check_mouse_pause(scene[1].button[2], mouse_pos, info);
     check_gobacktogame(scene[2].button[4], mouse_pos, info);
     check_mouse_resume(scene[4].button[0], mouse_pos, info);
     check_mouse_backmenu(scene[4].button[1], mouse_pos, info);
     check_mouse_exitgame(scene[4].button[2], mouse_pos, info);
+}
 
-    if (info->event.type == sfEvtClosed)
-        sfRenderWindow_close(info->window);
-
-    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue && info->view == 4 && info->switch_scene == 1) {
+void init_pause(info_t *info)
+{
+    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue && info->view == 4 && info->switch_scene == 1)
         info->view = 1;
-        printf("%d", info->view);
-    }
-    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue && info->view == 1 && info->switch_scene != 1) {
+    if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue && info->view == 1 && info->switch_scene != 1)
         info->view = 4;
-        printf("%d", info->view);
+}
+
+void but_detect(info_t *info, scene_t *scene, sfVector2i mouse_pos)
+{
+    if (info->view == 0) {
+        check_mouse_hovering(scene[info->view].button[0], mouse_pos, info);
+        check_mouse_hoveringtwo(scene[info->view].button[1], mouse_pos, info);
+        check_mouse_hoveringthree(scene[info->view].button[2], mouse_pos, info);
+        check_mouse_hoveringfour(scene[info->view].button[3], mouse_pos, info);
     }
-    if (info->event.type == sfEvtMouseButtonPressed && info->view != 3) {
+}
+
+void print_full(info_t *info, scene_t *scene, sfVector2i mouse_pos, button_t *button)
+{
         if (info->view == 1) {
             print_game(info, scene, button, mouse_pos);
             info->tmp = 1;
         }
-        else if (info->view == 0) {
+        else if (info->view == 0)
             print_menu(info, scene, button, mouse_pos);
-        }
-        if (info->view == 2) {
+
+        if (info->view == 2)
             print_shop_menu(info, scene, button, mouse_pos);
-        }
-        else if (info->view == 4) {
+        else if (info->view == 4)
             print_pause_menu(info, scene, button, mouse_pos);
-        }
+}
+
+void analyse_events(info_t *info, scene_t *scene, button_t *button)
+{
+    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(info->window);
+
+    but_detect(info, scene, mouse_pos);
+
+    init_full_button(info, scene, mouse_pos);
+    if (info->event.type == sfEvtClosed)
+        sfRenderWindow_close(info->window);
+
+    init_pause(info);
+    if (info->event.type == sfEvtMouseButtonPressed && info->view != 3) {
+        print_full(info, scene, mouse_pos, button);
     }
+}
+
+void print_gametwo(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos)
+{
+            if (button_buy_turretone(scene[1].button[3], mouse_pos))
+                scene[1].button[3].callback(info);
+            if (button_buy_turrettwo(scene[1].button[4], mouse_pos))
+                scene[1].button[4].callback(info);
+            if (button_buy_wall(scene[1].button[5], mouse_pos))
+                scene[1].button[5].callback(info);
+            if (button_buy_turretfour(scene[1].button[6], mouse_pos))
+                scene[1].button[6].callback(info);
+}
+
+void print_gamethree(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos)
+{
+            if (info->get_turret == 1)
+                positionning_turret(info, mouse_pos);
+            if (info->get_turrettwo == 1)
+                positionning_turrettwo(info, mouse_pos);
+            if (info->get_turretthree == 1)
+                positionning_turretthree(info, mouse_pos);
 }
 
 void print_game(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos)
@@ -71,22 +105,9 @@ void print_game(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse
                 scene[1].button[1].callback(info);
             if (put_in_pausegame(scene[1].button[2], mouse_pos))
                 scene[1].button[2].callback(info);
+            print_gametwo(info, scene, button, mouse_pos);
+            print_gamethree(info, scene, button, mouse_pos);
 
-            if (button_buy_turretone(scene[1].button[3], mouse_pos))
-                scene[1].button[3].callback(info);
-            if (button_buy_turrettwo(scene[1].button[4], mouse_pos))
-                scene[1].button[4].callback(info);
-            if (button_buy_wall(scene[1].button[5], mouse_pos))
-                scene[1].button[5].callback(info);
-            if (button_buy_turretfour(scene[1].button[6], mouse_pos))
-                scene[1].button[6].callback(info);
-
-            if (info->get_turret == 1)
-                positionning_turret(info, mouse_pos);
-            if (info->get_turrettwo == 1)
-                positionning_turrettwo(info, mouse_pos);
-            if (info->get_turretthree == 1)
-                positionning_turretthree(info, mouse_pos);
 }
 
 void print_menu(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos)
@@ -121,11 +142,16 @@ void print_shop_menu(info_t *info, scene_t *scene, button_t *button, sfVector2i 
                 scene[2].button[2].callback(info);
             if (button_buy_turretfour(scene[2].button[3], mouse_pos))
                 scene[2].button[3].callback(info);
+            print_shop_menutwo(info, scene, button, mouse_pos);
+}
+
+void print_shop_menutwo(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos)
+{
             if (button_backtogame(scene[2].button[4], mouse_pos))
                 scene[2].button[4].callback(info);
 }
 
-void positionning_turret(info_t *info, sfVector2i mouse_pos)
+void delete_turretone(info_t *info, sfVector2i mouse_pos)
 {
     if (info->counter_turretone == 4)
         info->counter_turretone--;
@@ -147,11 +173,16 @@ void positionning_turret(info_t *info, sfVector2i mouse_pos)
         info->fill_turret = 1;
         info->counter_turretone = 0;
     }
+}
+
+void positionning_turret(info_t *info, sfVector2i mouse_pos)
+{
+    delete_turretone(info, mouse_pos);
     if (info->counter_turretone == 0)
         info->get_turret = 0;
 }
 
-void positionning_turrettwo(info_t *info, sfVector2i mouse_pos)
+void delete_turrettwo(info_t *info, sfVector2i mouse_pos)
 {
     if (info->counter_turrettwo == 4)
         info->counter_turrettwo--;
@@ -173,11 +204,16 @@ void positionning_turrettwo(info_t *info, sfVector2i mouse_pos)
         info->fill_turrettwo = 1;
         info->counter_turrettwo = 0;
     }
+}
+
+void positionning_turrettwo(info_t *info, sfVector2i mouse_pos)
+{
+    delete_turrettwo(info, mouse_pos);
     if (info->counter_turrettwo == 0)
         info->get_turrettwo = 0;
 }
 
-void positionning_turretthree(info_t *info, sfVector2i mouse_pos)
+void delete_turrethree(info_t *info, sfVector2i mouse_pos)
 {
     if (info->counter_turretthree == 4)
         info->counter_turretthree--;
@@ -199,6 +235,11 @@ void positionning_turretthree(info_t *info, sfVector2i mouse_pos)
         info->fill_turretthree = 1;
         info->counter_turretthree = 0;
     }
+}
+
+void positionning_turretthree(info_t *info, sfVector2i mouse_pos)
+{
+    delete_turrethree(info, mouse_pos);
     if (info->counter_turretthree == 0)
         info->get_turretthree = 0;
 }
@@ -231,7 +272,6 @@ void check_mouse_shopmenu(button_t button, sfVector2i mouse_pos, info_t *info)
 void check_mouse_nukebutton(button_t button, sfVector2i mouse_pos, info_t *info)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretfour);
-
     if (mouse_pos.x >= button_pos.x &&
         mouse_pos.x <= button_pos.x + 200 &&
         mouse_pos.y >= button_pos.y &&
@@ -240,7 +280,6 @@ void check_mouse_nukebutton(button_t button, sfVector2i mouse_pos, info_t *info)
         info->start_rect.top = 250;
         info->start_rect.width = 60;
         info->start_rect.height = 60;
-        //sfRectangleShape_setTextureRect(button.rect_turretfour, info->start_rect);
         sfRectangleShape_setTexture(button.rect_turretfour, info->nuke_logo, 0);
     }
     else {
@@ -248,7 +287,6 @@ void check_mouse_nukebutton(button_t button, sfVector2i mouse_pos, info_t *info)
         info->start_rect.top = 250;
         info->start_rect.width = 60;
         info->start_rect.height = 60;
-        //sfRectangleShape_setTextureRect(button.rect_turretfour, info->start_rect);
         sfRectangleShape_setTexture(button.rect_turretfour, info->nuke_logo, 0);
     }
 }
@@ -256,7 +294,6 @@ void check_mouse_nukebutton(button_t button, sfVector2i mouse_pos, info_t *info)
 void check_mouse_turretone(button_t button, sfVector2i mouse_pos, info_t *info)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretone);
-
     if (mouse_pos.x >= button_pos.x &&
         mouse_pos.x <= button_pos.x + 200 &&
         mouse_pos.y >= button_pos.y &&
@@ -265,7 +302,6 @@ void check_mouse_turretone(button_t button, sfVector2i mouse_pos, info_t *info)
         info->start_rect.top = 250;
         info->start_rect.width = 60;
         info->start_rect.height = 60;
-        //sfRectangleShape_setTextureRect(button.rect_turretfour, info->start_rect);
         sfRectangleShape_setTexture(button.rect_turretone, info->turret_one_logo, 0);
     }
     else {
@@ -273,7 +309,6 @@ void check_mouse_turretone(button_t button, sfVector2i mouse_pos, info_t *info)
         info->start_rect.top = 250;
         info->start_rect.width = 60;
         info->start_rect.height = 60;
-        //sfRectangleShape_setTextureRect(button.rect_turretfour, info->start_rect);
         sfRectangleShape_setTexture(button.rect_turretone, info->turret_one_logo, 0);
     }
 }
@@ -281,7 +316,6 @@ void check_mouse_turretone(button_t button, sfVector2i mouse_pos, info_t *info)
 void check_mouse_turrettwo(button_t button, sfVector2i mouse_pos, info_t *info)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turrettwo);
-
     if (mouse_pos.x >= button_pos.x &&
         mouse_pos.x <= button_pos.x + 200 &&
         mouse_pos.y >= button_pos.y &&
@@ -304,7 +338,6 @@ void check_mouse_turrettwo(button_t button, sfVector2i mouse_pos, info_t *info)
 void check_mouse_wall(button_t button, sfVector2i mouse_pos, info_t *info)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_turretthree);
-
     if (mouse_pos.x >= button_pos.x &&
         mouse_pos.x <= button_pos.x + 200 &&
         mouse_pos.y >= button_pos.y &&

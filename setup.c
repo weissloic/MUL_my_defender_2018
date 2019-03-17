@@ -7,26 +7,8 @@
 
 #include "include/runner.h"
 
-void setup_textures(info_t *info)
+void setup_texturestwo(info_t *info)
 {
-    info->menu_bg = sfTexture_createFromFile("ressources/back.png", NULL);
-    info->game_bg = sfTexture_createFromFile("ressources/Grass1.png", NULL);
-    info->zombie = sfTexture_createFromFile("ressources/zombie.png", NULL);
-    info->button_normal = sfTexture_createFromFile("ressources/button2.png", NULL);
-    info->button_hover = sfTexture_createFromFile("ressources/button3.png", NULL);
-    info->second_button_normal = sfTexture_createFromFile("ressources/button1.png", NULL);
-    info->second_button_hover = sfTexture_createFromFile("ressources/button4.png", NULL);
-    info->simple_turret = sfTexture_createFromFile("ressources/simpleturret.png", NULL);
-    info->double_turret = sfTexture_createFromFile("ressources/doubleturret.png", NULL);
-    info->menu_shop = sfTexture_createFromFile("ressources/menu_shop.png", NULL);
-    info->pause_texture = sfTexture_createFromFile("ressources/pause.png", NULL);
-    info->dollar_texture = sfTexture_createFromFile("ressources/dollar.png", NULL);
-    info->shop_house = sfTexture_createFromFile("ressources/shop_house.png", NULL);
-    info->nuke_logo = sfTexture_createFromFile("ressources/logonuclear.png", NULL);
-    info->turret_one_logo = sfTexture_createFromFile("ressources/simpleturret.png", NULL);
-    info->turret_two_logo = sfTexture_createFromFile("ressources/doubleturret.png", NULL);
-    info->castle_texture = sfTexture_createFromFile("ressources/castle.png", NULL);
-    info->wall_texture = sfTexture_createFromFile("ressources/wall.png", NULL);
     info->wall_textureresize = sfTexture_createFromFile("ressources/wallresize.png", NULL);
     info->sign_price_texture = sfTexture_createFromFile("ressources/sign_price.png", NULL);
     info->nuke_explosion = sfTexture_createFromFile("ressources/nuclearsprite.png", NULL);
@@ -49,17 +31,31 @@ void setup_textures(info_t *info)
     create_music(info);
 }
 
-void set_textures(info_t *info, scene_t *scene)
+void setup_textures(info_t *info)
 {
-    sfSprite_setTexture(scene[0].background, info->menu_bg, sfFalse);
-    sfSprite_setTexture(scene[0].background_mainmenu, info->menu_bg, sfFalse);
-    sfSprite_setTexture(scene[1].turretone, info->simple_turret, sfFalse);
-    sfSprite_setTexture(scene[1].turrettwo, info->double_turret, sfFalse);
-    sfSprite_setTexture(scene[1].turretthree, info->wall_textureresize, sfFalse);
-    sfSprite_setTexture(scene[1].background, info->game_bg, sfFalse);
-    sfSprite_setTextureRect(scene[1].monster, info->zombie_rect);
-    sfSprite_setTexture(scene[1].monster, info->zombie, sfFalse);
-    sfSprite_setTexture(scene[2].background, info->game_bg, sfFalse);
+    info->menu_bg = sfTexture_createFromFile("ressources/back.png", NULL);
+    info->game_bg = sfTexture_createFromFile("ressources/Grass1.png", NULL);
+    info->zombie = sfTexture_createFromFile("ressources/zombie.png", NULL);
+    info->button_normal = sfTexture_createFromFile("ressources/button2.png", NULL);
+    info->button_hover = sfTexture_createFromFile("ressources/button3.png", NULL);
+    info->second_button_normal = sfTexture_createFromFile("ressources/button1.png", NULL);
+    info->second_button_hover = sfTexture_createFromFile("ressources/button4.png", NULL);
+    info->simple_turret = sfTexture_createFromFile("ressources/simpleturret.png", NULL);
+    info->double_turret = sfTexture_createFromFile("ressources/doubleturret.png", NULL);
+    info->menu_shop = sfTexture_createFromFile("ressources/menu_shop.png", NULL);
+    info->pause_texture = sfTexture_createFromFile("ressources/pause.png", NULL);
+    info->dollar_texture = sfTexture_createFromFile("ressources/dollar.png", NULL);
+    info->shop_house = sfTexture_createFromFile("ressources/shop_house.png", NULL);
+    info->nuke_logo = sfTexture_createFromFile("ressources/logonuclear.png", NULL);
+    info->turret_one_logo = sfTexture_createFromFile("ressources/simpleturret.png", NULL);
+    info->turret_two_logo = sfTexture_createFromFile("ressources/doubleturret.png", NULL);
+    info->castle_texture = sfTexture_createFromFile("ressources/castle.png", NULL);
+    info->wall_texture = sfTexture_createFromFile("ressources/wall.png", NULL);
+    setup_texturestwo(info);
+}
+
+void set_texturestwo(info_t *info, scene_t *scene)
+{
     sfSprite_setTexture(scene[4].background, info->game_bg, sfFalse);
     sfSprite_setTexture(info->test_image, info->test, sfFalse);
     sfSprite_setTexture(info->sign_price_sprite_1, info->sign_price_texture, sfFalse);
@@ -80,6 +76,21 @@ void set_textures(info_t *info, scene_t *scene)
     sfSprite_setPosition(info->sign_price_sprite_2, info->sign_price_pos2);
     sfSprite_setPosition(info->sign_price_sprite_3, info->sign_price_pos3);
     sfSprite_setPosition(info->sign_price_sprite_4, info->sign_price_pos4);
+}
+
+void set_textures(info_t *info, scene_t *scene)
+{
+    sfSprite_setTexture(scene[0].background, info->menu_bg, sfFalse);
+    sfSprite_setTexture(scene[0].background_mainmenu, info->menu_bg, sfFalse);
+    sfSprite_setTexture(scene[1].turretone, info->simple_turret, sfFalse);
+    sfSprite_setTexture(scene[1].turrettwo, info->double_turret, sfFalse);
+    sfSprite_setTexture(scene[1].turretthree, info->wall_textureresize, sfFalse);
+    sfSprite_setTexture(scene[1].background, info->game_bg, sfFalse);
+    sfSprite_setTextureRect(scene[1].monster, info->zombie_rect);
+    sfSprite_setTexture(scene[1].monster, info->zombie, sfFalse);
+    sfSprite_setTexture(scene[2].background, info->game_bg, sfFalse);
+    set_texturestwo(info, scene);
+
 }
 
 void init_full_scene(scene_t *scene, info_t *info)

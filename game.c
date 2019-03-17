@@ -7,10 +7,8 @@
 
 #include "include/runner.h"
 
-void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
+void init_value(info_t *info)
 {
-    sfVideoMode mode = {800, 600, 32};
-    info->window = sfRenderWindow_create(mode, "jeu", sfResize | sfClose, NULL);
     info->view = 0;
     info->initial_parallax.x = 800;
     info->castle_position.x = 635;
@@ -19,7 +17,6 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->new_pos.y = 35;
     info->counter_turretone = 4;
     info->counter_turretthree = 4;
-
     info->pos_turretone.x = 400;
     info->pos_turretone.y = 300;
     info->pos_turrettwo.x = 400;
@@ -32,23 +29,22 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->register_postwo.y = 900;
     info->register_posthree.x = 900;
     info->register_posthree.y = 900;
+}
 
+void init_valuetwo(info_t *info)
+{
     info->register_posonettwo.x = 900;
     info->register_posonettwo.y = 900;
     info->register_postwottwo.x = 900;
     info->register_postwottwo.y = 900;
     info->register_posthreettwo.x = 900;
     info->register_posthreettwo.y = 900;
-
     info->register_posonetthree.x = 900;
     info->register_posonetthree.y = 900;
     info->register_postwotthree.x = 900;
     info->register_postwotthree.y = 900;
     info->register_posthreetthree.x = 900;
     info->register_posthreetthree.y = 900;
-
-
-
     info->menu_turret = 0;
     info->zombie_rect.left = 0;
     info->zombie_rect.top = 0;
@@ -57,6 +53,13 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->shopmenu_pos.x = 0;
     info->shopmenu_pos.y = 400;
     info->counter_turrettwo = 4;
+}
+
+void init_valuethree(info_t *info)
+{
+    init_value(info);
+    init_valuetwo(info);
+    
     info->money_pos.x = 155;
     info->money_pos.y = 510;
     info->shophouse_pos.x = 625;
@@ -71,44 +74,31 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
     info->sign_price_pos4.y = 370;
     info->tmp = 0;
     info->seconds = sfClock_getElapsedTime(info->clock).SEC;
+}
 
-    sfRenderWindow_setVerticalSyncEnabled(info->window, sfTrue);
-    set_textures(info, scene);
-
-    sfMusic_setLoop(info->main_music, sfTrue);
-    //sfMusic_play(info->main_music);
-    //my_loading_screen(info, scene);
-
-    while (sfRenderWindow_isOpen(info->window)) {
-        while (sfRenderWindow_pollEvent(info->window, &info->event)) {
-            analyse_events(info, scene, button);
-        }
-
-        if (info->view == 1) {
-
-            info->switch_scene = 0;
-            analyse_time(info);
+void my_view_one(info_t *info, scene_t *scene)
+{
+    info->switch_scene = 0;
+    analyse_time(info);
             move_monster_time(info, scene);
             sfRenderWindow_drawSprite(info->window, scene[1].background, NULL);
             sfRenderWindow_drawSprite(info->window, scene[1].monster, NULL);
             sfRenderWindow_drawSprite(info->window, info->shopmenu, NULL);
             sfRenderWindow_drawSprite(info->window, info->dollar, NULL);
             sfRenderWindow_drawSprite(info->window, info->castle_sprite, NULL);
-
             if (info->tmp == 1)
                 sfRenderWindow_drawSprite(info->window, info->explosion, NULL);
-
             my_inventory(info, scene);
-
             pos_inventory(info, scene);
-
             sfRectangleShape_setPosition(scene[1].button[0].rect_pause, info->pos_menu);
             sfRenderWindow_drawRectangleShape(info->window, scene[1].button[0].rect_pause, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[1].button[1].rect_shop, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[1].button[2].rect_putinpause, NULL);
             print_score(info);
-        }
-        if (info->view == 0) {
+}
+
+void my_view_null(info_t *info, scene_t *scene)
+{
             parallax_main_menu(info, scene);
             sfRenderWindow_drawSprite(info->window, scene[0].background, NULL);
             sfRenderWindow_drawSprite(info->window, scene[0].background_mainmenu, NULL);
@@ -116,8 +106,10 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRenderWindow_drawRectangleShape(info->window, scene[0].button[1].rect_two, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[0].button[2].rect_three, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[0].button[3].rect_four, NULL);
-        }
-        if (info->view == 2) {
+}
+
+void my_view_two(info_t *info, scene_t *scene)
+{
             sfMusic_play(info->main_music);
             sfRenderWindow_drawSprite(info->window, scene[2].background, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[2].button[0].rect_turretone, NULL);
@@ -137,8 +129,10 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRenderWindow_drawText(info->window, info->turret_three, NULL);
             sfRenderWindow_drawText(info->window, info->nuke_price, NULL);
             print_score(info);
-        }
-        if (info->view == 4) {
+}
+
+void my_view_four(info_t *info, scene_t *scene)
+{
             info->switch_scene = 1;
             sfMusic_play(info->main_music);
             sfRenderWindow_drawSprite(info->window, scene[4].background, NULL);
@@ -146,7 +140,38 @@ void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
             sfRenderWindow_drawRectangleShape(info->window, scene[4].button[1].rect_pausbackmenu, NULL);
             sfRenderWindow_drawRectangleShape(info->window, scene[4].button[2].rect_pausupsound, NULL);
             sfRenderWindow_drawSprite(info->window, info->pause_sprite, NULL);
+}
+
+void my_diff_view(info_t *info, scene_t *scene)
+{
+        if (info->view == 1)
+            my_view_one(info, scene);
+        if (info->view == 0)
+            my_view_null(info, scene);
+        if (info->view == 2)
+            my_view_two(info, scene);
+        if (info->view == 4)
+            my_view_four(info, scene);
+}
+
+void game(player_t *player, info_t *info, scene_t *scene, button_t *button)
+{
+    sfVideoMode mode = {800, 600, 32};
+    info->window = sfRenderWindow_create(mode, "jeu", sfResize | sfClose, NULL);
+    init_valuethree(info);
+    sfRenderWindow_setVerticalSyncEnabled(info->window, sfTrue);
+    set_textures(info, scene);
+    sfMusic_setLoop(info->main_music, sfTrue);
+    sfMusic_play(info->main_music);
+    //my_loading_screen(info, scene);
+
+    while (sfRenderWindow_isOpen(info->window)) {
+        while (sfRenderWindow_pollEvent(info->window, &info->event)) {
+            analyse_events(info, scene, button);
         }
+
+        my_diff_view(info, scene);
+
         sfRenderWindow_display(info->window);
         sfRenderWindow_clear(info->window, sfBlack);
     }
@@ -282,25 +307,24 @@ void move_monster_time(info_t *info, scene_t *scene)
 
 void pos_inventory(info_t *info, scene_t *scene)
 {
-            if (info->get_turret == 1) {
+            if (info->get_turret == 1)
                 create_turret(info, scene);
-            }
-            if (info->fill_turret == 1) {
+            if (info->fill_turret == 1)
                 create_turrettwo(info, scene);
-            }
-
-            if (info->get_turrettwo == 1) {
+            if (info->get_turrettwo == 1)
                 func2_create_turret(info, scene);
-            }
-            if (info->fill_turrettwo == 1) {
+            pos_inventorytwo(info, scene);
+
+}
+
+void pos_inventorytwo(info_t *info, scene_t *scene)
+{
+            if (info->fill_turrettwo == 1)
                 func2_create_turrettwo(info, scene);
-            }
-            if (info->get_turretthree == 1) {
+            if (info->get_turretthree == 1)
                 func3_create_turret(info, scene);
-            }
-            if (info->fill_turretthree == 1) {
+            if (info->fill_turretthree == 1)
                 func3_create_turrettwo(info, scene);
-            }
 }
 
 int main(int ac, char **av)
