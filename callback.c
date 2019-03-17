@@ -47,6 +47,11 @@ void price_turretthree(info_t *info)
         sfMusic_play(info->no_money);
 }
 
+void nuclear_func(info_t *info)
+{
+    sfMusic_play(info->nuclear);
+}
+
 void price_nuclear(info_t *info)
 {
     if (info->score_int > 500) {
@@ -81,7 +86,7 @@ void play(info_t *info)
 void coupe_decale(info_t *info)
 {
     info->menu_turret = 1;
-    printf("%d\n", info->menu_turret);
+    //printf("%d\n", info->menu_turret);
 }
 
 void exit_turret_menu(info_t *info)
@@ -103,3 +108,8 @@ void fill_map_t_two(info_t *info)
     info->get_turrettwo = 1;
 }
 
+void fill_map_t_three(info_t *info)
+{
+    info->fill_turretthree = 1;
+    info->get_turretthree = 1;
+}

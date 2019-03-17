@@ -83,6 +83,10 @@ void print_game(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse
 
             if (info->get_turret == 1)
                 positionning_turret(info, mouse_pos);
+            if (info->get_turrettwo == 1)
+                positionning_turrettwo(info, mouse_pos);
+            if (info->get_turretthree == 1)
+                positionning_turretthree(info, mouse_pos);
 }
 
 void print_menu(info_t *info, scene_t *scene, button_t *button, sfVector2i mouse_pos)
@@ -149,40 +153,64 @@ void positionning_turret(info_t *info, sfVector2i mouse_pos)
 
 void positionning_turrettwo(info_t *info, sfVector2i mouse_pos)
 {
-    if (info->counter_turretone == 4)
-        info->counter_turretone--;
-    else if (info->counter_turretone == 3) {
-        info->register_pos.x = mouse_pos.x;
-        info->register_pos.y = mouse_pos.y;
-        info->fill_turret = 1;
-        info->counter_turretone = 2;
+    if (info->counter_turrettwo == 4)
+        info->counter_turrettwo--;
+    else if (info->counter_turrettwo == 3) {
+        info->register_posonettwo.x = mouse_pos.x;
+        info->register_posonettwo.y = mouse_pos.y;
+        info->fill_turrettwo = 1;
+        info->counter_turrettwo = 2;
     }
-    else if (info->counter_turretone == 2) {
-        info->register_postwo.x = mouse_pos.x;
-        info->register_postwo.y = mouse_pos.y;
-        info->fill_turret = 1;
-        info->counter_turretone = 1;  
+    else if (info->counter_turrettwo == 2) {
+        info->register_postwottwo.x = mouse_pos.x;
+        info->register_postwottwo.y = mouse_pos.y;
+        info->fill_turrettwo = 1;
+        info->counter_turrettwo = 1;  
     }
-    else if (info->counter_turretone == 1) {
-        info->register_posthree.x = mouse_pos.x;
-        info->register_posthree.y = mouse_pos.y;
-        info->fill_turret = 1;
-        info->counter_turretone = 0;
+    else if (info->counter_turrettwo == 1) {
+        info->register_posthreettwo.x = mouse_pos.x;
+        info->register_posthreettwo.y = mouse_pos.y;
+        info->fill_turrettwo = 1;
+        info->counter_turrettwo = 0;
     }
-    if (info->counter_turretone == 0)
-        info->get_turret = 0;
+    if (info->counter_turrettwo == 0)
+        info->get_turrettwo = 0;
+}
+
+void positionning_turretthree(info_t *info, sfVector2i mouse_pos)
+{
+    if (info->counter_turretthree == 4)
+        info->counter_turretthree--;
+    else if (info->counter_turretthree == 3) {
+        info->register_posonetthree.x = mouse_pos.x;
+        info->register_posonetthree.y = mouse_pos.y;
+        info->fill_turretthree = 1;
+        info->counter_turretthree = 2;
+    }
+    else if (info->counter_turretthree == 2) {
+        info->register_postwotthree.x = mouse_pos.x;
+        info->register_postwotthree.y = mouse_pos.y;
+        info->fill_turretthree = 1;
+        info->counter_turretthree = 1;  
+    }
+    else if (info->counter_turretthree == 1) {
+        info->register_posthreetthree.x = mouse_pos.x;
+        info->register_posthreetthree.y = mouse_pos.y;
+        info->fill_turretthree = 1;
+        info->counter_turretthree = 0;
+    }
+    if (info->counter_turretthree == 0)
+        info->get_turretthree = 0;
 }
 
 
 void check_mouse_shopmenu(button_t button, sfVector2i mouse_pos, info_t *info)
 {
     sfVector2f button_pos = sfRectangleShape_getPosition(button.rect_shop);
-
     if (mouse_pos.x >= button_pos.x &&
         mouse_pos.x <= button_pos.x + 70 &&
         mouse_pos.y >= button_pos.y &&
         mouse_pos.y <= button_pos.y + 80) {
-
         info->start_rect.left = 75;
         info->start_rect.top = 250;
         info->start_rect.width = 70;

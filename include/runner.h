@@ -42,6 +42,7 @@ typedef struct game_info {
     sfMusic *main_music;
     sfMusic *yes_money;
     sfMusic *no_money;
+    sfMusic *nuclear;
     sfTexture *game_bg;
     sfTexture *loadingscreen_bg;
     sfTexture *zombie;
@@ -60,8 +61,7 @@ typedef struct game_info {
     sfTexture *shop_house;
     sfTexture *wall_texture;
     sfTexture *sign_price_texture;
-    sfTexture *nuke_explosion;
-    sfSprite *explosion;
+    sfTexture *wall_textureresize;
     sfSprite *test_image;
     sfSprite *castle_sprite;
     sfSprite *dollar;
@@ -77,9 +77,10 @@ typedef struct game_info {
     sfIntRect start_rect;
     int menu_turret;
     int counter_turretone;
+    int counter_turrettwo;
+    int counter_turretthree;
     int get_turret;
     int switch_scene;
-    int tmp;
     sfVector2f pos_menu;
     sfVector2f temp_pos_for_menu;
     sfVector2f castle_position;
@@ -106,15 +107,23 @@ typedef struct game_info {
     sfVector2f register_postwo;
     sfVector2f shopmenu_pos;
     sfVector2f register_posthree;
-
+    sfTexture *nuke_explosion;
+    sfSprite *explosion;
     sfVector2f register_posthreettwo;
     sfVector2f register_postwottwo;
     sfVector2f register_posonettwo;
+
+    sfVector2f register_posthreetthree;
+    sfVector2f register_postwotthree;
+    sfVector2f register_posonetthree;
     
     int fill_turret;
     int get_turrettwo;
     int fill_turrettwo;
+    int get_turretthree;
+    int fill_turretthree;
     int select_or_not;
+    int tmp;
     sfFont *font;
     float seconds;
     int view;
@@ -151,7 +160,8 @@ typedef struct  scene_s {
     sfSprite *monster;
     sfSprite *turretone;
     sfSprite *turrettwo;
-}scene_t;
+    sfSprite *turretthree;
+} scene_t;
 
 void game(player_t *, info_t *, scene_t *, button_t *);
 void init_button(button_t *, sfVector2f, sfVector2f, info_t *);
@@ -252,6 +262,9 @@ void price_turrettwo(info_t *info);
 void price_turretthree(info_t *info);
 void fill_map_t_one(info_t *info);
 void fill_map_t_two(info_t *info);
+void fill_map_t_three(info_t *info);
+void nuclear_func(info_t *info);
+
 void check_mouse_exitgame(button_t, sfVector2i, info_t *);
 void check_mouse_backmenu(button_t, sfVector2i, info_t *);
 void check_mouse_resume(button_t, sfVector2i, info_t *);

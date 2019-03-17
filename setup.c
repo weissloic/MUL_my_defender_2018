@@ -27,13 +27,14 @@ void setup_textures(info_t *info)
     info->turret_two_logo = sfTexture_createFromFile("ressources/doubleturret.png", NULL);
     info->castle_texture = sfTexture_createFromFile("ressources/castle.png", NULL);
     info->wall_texture = sfTexture_createFromFile("ressources/wall.png", NULL);
+    info->wall_textureresize = sfTexture_createFromFile("ressources/wallresize.png", NULL);
     info->sign_price_texture = sfTexture_createFromFile("ressources/sign_price.png", NULL);
     info->nuke_explosion = sfTexture_createFromFile("ressources/nuclearsprite.png", NULL);
     info->test_image = sfSprite_create();
     info->dollar = sfSprite_create();
     info->shophouse = sfSprite_create();
-    info->explosion = sfSprite_create();
     info->shopmenu = sfSprite_create();
+    info->explosion = sfSprite_create();
     info->sign_price_sprite_1 = sfSprite_create();
     info->sign_price_sprite_2 = sfSprite_create();
     info->sign_price_sprite_3 = sfSprite_create();
@@ -54,13 +55,13 @@ void set_textures(info_t *info, scene_t *scene)
     sfSprite_setTexture(scene[0].background_mainmenu, info->menu_bg, sfFalse);
     sfSprite_setTexture(scene[1].turretone, info->simple_turret, sfFalse);
     sfSprite_setTexture(scene[1].turrettwo, info->double_turret, sfFalse);
+    sfSprite_setTexture(scene[1].turretthree, info->wall_textureresize, sfFalse);
     sfSprite_setTexture(scene[1].background, info->game_bg, sfFalse);
     sfSprite_setTextureRect(scene[1].monster, info->zombie_rect);
     sfSprite_setTexture(scene[1].monster, info->zombie, sfFalse);
     sfSprite_setTexture(scene[2].background, info->game_bg, sfFalse);
     sfSprite_setTexture(scene[4].background, info->game_bg, sfFalse);
     sfSprite_setTexture(info->test_image, info->test, sfFalse);
-    sfSprite_setTexture(info->explosion, info->nuke_explosion, sfFalse);
     sfSprite_setTexture(info->sign_price_sprite_1, info->sign_price_texture, sfFalse);
     sfSprite_setTexture(info->sign_price_sprite_2, info->sign_price_texture, sfFalse);
     sfSprite_setTexture(info->sign_price_sprite_3, info->sign_price_texture, sfFalse);
@@ -88,6 +89,7 @@ void init_full_scene(scene_t *scene, info_t *info)
         scene[i].monster = sfSprite_create();
         scene[i].turretone = sfSprite_create();
         scene[i].turrettwo = sfSprite_create();
+        scene[i].turretthree = sfSprite_create();
     }
     scene[0].background_mainmenu = sfSprite_create();
 }
@@ -160,11 +162,11 @@ void setup_scene_1_buttons(scene_t *scene, info_t *info)
     init_buttonturretone(&scene[1].button[3], pos_buyturretoen, size_turret, info);
     scene[1].button[3].callback = &fill_map_t_one;
     init_buttonturrettwo(&scene[1].button[4], pos_buyturrettwo, size_turret, info);
-    scene[1].button[4].callback = &price_turrettwo;
+    scene[1].button[4].callback = &fill_map_t_two;
     init_buttonwall(&scene[1].button[5], pos_buyturretthree, size_turret, info);
-    scene[1].button[5].callback = &price_turretthree;
+    scene[1].button[5].callback = &fill_map_t_three;
     init_buttonturretfour(&scene[1].button[6], pos_buyturretfour, size_turret, info);
-    scene[1].button[6].callback = &price_nuclear;
+    scene[1].button[6].callback = &nuclear_func;
 }
 
 void setup_scene_2_buttons(scene_t *scene, info_t *info)
