@@ -264,9 +264,10 @@ void fill_map_t_one(info_t *info);
 void fill_map_t_two(info_t *info);
 void fill_map_t_three(info_t *info);
 void nuclear_func(info_t *info);
-
 void check_mouse_exitgame(button_t, sfVector2i, info_t *);
 void check_mouse_backmenu(button_t, sfVector2i, info_t *);
 void check_mouse_resume(button_t, sfVector2i, info_t *);
+void setup_texturestwo(info_t *);
+void set_texturestwo(info_t *, scene_t *);
 
 #endif
