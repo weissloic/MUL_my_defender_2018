@@ -25,7 +25,7 @@ void my_inventory(info_t *info, scene_t *scene)
     else {
         scene[1].button[0].callback = &coupe_decale;
         info->pos_menu.x = 700;
-        info->pos_menu.y = 200;
+        info->pos_menu.y = 520;
     }
 }
 
