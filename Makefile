@@ -13,19 +13,19 @@ LIB = ar rc
 
 MY = my.h
 
-SRC = game.c \
-	  events.c \
-	  setup.c \
-	  my_itoa.c \
-	  score.c \
-	  button.c \
-	  callback.c \
-	  pause.c \
-	  menu.c \
-	  shop.c \
-	  game_in.c \
-	  music.c \
-	  parallax.c \
+SRC = src/game/game.c \
+	  src/events/events.c \
+	  src/setup/setup.c \
+	  src/setup/my_itoa.c \
+	  src/game/score.c \
+	  src/ui/button.c \
+	  src/events/callback.c \
+	  src/game/pause.c \
+	  src/ui/menu.c \
+	  src/ui/shop.c \
+	  src/game/game_in.c \
+	  src/setup/music.c \
+	  src/ui/parallax.c \
 
 OBJ = $(SRC:.c = .o)
 

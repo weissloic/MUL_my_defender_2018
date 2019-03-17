@@ -5,7 +5,7 @@
 ** score for my_defender
 */
 
-#include "include/runner.h"
+#include "../../include/runner.h"
 
 void print_score(info_t *info)
 {

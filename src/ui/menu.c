@@ -5,7 +5,7 @@
 ** [file description here]
 */
 
-#include "include/runner.h"
+#include "../../include/runner.h"
 
 void init_button(button_t *button, sfVector2f position, sfVector2f size, info_t *info)
 {

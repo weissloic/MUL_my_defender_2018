@@ -5,7 +5,7 @@
 ** bootstrap for my_runner
 */
 
-#include "include/runner.h"
+#include "../../include/runner.h"
 
 void init_value(info_t *info)
 {

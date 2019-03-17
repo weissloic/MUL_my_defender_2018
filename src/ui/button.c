@@ -5,7 +5,7 @@
 ** button
 */
 
-#include "include/runner.h"
+#include "../../include/runner.h"
 
 void init_buttonupgrade(button_t *button, sfVector2f position, sfVector2f size, info_t *info)
 {

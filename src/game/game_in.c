@@ -5,7 +5,7 @@
 ** [file description here]
 */
 
-#include "include/runner.h"
+#include "../../include/runner.h"
 
 void check_mouse_upgrademenu(button_t button, sfVector2i mouse_pos, info_t *info)
 {

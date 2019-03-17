@@ -5,7 +5,7 @@
 ** setup sprites and textures for defender
 */
 
-#include "include/runner.h"
+#include "../../include/runner.h"
 
 void setup_texturestwo(info_t *info)
 {

@@ -5,7 +5,7 @@
 ** events for my_runner
 */
 
-#include "include/runner.h"
+#include "../../include/runner.h"
 
 void init_full_button(info_t *info, scene_t *scene, sfVector2i mouse_pos)
 {

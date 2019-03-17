@@ -5,7 +5,7 @@
 ** parallax
 */
 
-#include "include/runner.h"
+#include "../../include/runner.h"
 
 void parallax_main_menu(info_t *info, scene_t *scene)
 {
